@@ -748,6 +748,9 @@ run examples
 
 check also this: https://github.com/ChiaChunL/MolCompose
 
+https://nanome.ai/blog/tools-for-protein-structure-analysis
+use case: https://nanome.ai/downloads/case-study-ucsd.pdf
+
 ## Protein folds are the structures of domains
 
 - Similarities in assembly of secondary structure elements
