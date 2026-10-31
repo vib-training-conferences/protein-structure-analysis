@@ -825,10 +825,6 @@ https://interface.foldseek.com/
 - use of B factors to represent other properties  
 - other non-standard extensions (PDBQT, ...)
 
-## ADD TOPIC with FireProt
-
-https://loschmidt.chemi.muni.cz/fireprotweb/example
-
 ## Force Fields
 
 - Energy terms representing physical interactions
@@ -889,6 +885,10 @@ Additional exercise: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1304567/
 Further reading: https://dasher.wustl.edu/chem430/software/chimera/users-guide.pdf
 
 ********
+
+## ADD TOPIC with FireProt as introduction for this topic
+
+https://loschmidt.chemi.muni.cz/fireprotweb/example
 
 ## Computational deep mutational screen
 
