@@ -731,12 +731,22 @@ where R is the distance between two structurally equivalent atom pairs (CA in ou
 
 </details>
 
+### Morphing
+
+https://rbvi.github.io/chimera-tutorials/presentations/modules/chimerax-comp-structures/index.html#/0/31
+
+### Export the work as a script
+
+https://bioinformaticsdaily.com/basics/structural-bioinformatics/structure-visualization-pymol-chimera
+
 ## ADD NEW TOPIC - demo Human in the loop working with ChimeraX
 
 start from https://github.com/abotzki/chimeraX-mcp
 start the server
 start Claude Code CLI
 run examples
+
+check also this: https://github.com/ChiaChunL/MolCompose
 
 ## Protein folds are the structures of domains
 
