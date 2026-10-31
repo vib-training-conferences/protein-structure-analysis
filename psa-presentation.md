@@ -731,6 +731,13 @@ where R is the distance between two structurally equivalent atom pairs (CA in ou
 
 </details>
 
+## ADD NEW TOPIC - demo Human in the loop working with ChimeraX
+
+start from https://github.com/abotzki/chimeraX-mcp
+start the server
+start Claude Code CLI
+run examples
+
 ## Protein folds are the structures of domains
 
 - Similarities in assembly of secondary structure elements
@@ -790,6 +797,9 @@ Execute a search in FoldSeek using restriction on the search space for the PDB a
 
 Did you find anything interesting from this search?
 
+## TODO - Foldseek Interface
+
+https://interface.foldseek.com/
 
 ## PDB File Surprises
 
@@ -801,6 +811,10 @@ Did you find anything interesting from this search?
 - multiple models, especially for NMR ensembles
 - use of B factors to represent other properties  
 - other non-standard extensions (PDBQT, ...)
+
+## ADD TOPIC with FireProt
+
+https://loschmidt.chemi.muni.cz/fireprotweb/example
 
 ## Force Fields
 
