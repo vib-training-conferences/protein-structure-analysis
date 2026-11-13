@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH --job-name=mutatex-run-mdl-1jxx1A
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
-#SBATCH --time=2:00:00
+#SBATCH --cpus-per-task=2
+#SBATCH --time=1:00:00
 #SBATCH --output=run1.stdout
 #SBATCH --error=run1.stderr
 
@@ -18,11 +18,11 @@ date
 
 APPTAINER_CACHEDIR=/tmp/ \
 APPTAINER_TMPDIR=/tmp/ \
-apptainer exec $VSC_SCRATCH/mutatex-v1.sif /opt/conda/bin/mutatex model_on_1jxx1A.pdb \
+apptainer exec /$VSC_SCRATCH_PROJECTS_BASE/2026_400/20261125-Exploring-protein-structures/alexb/mutatex-v1.sif /opt/conda/envs/mutatex/bin/mutatex model_on_1jxx1A.pdb \
         -v \
         -p 4 \
         -m mutation_list.txt \
-        -x $VSC_SCRATCH/foldx_20241231 \
+        -x $VSC_SCRATCH_PROJECTS_BASE/2026_400/20261125-Exploring-protein-structures/alexb/foldx_20270131 \
         -f suite5 \
         -R repair_runfile_template.txt \
         -M mutate_runfile_template.txt \
