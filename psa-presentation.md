@@ -328,7 +328,7 @@ To save the current view to a high quality publication ready image file, click o
 
 !?[Proteins are polypeptides of aminoacids](https://www.youtube.com/watch?v=iBV67yamqlA&list=PLuIpgNT2hMwRQKFy4okoNQKiJwM8li3Sz&index=20)
 
-## Protein Data Bank
+## Protein Structures and where to find them
 
                             {{0}}
 *******************
@@ -351,7 +351,7 @@ To save the current view to a high quality publication ready image file, click o
 
 *******************
 
-## Exercise 1: Search the PDB
+### Exercise 1: Search the PDB
 
 - Use the UniProt site to search for “dnak”.  
 - Use the PDB site to search for “dnak”.
@@ -360,7 +360,7 @@ To save the current view to a high quality publication ready image file, click o
 - Look at the summary pages of a number of  structures and note some interesting properties.
 - Select a number of structures and create a report page.
 
-### Search for a structure
+#### Search for a structure
 
             {{0}}
 *************************
@@ -444,7 +444,7 @@ There is also an Advanced Search section, with a Blast/Fasta option in the Seque
 
 *****************
 
-## Exercise 2: Getting to know PDB entries 
+### Exercise 2: Getting to know PDB entries 
 
 The primary data format for PDB data is the [PDBx/mmCIF format](https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format). There is a legacy [PDB format](http://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html) which is still very popular. 
 
@@ -455,7 +455,7 @@ coordinate files can be obtained at the Protein Data Bank at
 consisting of 4 characters, the first one is always a number. 
 Note: It has been announced that the 4 character code will change in the [future](https://www.wwpdb.org/news/news?year=2017\#5910c8d8d3b1d333029d4ea8).
 
-### Inspecting a PDB entry
+#### Inspecting a PDB entry
 
 The PDB entry with ID **1DKX** contains the atomic coordinates of the
 molecular chaperone (DnaK) from *E coli*.
@@ -484,7 +484,7 @@ molecular chaperone (DnaK) from *E coli*.
 
 </details>
 
-### Downloading the structure
+#### Downloading the structure
 
 > <i class="fas fa-pencil-alt"></i> **Hands-on: BLAST search for PDB structure**
 >
@@ -502,11 +502,11 @@ molecular chaperone (DnaK) from *E coli*.
 
 Additional exercises on searching PDB can be found on the [basic bioinformatics exercises page](http://wiki.bits.vib.be/index.php/Exercises_on_Protein_Structure).
 
-## PDB Format
+### PDB Format
 
 ![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/pdb-file-format.png)<!-- height="600px" -->
 
-## Occupancy
+### Occupancy
 
 ![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/occupancy.png)<!-- width="750px" -->
 
@@ -515,7 +515,7 @@ Additional exercises on searching PDB can be found on the [basic bioinformatics 
                  --{{0}}--
 Macromolecular crystals are composed of many individual molecules packed into a symmetrical arrangement. In some crystals, there are slight differences between each of these molecules. For instance, a sidechain on the surface may wag back and forth between several conformations, or a substrate may bind in two orientations in an active site, or a metal ion may be bound to only a few of the molecules. When researchers build the atomic model of these portions, they can use the occupancy to estimate the amount of each conformation that is observed in the crystal. For most atoms, the occupancy is given a value of 1, indicating that the atom is found in all of the molecules in the same place in the crystal. However, if a metal ion binds to only half of the molecules in the crystal, the researcher will see a weak image of the ion in the electron density map, and can assign an occupancy of 0.5 in the PDB structure file for this atom. Occupancies are also commonly used to identify side chains or ligands that are observed in multiple conformations. The occupancy value is used to indicate the fraction of molecules that have each of the conformations. Two (or more) atom records are included for each atom, with occupancies like 0.5 and 0.5, or 0.4 and 0.6, or other fractional occupancies that sum to a total of 1.
 
-## PDB File Surprises
+### PDB File Surprises
 
 - Missing atoms, residues and loops  
 - Multiple molecules in the asymmetric unit
@@ -526,7 +526,7 @@ Macromolecular crystals are composed of many individual molecules packed into a 
 - use of B factors to represent other properties  
 - other non-standard extensions (PDBQT, ...)
 
-## Additional databases and services
+### Additional databases and services
 
 - Nucleic Acid Database: DNA and RNA structures
 
@@ -560,7 +560,7 @@ Macromolecular crystals are composed of many individual molecules packed into a 
 
   [http://www.emdatabank.org](http://www.emdatabank.org.left)
 
-## Assessing Structure Quality
+### Assessing Structure Quality
 
 General geometric properties (bond lengths and angles, Ramachandran distribution, …):
 [MolProbity](http://molprobity.biochem.duke.edu/)
@@ -582,7 +582,7 @@ TODO: add the wwPDB validation report incl. its ligand section, and PDB-REDO; fi
 
 - Difficult to generalise: carefully read and consider the  published protocol
 
-## Molecular Graphics Software
+### Molecular Graphics Software
 
 - [PyMOL](http://www.pymol.org/): high-quality output,  good examples on [Wiki](http://www.pymolwiki.org/)
 - [ChimeraX](https://www.cgl.ucsf.edu/chimerax/): good  documentation on website
@@ -590,7 +590,7 @@ TODO: add the wwPDB validation report incl. its ligand section, and PDB-REDO; fi
 - [Yasara](http://www.yasara.org)  
 - [SwissPDBViewer](http://spdbv.vital-it.ch/)
 
-## ChimeraX
+## ChimeraX essentials
 
 - ChimeraX is the next-generation molecular visualization program from the [UCSF RBVI](https://www.rbvi.ucsf.edu/). 
 
@@ -644,7 +644,7 @@ Hints:
 
 Now, you have explored the ChimeraX interface and acquainted with basic visualisations. You have identified how you can visualise secondary structure elements, surfaces, and hydrogen bonds. And most importantly, you can create publication-ready figures using ChimeraX.
 
-## Structure Alignment
+## Comparing homologous structures
 
 Structures can be structurally aligned to achieve the best possible match between corresponding atoms. It is  possible to consider all atoms, or only a subset  (such as the Cα atoms).
 
@@ -661,7 +661,7 @@ Different algorithms use different combinations of sequence- and secondary of te
 - [MUSTANG](http://lcb.infotech.monash.edu.au/mustang/mustang_psfb-final.pdf)
 - [MMLigner](https://doi.org/10.1093/bioinformatics/btw757)
 
-## Exercise 4: Compare Structures
+### Exercise 4: Compare Structures
 
 - Download the five provided PDB files and open them in ChimeraX.
 
@@ -673,7 +673,7 @@ $$ rmsd = \sqrt{\frac{1}{N}\sum_{i=1}^{N}R_{i}^{2}} $$
 
 - Color all structures by B factor and compare the distribution to the local variability of the structures.
 
-### Structural comparison and RMSD 
+#### Structural comparison and RMSD 
 
 We compare structures by structurally aligning them on top of each other. That is, we
 align structurally equivalent atoms. For now, we will only use CA atoms as a representation of the backbones. 
@@ -698,7 +698,7 @@ where R is the distance between two structurally equivalent atom pairs (CA in ou
 >    1DKX_1.pdb 1DKY_1.pdb 1DKZ_1.pdb 3DPO_1.pdb 3DPP_1.pdb 
 >    ```
 
-### Aligning multiple structures using ChimeraX
+#### Aligning multiple structures using ChimeraX
 
 > <i class="fas fa-pencil-alt"></i> **Hands-on: Loading PDF files and structurally align them**
 >
@@ -734,13 +734,77 @@ where R is the distance between two structurally equivalent atom pairs (CA in ou
 
 </details>
 
-### Morphing
+#### Morphing
 
 https://rbvi.github.io/chimera-tutorials/presentations/modules/chimerax-comp-structures/index.html#/0/31
 
-### Export the work as a script
+#### Export the work as a script
 
 https://bioinformaticsdaily.com/basics/structural-bioinformatics/structure-visualization-pymol-chimera
+
+## Protein folds are the structures of domains
+
+- Similarities in assembly of secondary structure elements
+
+- So not based on sequence like motifs but on 3D structure
+
+- Folds represent the shapes of protein domains
+
+!?[https://youtu.be/nJVkwdNm_HY](https://youtu.be/nJVkwdNm_HY) !?[https://youtu.be/1ljeUscKE9Y](https://youtu.be/1ljeUscKE9Y) !?[https://youtu.be/wWHtcbAnOmQ](https://youtu.be/wWHtcbAnOmQ)
+
+
+* SCOP (http://scop.mrc-lmb.cam.ac.uk/scop/)
+
+  Class, Fold, Superfamily, Family
+  The human hemoglobin protein (1HHO-A), is a domain classfied by SCOP as the following.
+  Class: all helical proteins; fold: globin-like; superfamily: globin-like; and family: globins.
+  
+!?[https://youtu.be/Wz6Ugn7BZjg](https://youtu.be/Wz6Ugn7BZjg)
+
+* CATH (http://www.cathdb.info/)
+  class (equivalent to SCOP class), architecture, topology (equivalent to SCOP fold), and homologous superfamily (equivalent to SCOP superfamily).
+  1HHO-A is a domain classied by CATH as the following.
+  Class: mainly helical; architecture: orthogonal bundle; topology: globin-like; and superfamily: globins.
+
+!?[https://youtu.be/mb898MT3eLc](https://youtu.be/mb898MT3eLc)
+
+### Similarity searches based on 3D structure
+
+Similarity on structural level: aligning 3D structures
+
+Structure of query protein is known and aligned to PDB structures
+
+- [Foldseek](https://search.foldseek.com/search) - preferred method
+- [DALI](http://ekhidna.biocenter.helsinki.fi/dali_server/)
+- [VAST+](https://www.ncbi.nlm.nih.gov/Structure/vastplus/vastplus.cgi)
+
+Further reading:
+
+!?[Presentation by Martin Steinegger about FoldSeek](https://www.youtube.com/watch?v=k5Rbi22TtOA)
+
+
+Compare proteins with low sequence similarity: similar structure implies homology -> same function
+
+### Exercise 5: Use FoldSeek to find similar structures from distinct organisms
+
+Imagine that we would like to find out whether there are similar structures of the human MEAK7 protein in the proteome of S. pombe.
+
+Usually, we would start with doing a BLAST using Uniprot and limit the search space to the proteome from S. pombe. 
+
+How many hits do you find and is there any useful hit?
+
+Alternatively, we can use FoldSeek to find similar 3D structures.
+
+How would you find out what structural information is available about MEAK7?
+
+Execute a search in FoldSeek using restriction on the search space for the PDB and AlphaFoldDB.
+
+Did you find anything interesting from this search?
+
+### TODO - Foldseek Interface
+
+https://interface.foldseek.com/
+
 
 ## Protein–ligand and protein–protein interactions
 
@@ -1039,7 +1103,7 @@ Plugin>interface residues between A and B
 Plugin>TA66 TA68 IA72 IA127 RA131 AA134 IA135 TA136 SA137 PA138 FA139 KA140 QA142 YA219 VA222 EA225 AA226 LA266 KA267 EA268 AA271 LA272 TA274 LA275 IA278 IA325 YA326 RA328 SA329 PA330 SB27 IB28 FB29 SB30 IB31 TB33 AB50 IB51 eB52 SB56 TB57 NB58 YB100 AB102 VB103 LB104 YB105 EB106 YB107
 ```
 
-## ADD TOPIC on protein stability 
+## What makes a protein stable? Comparing a mesophilic and a thermophilic homolog
 
 What makes a protein stable? Comparing a mesophilic and a thermophilic homolog
 •	Folding free energy is small (~5–15 kcal/mol): a single mutation can matter
@@ -1048,70 +1112,7 @@ What makes a protein stable? Comparing a mesophilic and a thermophilic homolog
 •	Case: cold shock proteins Bs-CspB (B. subtilis, 1CSP) vs Bc-Csp (B. caldolyticus, 1C9O); Perl et al. 2000, Nat Struct Biol – two surface positions (3 and 66) explain most of the stability difference
 •	Link forward: PROSS, FireProt and FoldX try to quantify exactly these effects
 
-## Protein folds are the structures of domains
-
-- Similarities in assembly of secondary structure elements
-
-- So not based on sequence like motifs but on 3D structure
-
-- Folds represent the shapes of protein domains
-
-!?[https://youtu.be/nJVkwdNm_HY](https://youtu.be/nJVkwdNm_HY) !?[https://youtu.be/1ljeUscKE9Y](https://youtu.be/1ljeUscKE9Y) !?[https://youtu.be/wWHtcbAnOmQ](https://youtu.be/wWHtcbAnOmQ)
-
-
-* SCOP (http://scop.mrc-lmb.cam.ac.uk/scop/)
-
-  Class, Fold, Superfamily, Family
-  The human hemoglobin protein (1HHO-A), is a domain classfied by SCOP as the following.
-  Class: all helical proteins; fold: globin-like; superfamily: globin-like; and family: globins.
-  
-!?[https://youtu.be/Wz6Ugn7BZjg](https://youtu.be/Wz6Ugn7BZjg)
-
-* CATH (http://www.cathdb.info/)
-  class (equivalent to SCOP class), architecture, topology (equivalent to SCOP fold), and homologous superfamily (equivalent to SCOP superfamily).
-  1HHO-A is a domain classied by CATH as the following.
-  Class: mainly helical; architecture: orthogonal bundle; topology: globin-like; and superfamily: globins.
-
-!?[https://youtu.be/mb898MT3eLc](https://youtu.be/mb898MT3eLc)
-
-## Similarity searches based on 3D structure
-
-Similarity on structural level: aligning 3D structures
-
-Structure of query protein is known and aligned to PDB structures
-
-- [Foldseek](https://search.foldseek.com/search) - preferred method
-- [DALI](http://ekhidna.biocenter.helsinki.fi/dali_server/)
-- [VAST+](https://www.ncbi.nlm.nih.gov/Structure/vastplus/vastplus.cgi)
-
-Further reading:
-
-!?[Presentation by Martin Steinegger about FoldSeek](https://www.youtube.com/watch?v=k5Rbi22TtOA)
-
-
-Compare proteins with low sequence similarity: similar structure implies homology -> same function
-
-## Exercise 5: Use FoldSeek to find similar structures from distinct organisms
-
-Imagine that we would like to find out whether there are similar structures of the human MEAK7 protein in the proteome of S. pombe.
-
-Usually, we would start with doing a BLAST using Uniprot and limit the search space to the proteome from S. pombe. 
-
-How many hits do you find and is there any useful hit?
-
-Alternatively, we can use FoldSeek to find similar 3D structures.
-
-How would you find out what structural information is available about MEAK7?
-
-Execute a search in FoldSeek using restriction on the search space for the PDB and AlphaFoldDB.
-
-Did you find anything interesting from this search?
-
-## TODO - Foldseek Interface
-
-https://interface.foldseek.com/
-
-## Force Fields
+## From one mutation to many: modelling mutations
 
 - Energy terms representing physical interactions
 
@@ -1152,7 +1153,7 @@ Applications include the optimisation of structures, the calculation of the stab
 
 [FoldX](https://dx.doi.org/10.1093%2Fnar%2Fgki387)
 
-## Exercise 6: Model a Mutation using ChimeraX
+### Exercise 6: Model a Mutation using ChimeraX
 
 - Load the PDB entry 2AC0.
 - Set an appropriate structure representation.
@@ -1176,7 +1177,7 @@ Further reading: https://dasher.wustl.edu/chem430/software/chimera/users-guide.p
 
 https://loschmidt.chemi.muni.cz/fireprotweb/example
 
-## Computational deep mutational screen
+## In silico saturation mutagenesis
 
                  --{{0}}
 Computational methods of predicting protein stability changes upon missense mutations are invaluable tools in high-throughput studies involving a large number of protein variants.
@@ -1189,7 +1190,7 @@ We are exploring the tool MutateX as an example for computational site saturatio
 
 ![MutateX: Deep mutational screen using FoldX ](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/figure1-mutatex.svg)
 
-## Exercise 7: Execute a deep mutational screen on the HPC using FoldX
+### Exercise 7: Execute a deep mutational screen on the HPC using FoldX
 
 For the exercise, we will use the HPC Tier-2 of the UGent. Documentation on how to connect via the [Web portal](https://docs.hpc.ugent.be/macOS/web_portal/).
 
@@ -1204,11 +1205,12 @@ For the exercise, we will use the HPC Tier-2 of the UGent. Documentation on how 
 - Wait for max 40 min
 - Create a heatmap of the results in the analysis folder.
 
+
 ## TODO - Recap of the day's workflow on one slide
 
 find → visualise → compare → interactions → mutate → scan → design
 
-## TODO - demo Human in the loop working with ChimeraX
+### TODO - demo Human in the loop working with ChimeraX
 
 start from https://github.com/abotzki/chimeraX-mcp
 start the server
@@ -1220,7 +1222,7 @@ check also this: https://github.com/ChiaChunL/MolCompose
 https://nanome.ai/blog/tools-for-protein-structure-analysis
 use case: https://nanome.ai/downloads/case-study-ucsd.pdf
 
-## TODO - Outlook
+### TODO - Outlook
 
 - ML-based stability and variant-effect predictors
 
