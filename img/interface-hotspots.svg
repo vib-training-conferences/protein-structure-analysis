@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" font-family="'Open Sans', Arial, sans-serif">
+  <title>Protein–protein interface: buried surface area and hot spots</title>
+  <style>
+    .t{font-size:36px;font-weight:700;fill:#1a1a1a;text-anchor:middle}
+    .d{font-size:30px;fill:#1a1a1a;text-anchor:middle}
+    .L{font-size:64px;font-weight:700;fill:#fff;text-anchor:middle;dominant-baseline:central}
+  </style>
+  <rect width="1600" height="700" fill="#fff"/>
+  <text class="t" x="480" y="60">Side view</text>
+  <path fill="#0072b2" d="M120,120 C260,60 420,90 470,170 C500,230 450,280 490,340 C520,400 470,470 500,540 C440,620 240,640 140,560 C60,480 70,220 120,120 Z"/>
+  <path fill="#e69f00" d="M484,150 C540,90 760,80 820,200 C880,320 860,520 760,600 C680,650 560,620 514,540 C484,470 534,400 504,340 C464,280 514,230 484,170 Z"/>
+  <path fill="none" stroke="#d62728" stroke-opacity=".55" stroke-width="34" stroke-linecap="round" d="M477,170 C507,230 457,280 497,340 C527,400 477,470 507,540"/>
+  <text class="L" x="280" y="350">A</text><text class="L" x="690" y="350">B</text>
+  <text class="d" x="480" y="655">BSA = SASA(A) + SASA(B) − SASA(AB)</text>
+
+  <line x1="960" y1="40" x2="960" y2="660" stroke="#ddd" stroke-width="2"/>
+  <text class="t" x="1270" y="60">Interface footprint</text>
+  <ellipse cx="1270" cy="350" rx="300" ry="220" fill="#fbe3c4" stroke="#e69f00" stroke-width="4"/>
+  <g fill="#9a9a9a">
+    <circle cx="1490" cy="350" r="22"/><circle cx="1460.5" cy="425" r="22"/><circle cx="1380" cy="480" r="22"/><circle cx="1270" cy="500" r="22"/>
+    <circle cx="1160" cy="480" r="22"/><circle cx="1079.5" cy="425" r="22"/><circle cx="1050" cy="350" r="22"/><circle cx="1079.5" cy="275" r="22"/>
+    <circle cx="1160" cy="220" r="22"/><circle cx="1270" cy="200" r="22"/><circle cx="1380" cy="220" r="22"/><circle cx="1460.5" cy="275" r="22"/>
+  </g>
+  <g fill="#d62728"><circle cx="1235" cy="330" r="28"/><circle cx="1305" cy="365" r="28"/><circle cx="1255" cy="400" r="28"/></g>
+  <text x="1270" y="290" style="font-size:28px;font-weight:700;fill:#d62728;text-anchor:middle">hot spots</text>
+  <text x="1270" y="608" style="font-size:26px;fill:#555;text-anchor:middle">O-ring: shields hot spots from water</text>
+  <text class="d" x="1270" y="655">hot spot: ΔΔG (→ Ala) ≥ 2 kcal/mol</text>
+  <text x="800" y="692" style="font-size:18px;fill:#888;text-anchor:middle">Figure: VIB Training, CC BY 4.0</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 620" font-family="'Open Sans', Arial, sans-serif">
+  <title>What a PDB file does not tell you</title>
+  <style>
+    .t{font-size:36px;font-weight:700;fill:#1a1a1a;text-anchor:middle}
+    .d{font-size:29px;fill:#1a1a1a;text-anchor:middle}
+    .s{font-size:25px;fill:#555;text-anchor:middle}
+    .a{font-size:22px;font-weight:700;fill:#fff;text-anchor:middle;dominant-baseline:central}
+    .b{stroke:#444;stroke-width:6;stroke-linecap:round;fill:none}
+    .C{fill:#7f7f7f}.N{fill:#2f5fd0}.O{fill:#d62728}
+    .gh{fill:#fff;stroke:#888;stroke-width:3;stroke-dasharray:6 5}
+    .H{fill:#fff;stroke:#555;stroke-width:3}
+    .chip{fill:#eee;stroke:#999;stroke-width:2}
+    .ct{font-size:30px;font-weight:700;fill:#444;text-anchor:middle;dominant-baseline:central}
+    .sep{stroke:#ddd;stroke-width:2}
+  </style>
+  <rect width="1600" height="620" fill="#fff"/>
+  <line class="sep" x1="400" y1="20" x2="400" y2="600"/><line class="sep" x1="800" y1="20" x2="800" y2="600"/><line class="sep" x1="1200" y1="20" x2="1200" y2="600"/>
+
+  <!-- hydrogens -->
+  <text class="t" x="200" y="65">Hydrogens</text>
+  <path class="b" d="M110,380 L200,320 L290,380"/><line class="b" x1="290" y1="380" x2="290" y2="280" style="stroke:#999;stroke-dasharray:2 0"/>
+  <line x1="200" y1="320" x2="200" y2="240" stroke="#aaa" stroke-width="4" stroke-dasharray="6 6"/>
+  <line x1="110" y1="380" x2="60" y2="320" stroke="#aaa" stroke-width="4" stroke-dasharray="6 6"/>
+  <line x1="290" y1="280" x2="340" y2="230" stroke="#aaa" stroke-width="4" stroke-dasharray="6 6"/>
+  <circle class="gh" cx="200" cy="225" r="18"/><circle class="gh" cx="55" cy="310" r="18"/><circle class="gh" cx="350" cy="220" r="18"/>
+  <circle class="N" cx="110" cy="380" r="28"/><text class="a" x="110" y="380">N</text>
+  <circle class="C" cx="200" cy="320" r="26"/><text class="a" x="200" y="320">C</text>
+  <circle class="C" cx="290" cy="380" r="26"/><text class="a" x="290" y="380">C</text>
+  <circle class="O" cx="290" cy="280" r="27"/><text class="a" x="290" y="280">O</text>
+  <text class="s" x="200" y="155">dashed H = not observed</text>
+  <text class="d" x="200" y="490">not seen at typical</text>
+  <text class="d" x="200" y="528">X-ray resolution</text>
+  <text class="s" x="200" y="570">added by software (addh)</text>
+
+  <!-- histidine -->
+  <text class="t" x="600" y="65">His: tautomer &amp; flip</text>
+  <g class="b"><path d="M467.7,374.5 L447.7,313 L500,275 L552.3,313 L532.3,374.5 Z"/><line x1="467.7" y1="374.5" x2="440" y2="430"/><line x1="552.3" y1="313" x2="585" y2="290"/>
+  <path d="M667.7,374.5 L647.7,313 L700,275 L752.3,313 L732.3,374.5 Z"/><line x1="667.7" y1="374.5" x2="640" y2="430"/><line x1="700" y1="275" x2="700" y2="235"/></g>
+  <circle class="C" cx="467.7" cy="374.5" r="17"/><circle class="N" cx="447.7" cy="313" r="20"/><circle class="C" cx="500" cy="275" r="17"/><circle class="N" cx="552.3" cy="313" r="20"/><circle class="C" cx="532.3" cy="374.5" r="17"/>
+  <circle class="H" cx="590" cy="287" r="14"/>
+  <circle class="C" cx="667.7" cy="374.5" r="17"/><circle class="C" cx="647.7" cy="313" r="17"/><circle class="N" cx="700" cy="275" r="20"/><circle class="C" cx="752.3" cy="313" r="17"/><circle class="N" cx="732.3" cy="374.5" r="20"/>
+  <circle class="H" cx="700" cy="228" r="14"/>
+  <text class="s" x="600" y="160">N and C look alike in density</text>
+  <text x="600" y="470" style="font-size:30px;fill:#7b4fa8;font-weight:700;text-anchor:middle">↻ 180° ring flip</text>
+  <text class="d" x="600" y="528">HID · HIE · HIP ?</text>
+  <text class="s" x="600" y="570">a modelling choice</text>
+
+  <!-- alternate conformations -->
+  <text class="t" x="1000" y="65">Alternate conformations</text>
+  <path class="b" d="M900,430 L1000,410 L1100,430"/>
+  <path class="b" d="M1000,410 L1000,330 L940,270 L945,190"/>
+  <path class="b" d="M1000,330 L1060,270 L1075,190" style="stroke-dasharray:10 8;opacity:.5"/>
+  <circle class="C" cx="1000" cy="410" r="22"/><circle class="C" cx="1000" cy="330" r="22"/>
+  <circle class="C" cx="940" cy="270" r="22"/><circle class="N" cx="945" cy="190" r="24"/>
+  <g opacity=".45"><circle class="C" cx="1060" cy="270" r="22"/><circle class="N" cx="1075" cy="190" r="24"/></g>
+  <text x="880" y="200" style="font-size:30px;font-weight:700;fill:#1a1a1a;text-anchor:end">A 0.6</text>
+  <text x="1110" y="200" style="font-size:30px;font-weight:700;fill:#888">B 0.4</text>
+  <text class="d" x="1000" y="490">altloc A/B,</text>
+  <text class="d" x="1000" y="528">occupancy &lt; 1</text>
+  <text class="s" x="1000" y="570">many tools keep only A</text>
+
+  <!-- additives -->
+  <text class="t" x="1400" y="65">Additive or ligand?</text>
+  <g><rect class="chip" x="1235" y="130" width="150" height="62" rx="10"/><text class="ct" x="1310" y="161">GOL</text>
+  <rect class="chip" x="1415" y="130" width="150" height="62" rx="10"/><text class="ct" x="1490" y="161">PEG</text>
+  <rect class="chip" x="1235" y="210" width="150" height="62" rx="10"/><text class="ct" x="1310" y="241">SO4</text>
+  <rect class="chip" x="1415" y="210" width="150" height="62" rx="10"/><text class="ct" x="1490" y="241">EDO</text>
+  <rect class="chip" x="1235" y="290" width="150" height="62" rx="10"/><text class="ct" x="1310" y="321">ACT</text>
+  <rect class="chip" x="1415" y="290" width="150" height="62" rx="10"/><text class="ct" x="1490" y="321">CL</text></g>
+  <rect x="1265" y="385" width="270" height="66" rx="10" fill="#009e73"/><text class="ct" x="1400" y="418" style="fill:#fff">P0G agonist</text>
+  <text class="d" x="1400" y="528">buffer, cryo-protectant,</text>
+  <text class="s" x="1400" y="570">ions ≠ biological ligand</text>
+
+  <text x="800" y="610" style="font-size:18px;fill:#888;text-anchor:middle">Figure: VIB Training, CC BY 4.0</text>
+</svg>
