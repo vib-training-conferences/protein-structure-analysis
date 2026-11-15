@@ -914,6 +914,81 @@ It can be very useful and informative to show the molecular surface of a protein
 
 In our case, 4 surfaces will be calculated which display status and color can be individually changed using the toggles in the Models window.
 
+## Protein–ligand and protein–protein interactions
+
+<div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center">
+<img src="https://cdn.rcsb.org/pdb101/motm/100/100_2rh1.jpg" alt="β2 adrenergic receptor in a membrane, illustration by David S. Goodsell" style="max-width:38%;min-width:280px">
+<div style="flex:1;min-width:320px;font-size:1.5em;line-height:1.6">
+<b>Affinity</b> – how tightly?<br>
+<b>Specificity</b> – only the right partner?<br>
+<b>Selectivity</b> – this target, not its relatives?
+</div>
+</div>
+
+<img src="img/affinity-scale.svg" alt="Kd from millimolar to picomolar and the corresponding binding free energy" style="width:100%">
+
+<p style="font-size:1.5em;text-align:center"><b>A complex structure gives you a pose – not an affinity.</b></p>
+
+<small>Illustration: David S. Goodsell and RCSB PDB, Molecule of the Month <a href="https://doi.org/10.2210/rcsb_pdb/mom_2008_4">Adrenergic Receptors</a> (CC BY 4.0)</small>
+
+                 --{{0}}--
+Ask the room who works on a complex. A structure shows which groups face each other; it does not show how strong the binding is, how long the ligand stays, or what it costs to strip off the water. Each ten-fold gain in affinity is only about 1.4 kcal/mol – roughly one good hydrogen bond, or less.
+
+### Interaction types: geometry and distances
+
+<img src="img/interaction-types.svg" alt="Eight interaction types with schematic geometry and typical distances" style="width:100%">
+
+                 --{{0}}--
+These ranges are the reference for the worksheet in Exercise 8. They are ranges, not thresholds: interaction strength falls off continuously with distance and angle. Programs draw a line somewhere, nature does not.
+
+### Every program has its own definition
+
+<img src="img/interaction-cutoffs.svg" alt="Default distance cut-offs for H-bonds, hydrophobic contacts and salt bridges in LigPlot+, ChimeraX and PLIP" style="width:100%">
+
+<p style="font-size:1.4em;text-align:center">Same structure, different tool → <b>different interaction list</b>. An interaction is an operational definition.</p>
+
+<small>Defaults: PLIP (Adasme et al. 2021, <a href="https://doi.org/10.1093/nar/gkab294">NAR 49:W530</a>), LigPlot+/HBPLUS (Laskowski &amp; Swindells 2011), ChimeraX <a href="https://www.cgl.ucsf.edu/chimerax/docs/user/commands/hbonds.html">hbonds</a> and <a href="https://www.cgl.ucsf.edu/chimerax/docs/user/commands/clashes.html">contacts</a> documentation. Angles and atom typing differ too.</small>
+
+                 --{{0}}--
+Read the red line: a donor–acceptor pair at 3.7 Angstrom is no hydrogen bond for LigPlot+, a hydrogen bond for PLIP, and for ChimeraX it depends on the atom types and the angle. In the exercise you will see exactly this on the β2 adrenoceptor ligand.
+
+### What is not in the PDB file
+
+<img src="img/not-in-file.svg" alt="Missing hydrogens, histidine tautomers and flips, alternate conformations, crystallisation additives" style="width:100%">
+
+<p style="font-size:1.4em;text-align:center">Every interaction program first <b>adds what is missing</b> – and each one guesses differently.</p>
+
+                 --{{0}}--
+Connect back to the occupancy slide. Hydrogens decide which atom is the donor, so protonation and histidine flips change the hydrogen-bond list. Waters can be structural, displaceable, or noise. In the exercise, run hbonds before and after addh and compare.
+
+### Is the ligand really there?
+
+<div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center">
+<img src="img/ligand-fit.svg" alt="Schematic of a ligand fully and partly covered by electron density" style="flex:3;min-width:320px;max-width:100%">
+<img src="https://files.rcsb.org/validation/view/3p0g_multipercentile_validation.svg" alt="wwPDB validation percentile sliders for 3P0G" style="flex:2;min-width:280px;max-width:100%;background:#fff">
+</div>
+
+<p style="font-size:1.4em;text-align:center"><b>Real-space fit</b> (RSCC) · <b>ligand section</b> of the wwPDB validation report · <b><a href="https://pdb-redo.eu/db/3p0g">PDB-REDO</a></b> re-refinement</p>
+
+<small>Right: wwPDB validation report for PDB 3P0G (CC0). Further reading: Pozharski et al. 2013, Acta Cryst D 69:150–167.</small>
+
+                 --{{0}}--
+Lead question: what would convince you that this ligand is correctly modelled? A ligand is a hypothesis of the crystallographer. Check the density fit, the ligand geometry in the validation report, and whether PDB-REDO keeps it. A ligand without density support gives you an interaction list that means nothing.
+
+### Interfaces: why counting H-bonds gives no affinity
+
+<div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center">
+<img src="img/interface-hotspots.svg" alt="Two proteins with buried interface, and the interface footprint with hot spots surrounded by an O-ring" style="flex:3;min-width:320px;max-width:100%">
+<img src="https://cdn.rcsb.org/images/structures/3p0g_assembly-1.jpeg" alt="Nanobody Nb80 bound to the β2 adrenoceptor, PDB 3P0G" style="flex:1;min-width:220px;max-width:30%">
+</div>
+
+<p style="font-size:1.4em;text-align:center">Buried surface area · shape complementarity · <b>a few hot spots carry most of the binding energy</b><br>Every H-bond made in the complex replaced one to water → <b>net gain is small</b></p>
+
+<small>Right: β2AR–Nb80, PDB <a href="https://www.rcsb.org/structure/3P0G">3P0G</a> (Rasmussen et al. 2011), image RCSB PDB (CC0). Hot spots: Bogan &amp; Thorn 1998, <a href="https://doi.org/10.1006/jmbi.1998.1843">J Mol Biol 280:1</a>.</small>
+
+                 --{{0}}--
+This bridges the ligand part and the nanobody part of the exercise. Tools: ChimeraX interfaces and measure buriedarea, PDBePISA, FoldX AnalyseComplex. Warn already here: a FoldX interaction energy is not a binding free energy.
+
 ### TODO: adapt to ChimeraX Exercise 8: Study Protein-Ligand Interactions
 
 The goal of this exercise is appreciate how protein interactions can be studied through visual inspection and other software tools. Protein interactions can be classified into different groups regarding the molecular properties and functions of the interacting partners. (These groups are intertwined in several cases.) Some examples include:
