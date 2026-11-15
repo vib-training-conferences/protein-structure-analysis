@@ -34,14 +34,16 @@ link:     style.css
 
 ## Learning outcomes
 
-– Retrieve and critically select experimental and predicted protein structures from the PDB and AlphaFold DB using quality indicators (resolution, R-free, validation report).
+– Retrieve and critically select experimental and predicted protein structures from the PDB and AlphaFold DB using quality indicators (resolution, R-free, validation report)
 – Visualise protein structures and compare homologous proteins in ChimeraX to interpret structural similarities and differences, including the features that determine protein stability.
-– Characterise and critically evaluate the interactions in a protein–ligand and a protein–protein complex, using ChimeraX and web-based interaction profilers, and explain why different tools report different interactions. 
+– Characterise and critically evaluate the interactions in a protein–ligand and a protein–protein complex, using ChimeraX and web-based interaction profilers, and explain why different tools report different interactions.
 – Search for structurally similar proteins with Foldseek and evaluate the hits using structural similarity scores.
 – Design stabilised protein variants with web-based tools such as PROSS and FireProt and critically compare the proposed mutations.
 – Set up, execute and analyse in silico site-saturation mutagenesis experiments on the VSC HPC using MutateX (FoldX).
 
-## Pre-course
+## Pre-course content
+
+### Relevant databases
 
                            {{0-1}}
 *********************
@@ -743,6 +745,11 @@ https://rbvi.github.io/chimera-tutorials/presentations/modules/chimerax-comp-str
 ### Export the work as a script
 
 https://bioinformaticsdaily.com/basics/structural-bioinformatics/structure-visualization-pymol-chimera
+
+
+## Protein–ligand and protein–protein interactions
+
+
 
 ### Distances
 
