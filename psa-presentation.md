@@ -17,16 +17,16 @@ link: https://raw.githubusercontent.com/vib-training-conferences/protein-structu
 
 -->
 
+
+
 # Protein Structure Analysis
 
 - Sequences, structures and databases
-- Experimental methods (X-rays, electrons and NMR)
 - Finding and visualising structures from the  Protein Data Bank
 - Comparing structures by structural alignment
-- Modelling mutations with MutateX
-- Molecular Docking considerations
 - Various exercises about structural exploration
-- Creating models (tomorrow's session)
+- Modelling mutations with MutateX
+- Creating protein models (tomorrow's session)
 
 ## Learning outcomes
 
@@ -328,7 +328,7 @@ To save the current view to a high quality publication ready image file, click o
 
 !?[Proteins are polypeptides of aminoacids](https://www.youtube.com/watch?v=iBV67yamqlA&list=PLuIpgNT2hMwRQKFy4okoNQKiJwM8li3Sz&index=20)
 
-## Protein Structures and where to find them
+## Protein Data Bank
 
                             {{0}}
 *******************
@@ -351,7 +351,7 @@ To save the current view to a high quality publication ready image file, click o
 
 *******************
 
-### Exercise 1: Search the PDB
+## Exercise 1: Search the PDB
 
 - Use the UniProt site to search for “dnak”.  
 - Use the PDB site to search for “dnak”.
@@ -360,7 +360,7 @@ To save the current view to a high quality publication ready image file, click o
 - Look at the summary pages of a number of  structures and note some interesting properties.
 - Select a number of structures and create a report page.
 
-#### Search for a structure
+### Search for a structure
 
             {{0}}
 *************************
@@ -444,7 +444,7 @@ There is also an Advanced Search section, with a Blast/Fasta option in the Seque
 
 *****************
 
-### Exercise 2: Getting to know PDB entries 
+## Exercise 2: Getting to know PDB entries 
 
 The primary data format for PDB data is the [PDBx/mmCIF format](https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format). There is a legacy [PDB format](http://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html) which is still very popular. 
 
@@ -455,7 +455,7 @@ coordinate files can be obtained at the Protein Data Bank at
 consisting of 4 characters, the first one is always a number. 
 Note: It has been announced that the 4 character code will change in the [future](https://www.wwpdb.org/news/news?year=2017\#5910c8d8d3b1d333029d4ea8).
 
-#### Inspecting a PDB entry
+### Inspecting a PDB entry
 
 The PDB entry with ID **1DKX** contains the atomic coordinates of the
 molecular chaperone (DnaK) from *E coli*.
@@ -484,7 +484,7 @@ molecular chaperone (DnaK) from *E coli*.
 
 </details>
 
-#### Downloading the structure
+### Downloading the structure
 
 > <i class="fas fa-pencil-alt"></i> **Hands-on: BLAST search for PDB structure**
 >
@@ -502,11 +502,11 @@ molecular chaperone (DnaK) from *E coli*.
 
 Additional exercises on searching PDB can be found on the [basic bioinformatics exercises page](http://wiki.bits.vib.be/index.php/Exercises_on_Protein_Structure).
 
-### PDB Format
+## PDB Format
 
 ![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/pdb-file-format.png)<!-- height="600px" -->
 
-### Occupancy
+## Occupancy
 
 ![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/occupancy.png)<!-- width="750px" -->
 
@@ -515,7 +515,7 @@ Additional exercises on searching PDB can be found on the [basic bioinformatics 
                  --{{0}}--
 Macromolecular crystals are composed of many individual molecules packed into a symmetrical arrangement. In some crystals, there are slight differences between each of these molecules. For instance, a sidechain on the surface may wag back and forth between several conformations, or a substrate may bind in two orientations in an active site, or a metal ion may be bound to only a few of the molecules. When researchers build the atomic model of these portions, they can use the occupancy to estimate the amount of each conformation that is observed in the crystal. For most atoms, the occupancy is given a value of 1, indicating that the atom is found in all of the molecules in the same place in the crystal. However, if a metal ion binds to only half of the molecules in the crystal, the researcher will see a weak image of the ion in the electron density map, and can assign an occupancy of 0.5 in the PDB structure file for this atom. Occupancies are also commonly used to identify side chains or ligands that are observed in multiple conformations. The occupancy value is used to indicate the fraction of molecules that have each of the conformations. Two (or more) atom records are included for each atom, with occupancies like 0.5 and 0.5, or 0.4 and 0.6, or other fractional occupancies that sum to a total of 1.
 
-### PDB File Surprises
+## PDB File Surprises
 
 - Missing atoms, residues and loops  
 - Multiple molecules in the asymmetric unit
@@ -526,7 +526,7 @@ Macromolecular crystals are composed of many individual molecules packed into a 
 - use of B factors to represent other properties  
 - other non-standard extensions (PDBQT, ...)
 
-### Additional databases and services
+## Additional databases and services
 
 - Nucleic Acid Database: DNA and RNA structures
 
@@ -560,29 +560,44 @@ Macromolecular crystals are composed of many individual molecules packed into a 
 
   [http://www.emdatabank.org](http://www.emdatabank.org.left)
 
-### Assessing Structure Quality
+## Assessing Structure Quality: four questions to ask before you trust a structure
+
+1.	How was it made, and how well? X-ray: resolution and completeness. Cryo-EM: a global resolution plus a local resolution map — they are not the same number. NMR: an ensemble, with no resolution at all; ask how many restraints per residue.
+2.	Does the model fit the data? R and R-free. The gap matters as much as the values: an R-free − R difference much above ~0.05–0.07 suggests over-fitting.
+3.	Is the geometry sane? Ramachandran and rotamer outliers, clashscore, bond-length and angle RMSZ. MolProbity computes these; the wwPDB validation report ships them with every entry.
+4.	Is the part I care about resolved? This is the one people skip. Global quality says nothing about your loop, your side chain or your ligand. Look at per-residue B-factors, occupancies, missing residues, and the real-space fit of the ligand.
+
+             {{1}}
+***************
 
 General geometric properties (bond lengths and angles, Ramachandran distribution, …):
-[MolProbity](http://molprobity.biochem.duke.edu/)
-
-TODO: add the wwPDB validation report incl. its ligand section, and PDB-REDO; fix dead links
+[MolProbity](https://molprobity.biochem.duke.edu/)
 
 **Crystal Structures**
 
 - Diffraction data resolution and completeness (PDB)
 - Final $ R_{cryst} $ and $ R_{free} $ factors (PDB)
-- Local correspondence to electron density [EDS](https://www.ebi.ac.uk/pdbe/eds)
+- PDBe entry analysis tab [example 3p0g](https://www.ebi.ac.uk/pdbe/entry/pdb/3p0g/analysis)
+- [PDB Redo](https://pdb-redo.eu/)
 
 **NMR Structures**
 
-- Number of distance restraints and additional experimental data sources [BMRB](http://www.bmrb.wisc.edu/)
-- Local restraint density [on-line NMR constraint analyser](http://molsim.sci.univr.it/bioinfo/tools/constraint/index.html)
+- Number of distance restraints and additional experimental data sources [BMRB](https://bmrb.io)
 
 **Other techniques**
 
 - Difficult to generalise: carefully read and consider the  published protocol
 
-### Molecular Graphics Software
+***********
+
+### The wwPDB validation report, and PDB-REDO
+
+TODO: add illustration
+
+                 {{0}}
+Every PDB entry has one, reachable from the entry page at RCSB or PDBe. The summary is the percentile slider figure — the same one already used on the “Is the ligand really there?” slide for 3P0G, so reuse that image and point out that participants have met it before. Read it as: further to the left is worse than most of the archive, further to the right is better. The ligand section gives, per ligand instance: real-space correlation coefficient (RSCC), real-space R, and geometry outliers against the Chemical Component Dictionary. This is the check you run before you analyse any binding site — direct bridge to the 13:00 block. PDB-REDO (pdb-redo.eu) re-refines every X-ray entry with current methods and makes the before/after comparison explicit. Side chains move, waters come and go, and occasionally a ligand does not survive. Worth one sentence: “if your conclusion changes between the deposited and the re-refined model, it was never a structural conclusion.” Mention in passing that this is also how you judge an AlphaFold model, with different numbers: pLDDT per residue, PAE between domains — and that neither is an experimental observation.
+
+## Molecular Graphics Software
 
 - [PyMOL](http://www.pymol.org/): high-quality output,  good examples on [Wiki](http://www.pymolwiki.org/)
 - [ChimeraX](https://www.cgl.ucsf.edu/chimerax/): good  documentation on website
@@ -590,7 +605,7 @@ TODO: add the wwPDB validation report incl. its ligand section, and PDB-REDO; fi
 - [Yasara](http://www.yasara.org)  
 - [SwissPDBViewer](http://spdbv.vital-it.ch/)
 
-## ChimeraX essentials
+## ChimeraX
 
 - ChimeraX is the next-generation molecular visualization program from the [UCSF RBVI](https://www.rbvi.ucsf.edu/). 
 
@@ -600,51 +615,22 @@ TODO: add the wwPDB validation report incl. its ligand section, and PDB-REDO; fi
 
 - Integration with AlphaFold and ESMFold AI-predicted protein structures (fetch existing or calculate new) 
 
-TODO: check on the command-based minimum toolkit
+### The minimum toolkit: about fifteen commands
+
+|      Purpose           |      Commands                                                                |      Example                                                              |
+|------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+|     Get a structure    |     open                                                                     |     open 1csp · open 3p0g · open P02649 fromDatabase alphafold            |
+|     Look               |     cartoon, show, hide, style, view                                         |     hide atoms · show :P0G atoms · style :P0G stick · view sel            |
+|     Choose             |     select (zones, chains, residues)                                         |     select :P0G · select sel :<5 & protein · select /A                    |
+|     Colour             |     color                                                                    |     color bychain · color byhetero · color bfactor palette   bluered      |
+|     Surfaces           |     surface, mlp, coulombic                                                  |     surface protein · mlp · coulombic                                     |
+|     Measure            |     distance, hbonds, contacts, clashes, interfaces, measure   buriedarea    |     hbonds :P0G restrict cross reveal true log true                       |
+|     Compare            |     matchmaker, morph                                                        |     matchmaker #2 to #1 · morph #1,2                                      |
+|     Change             |     swapaa, addh, delete                                                     |     swapaa :159 trp log true · addh · delete :HOH                         |
+|     Keep               |     save, the Log                                                            |     save site.png supersample 3 · save work.cxs · Log ▸ Save   as .cxc    |
 
 
-### Another exercise
-
-Try to recreate the rendering of the insulin structure – pdb code: 1TRZ as shown below.
-
-![](https://elearning.vib.be/wp-content/uploads/2020/08/PSA01_02_Insulin.png)
-
-Hints:
-
-* Choose the proper secondary structure scene style;
-* Find the correct orientation first;
-* Color all backbone atoms in gray;
-* Find the residue numbers of the 2 colored helices;
-* Color those residues magenta;
-* Show the sidechain atoms and the CA of the two histidines and the
-    glutamate;
-* Color the sidechain atoms of all residues in the Element color;
-* Label the histidines and the glutamate;
-* If you need some help how to change the parameters for the label,
-    please have a look at Help > User guide and search for the label command.
-
-### More coloring
-
-Download GroEL via PDB code 1WE3 in ChimeraX.
-
-Try to reproduce (approximately) the following image (hints below):
-
-![](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/(https://elearning.vib.be/wp-content/uploads/2020/08/PSA01_02_Groel.png)
-
-Hints:
-
-* Load the PDB via `open 1we3` 
-* Zoom out and find the correct orientation
-* Delete the ADP, DMS and Mg molecules. 
-* Color by molecule (every molecule will get another color) and color by gradient (now you need to specify 2 colors, the begin and end color).
-* Choose a first color (eg. color with code 0)
-* Choose a second color (eg. color with code 300, so you go over the entire color wheel spectrum)
-
-### Conclusion
-
-Now, you have explored the ChimeraX interface and acquainted with basic visualisations. You have identified how you can visualise secondary structure elements, surfaces, and hydrogen bonds. And most importantly, you can create publication-ready figures using ChimeraX.
-
-## Comparing homologous structures
+## Structure Alignment
 
 Structures can be structurally aligned to achieve the best possible match between corresponding atoms. It is  possible to consider all atoms, or only a subset  (such as the Cα atoms).
 
@@ -698,7 +684,7 @@ where R is the distance between two structurally equivalent atom pairs (CA in ou
 >    1DKX_1.pdb 1DKY_1.pdb 1DKZ_1.pdb 3DPO_1.pdb 3DPP_1.pdb 
 >    ```
 
-#### Aligning multiple structures using ChimeraX
+### Aligning multiple structures using ChimeraX
 
 > <i class="fas fa-pencil-alt"></i> **Hands-on: Loading PDF files and structurally align them**
 >
@@ -736,75 +722,15 @@ where R is the distance between two structurally equivalent atom pairs (CA in ou
 
 #### Morphing
 
+TODO: Morphing of exercise 4
+
 https://rbvi.github.io/chimera-tutorials/presentations/modules/chimerax-comp-structures/index.html#/0/31
 
 #### Export the work as a script
 
+TODO: add example command
+
 https://bioinformaticsdaily.com/basics/structural-bioinformatics/structure-visualization-pymol-chimera
-
-## Protein folds are the structures of domains
-
-- Similarities in assembly of secondary structure elements
-
-- So not based on sequence like motifs but on 3D structure
-
-- Folds represent the shapes of protein domains
-
-!?[https://youtu.be/nJVkwdNm_HY](https://youtu.be/nJVkwdNm_HY) !?[https://youtu.be/1ljeUscKE9Y](https://youtu.be/1ljeUscKE9Y) !?[https://youtu.be/wWHtcbAnOmQ](https://youtu.be/wWHtcbAnOmQ)
-
-
-* SCOP (http://scop.mrc-lmb.cam.ac.uk/scop/)
-
-  Class, Fold, Superfamily, Family
-  The human hemoglobin protein (1HHO-A), is a domain classfied by SCOP as the following.
-  Class: all helical proteins; fold: globin-like; superfamily: globin-like; and family: globins.
-  
-!?[https://youtu.be/Wz6Ugn7BZjg](https://youtu.be/Wz6Ugn7BZjg)
-
-* CATH (http://www.cathdb.info/)
-  class (equivalent to SCOP class), architecture, topology (equivalent to SCOP fold), and homologous superfamily (equivalent to SCOP superfamily).
-  1HHO-A is a domain classied by CATH as the following.
-  Class: mainly helical; architecture: orthogonal bundle; topology: globin-like; and superfamily: globins.
-
-!?[https://youtu.be/mb898MT3eLc](https://youtu.be/mb898MT3eLc)
-
-### Similarity searches based on 3D structure
-
-Similarity on structural level: aligning 3D structures
-
-Structure of query protein is known and aligned to PDB structures
-
-- [Foldseek](https://search.foldseek.com/search) - preferred method
-- [DALI](http://ekhidna.biocenter.helsinki.fi/dali_server/)
-- [VAST+](https://www.ncbi.nlm.nih.gov/Structure/vastplus/vastplus.cgi)
-
-Further reading:
-
-!?[Presentation by Martin Steinegger about FoldSeek](https://www.youtube.com/watch?v=k5Rbi22TtOA)
-
-
-Compare proteins with low sequence similarity: similar structure implies homology -> same function
-
-### Exercise 5: Use FoldSeek to find similar structures from distinct organisms
-
-Imagine that we would like to find out whether there are similar structures of the human MEAK7 protein in the proteome of S. pombe.
-
-Usually, we would start with doing a BLAST using Uniprot and limit the search space to the proteome from S. pombe. 
-
-How many hits do you find and is there any useful hit?
-
-Alternatively, we can use FoldSeek to find similar 3D structures.
-
-How would you find out what structural information is available about MEAK7?
-
-Execute a search in FoldSeek using restriction on the search space for the PDB and AlphaFoldDB.
-
-Did you find anything interesting from this search?
-
-### TODO - Foldseek Interface
-
-https://interface.foldseek.com/
-
 
 ## Protein–ligand and protein–protein interactions
 
@@ -916,7 +842,7 @@ It can be very useful and informative to show the molecular surface of a protein
 
 In our case, 4 surfaces will be calculated which display status and color can be individually changed using the toggles in the Models window.
 
-### Exercise 8: Study Protein-Ligand Interactions
+### TODO: adapt to ChimeraX Exercise 8: Study Protein-Ligand Interactions
 
 The goal of this exercise is appreciate how protein interactions can be studied through visual inspection and other software tools. Protein interactions can be classified into different groups regarding the molecular properties and functions of the interacting partners. (These groups are intertwined in several cases.) Some examples include:
 
@@ -1103,7 +1029,7 @@ Plugin>interface residues between A and B
 Plugin>TA66 TA68 IA72 IA127 RA131 AA134 IA135 TA136 SA137 PA138 FA139 KA140 QA142 YA219 VA222 EA225 AA226 LA266 KA267 EA268 AA271 LA272 TA274 LA275 IA278 IA325 YA326 RA328 SA329 PA330 SB27 IB28 FB29 SB30 IB31 TB33 AB50 IB51 eB52 SB56 TB57 NB58 YB100 AB102 VB103 LB104 YB105 EB106 YB107
 ```
 
-## What makes a protein stable? Comparing a mesophilic and a thermophilic homolog
+## protein stability 
 
 What makes a protein stable? Comparing a mesophilic and a thermophilic homolog
 •	Folding free energy is small (~5–15 kcal/mol): a single mutation can matter
@@ -1112,7 +1038,168 @@ What makes a protein stable? Comparing a mesophilic and a thermophilic homolog
 •	Case: cold shock proteins Bs-CspB (B. subtilis, 1CSP) vs Bc-Csp (B. caldolyticus, 1C9O); Perl et al. 2000, Nat Struct Biol – two surface positions (3 and 66) explain most of the stability difference
 •	Link forward: PROSS, FireProt and FoldX try to quantify exactly these effects
 
-## From one mutation to many: modelling mutations
+### Folding is a near-run thing
+
+TODO: add illustration from Anastassia
+
+•	ΔG of folding for a small single-domain protein: ~5–15 kcal/mol. That is the difference between two very large numbers — the entropy of the unfolded chain against the sum of every interaction in the folded state.
+•	5–15 kcal/mol is the energy of a handful of hydrogen bonds. A single substitution can plausibly consume all of it.
+•	Consequence for everything after lunch: stability predictions are differences of differences. Errors around 1 kcal/mol are normal, and the sign of a ΔΔG is far more trustworthy than its value.
+
+### What holds a protein together
+
+TODO: check repetition from protein-protein interaction
+
+•	Hydrophobic core packing — the dominant term; cavity-creating substitutions (Leu→Ala) cost 1–5 kcal/mol
+•	Hydrogen bonds and satisfied secondary structure; helix capping
+•	Salt bridges and the overall surface charge distribution — including long-range electrostatics
+•	Disulfide bridges — largely entropic: they restrict the unfolded state
+•	Loop length, prolines and glycines — backbone entropy
+•	Thermophilic adaptations: more charged residues and ion-pair networks at the surface, shorter loops, tighter packing. TODO: Say explicitly that these are tendencies across genomes, not rules for any one protein — which is exactly what the next slide demonstrates
+
+### Case: two cold shock proteins, 67 residues
+
+|                  |      Bs-CspB, B. subtilis                      |      Bc-Csp, B. caldolyticus                    |
+|------------------|------------------------------------------------|-------------------------------------------------|
+|     PDB          |     1CSP, 2.45 Å                               |     1C9O, 1.17 Å (one bound Na⁺)                |
+|     Reference    |     Schindelin et al., Nature 1993, 364:164    |     Mueller et al., J Mol Biol 2000, 297:975    |
+|     Growth       |     mesophile                                  |     thermophile                                 |
+
+•	Same OB fold, same five-stranded β-barrel, 12 sequence differences out of 67 residues.
+•	Perl, Mueller, Heinemann & Schmid, Nature Structural Biology 2000, 7:380–383 (doi:10.1038/75151): two surface positions account for the entire difference of 15.8 kJ/mol at 70 °C — Glu3→Arg contributes 11.5 kJ/mol (predominantly electrostatic) and Glu66→Leu contributes 5.2 kJ/mol (hydrophobic).
+•	Put the punchline on the slide: not the core — the surface. And the larger of the two contributions is electrostatic, which is the term empirical force fields handle worst.
+
+TODO: Forward link: “FoldX, PROSS and FireProt all claim to compute this. At 16:10 we check whether FoldX gets E3R and E66L right.”
+
+### Exercise (13 min, in pairs) — “Why is the thermophilic protein more stable?”
+
+> <i class="fas fa-question"></i> **Questions**
+>
+> 1. 
+> 2. 
+
+<details><summary>Solution
+</summary>
+
+Part A (6 min)
+open 1csp 1c9o
+matchmaker #2 to #1
+Note the RMSD and the number of aligned pairs. Open the Sequence Viewer, find the 12 differing positions, and for each decide: buried or exposed? (select :3,66 then surface, or measure sasa.)
+Part B (7 min)
+delete :NA
+addh
+surface #1
+surface #2
+coulombic #1
+coulombic #2
+hbonds #1 saltOnly true log true
+hbonds #2 saltOnly true log true
+show :3,66 atoms
+style :3,66 stick
+label :3,66
+Compare the two electrostatic surfaces around position 3.
+Two practical notes. coulombic assigns charges and will want hydrogens, so run addh first. And 1C9O contains a bound Na⁺ — deleting it is a two-second callback to the “crystallisation additives are not ligands” slide from the 13:00 block, so make that callback out loud rather than silently.
+
+Debrief (4 min). Reveal the published answer, then ask the honest question: “would you have predicted that from looking at these two structures?” 
+
+</details>
+
+## Protein folds are the structures of domains
+
+- Similarities in assembly of secondary structure elements
+
+- So not based on sequence like motifs but on 3D structure
+
+- Folds represent the shapes of protein domains
+
+!?[https://youtu.be/nJVkwdNm_HY](https://youtu.be/nJVkwdNm_HY) !?[https://youtu.be/1ljeUscKE9Y](https://youtu.be/1ljeUscKE9Y) !?[https://youtu.be/wWHtcbAnOmQ](https://youtu.be/wWHtcbAnOmQ)
+
+
+* SCOP (http://scop.mrc-lmb.cam.ac.uk/scop/)
+
+  Class, Fold, Superfamily, Family
+  The human hemoglobin protein (1HHO-A), is a domain classfied by SCOP as the following.
+  Class: all helical proteins; fold: globin-like; superfamily: globin-like; and family: globins.
+  
+!?[https://youtu.be/Wz6Ugn7BZjg](https://youtu.be/Wz6Ugn7BZjg)
+
+* CATH (http://www.cathdb.info/)
+  class (equivalent to SCOP class), architecture, topology (equivalent to SCOP fold), and homologous superfamily (equivalent to SCOP superfamily).
+  1HHO-A is a domain classied by CATH as the following.
+  Class: mainly helical; architecture: orthogonal bundle; topology: globin-like; and superfamily: globins.
+
+!?[https://youtu.be/mb898MT3eLc](https://youtu.be/mb898MT3eLc)
+
+## Similarity searches based on 3D structure
+
+- Similarity on structural level: aligning 3D structures
+- Structure of query protein is known and can be aligned to PDB structures or AlphaFold models
+- Compare proteins with low sequence similarity: similar structure implies homology -> same function
+
+Methods:
+- [Foldseek](https://search.foldseek.com/search) - preferred method
+- [DALI](http://ekhidna.biocenter.helsinki.fi/dali_server/)
+- [VAST+](https://www.ncbi.nlm.nih.gov/Structure/vastplus/vastplus.cgi)
+
+The 3Di alphabet
+
+•	Describe each residue not by its identity but by which residue is nearest to it in 3D and how the two are oriented. That gives a 20-letter structural alphabet, 3Di.
+•	A structure therefore becomes a string, and structure search becomes sequence search — run on the MMseqs2 engine.
+•	Result: four to five orders of magnitude faster than DALI or TM-align at comparable sensitivity, which is what makes searching the whole AlphaFold database possible at all.
+
+Further reading:
+
+!?[Presentation by Martin Steinegger about FoldSeek](https://www.youtube.com/watch?v=k5Rbi22TtOA)
+
+[^1](van Kempen et al., Nature Biotechnology 2024, 42:243–246).
+
+### Reading a Foldseek hit list
+
+|      Column        |      What it means                                                    |      How to use it                                                               |
+|--------------------|-----------------------------------------------------------------------|----------------------------------------------------------------------------------|
+|     E-value        |     Expected number of hits this good by chance in this   database    |     First filter; < 1e-3 is a sensible starting line                             |
+|     Probability    |     Foldseek’s own estimate that the pair is homologous               |     Good for ranking borderline hits                                             |
+|     TM-score       |     0–1, length-normalised; > 0.5 ≈ same fold, <   0.2 ≈ unrelated    |     The number to quote. Unlike RMSD it does not grow with   chain length        |
+|     LDDT           |     Local, superposition-free, 0–1                                    |     Judges whether the details match, not just the   outline                     |
+|     Coverage       |     Fraction of query and target aligned                              |     Always check. A high TM-score over 30 % of your   protein is a domain hit    |
+
+•	Databases: PDB100, AlphaFold DB (Swiss-Prot, model organism proteomes, UniProt50), ESM Atlas; plus taxonomic filters — which is what Exercise 5 uses to restrict to S. pombe.
+•	Always validate the top hit by superposing it in ChimeraX. 
+
+                   --{{0}}--
+Validate by structural superposition. That is the structural equivalent of reading the alignment instead of trusting the score, and it links LO4 straight back to LO2.
+
+### Foldseek-Interface: searching the interface, not the chain
+
+•	Foldseek compares chains. Many real questions are about an interface: “has anyone seen this binding mode before?” — which is exactly the 3P0G question, “is Nb80 mimicking the G protein?”
+•	Foldseek-Multimer compares whole complexes, by aligning each chain pair and then building a consensus alignment across partners.
+•	Foldseek-Interface encodes the interface itself as a searchable 3Di string, so interfaces can be aligned and clustered directly. The authors report it running up to ~230× faster than existing interface-comparison tools at comparable accuracy.
+•	Scale, as a number worth putting on the slide: all biological assemblies in the PDB → 3.1 million dimers → 77,167 interface clusters, used to study interface evolution and pathogen mimicry.
+•	Web servers: interface.foldseek.com (exploration) and search.foldseek.com/interface (search). Both responded on 15 November 2026.
+•	Flag on the slide that this is a 2026 preprint, not yet a peer-reviewed paper — a small, cheap piece of modelling good practice in front of an audience that will go and use it.
+
+TODO: Format: a 3-minute trainer demo, not an exercise. Submit the β2AR–Nb80 interface and show what clusters with it. There is no time for a second search exercise, and the point is made by watching.
+
+[^1](https://interface.foldseek.com/)
+
+### Exercise 5: Use FoldSeek to find similar structures from distinct organisms
+
+Imagine that we would like to find out whether there are similar structures of the human MEAK7 protein in the proteome of S. pombe.
+
+Usually, we would start with doing a BLAST using Uniprot and limit the search space to the proteome from S. pombe. 
+
+How many hits do you find and is there any useful hit?
+
+Alternatively, we can use FoldSeek to find similar 3D structures.
+
+How would you find out what structural information is available about MEAK7?
+
+Execute a search in FoldSeek using restriction on the search space for the PDB and AlphaFoldDB.
+
+Did you find anything interesting from this search?
+
+
+## Force Fields
 
 - Energy terms representing physical interactions
 
@@ -1153,7 +1240,7 @@ Applications include the optimisation of structures, the calculation of the stab
 
 [FoldX](https://dx.doi.org/10.1093%2Fnar%2Fgki387)
 
-### Exercise 6: Model a Mutation using ChimeraX
+## Exercise 6: Model a Mutation using ChimeraX
 
 - Load the PDB entry 2AC0.
 - Set an appropriate structure representation.
@@ -1173,11 +1260,59 @@ Further reading: https://dasher.wustl.edu/chem430/software/chimera/users-guide.p
 
 ********
 
-## ADD TOPIC with FireProt as introduction for this topic
+## Stabilisations of proteins
+
+### Why stabilise a protein?
+
+•	Expression yield and solubility — the most common practical reason by far
+•	Shelf life, formulation, tolerance to temperature and solvents in biocatalysis
+•	Stability as an evolvability budget: most function-improving mutations are destabilising, so a stabilised scaffold tolerates more of them. Stabilising first is how you buy room to engineer.
+
+### Two ways to find stabilising mutations
+
+|                 |      Evolution-based                                             |      Energy-based                                                         |
+|-----------------|------------------------------------------------------------------|---------------------------------------------------------------------------|
+|     Question    |     What does the family do at this position?                    |     What does this substitution cost in this structure?                   |
+|     Method      |     MSA → conservation, consensus, PSSM                          |     Force field (FoldX) or Rosetta ΔΔG; increasingly ML   predictors      |
+|     Strength    |     Cheap, robust, captures constraints no force field models    |     Context-aware, works without a deep family                            |
+|     Weakness    |     Blind to your specific context; needs a good alignment       |     ~1 kcal/mol error, and weakest exactly on surface   electrostatics    |
+
+•	The good servers combine them: evolution proposes, energy filters (or the reverse), and the survivors are combined into a multi-point design.
+•	Note the connection to 13:55 out loud: the cold shock protein result was a surface electrostatic effect — the one both approaches find hardest. This is not a rhetorical point; it is why the 16:10 cross-check is interesting.
+•	Always exclude functional residues — active site, binding site, interface. This is where the morning’s interaction analysis pays for itself
+
+### PROSS (pross.weizmann.ac.il)
+
+•	Input: structure, chain, and the list of residues to keep fixed (the functional ones).
+•	Pipeline: MSA → PSSM filter, keeping only substitutions the family tolerates → Rosetta single-mutant ΔΔG filter → combinatorial Rosetta design.
+•	Output: typically a handful of designs with increasing numbers of mutations, each with its mutation list and a model.
+•	Goldenzweig et al., Molecular Cell 2016, 63:337 — the track record is higher expression and higher Tm across a wide range of targets, which is why it is worth teaching.
+•	Needs registration and runs for hours. Pre-compute before the course.
+
+### FireProt 2.0 (loschmidt.chemi.muni.cz/fireprotweb)
+
+•	Input: structure or sequence, chain.
+•	Pipeline: an evolution-based branch (conservation, back-to-consensus) and an energy-based branch (FoldX, Rosetta) in parallel → filter out catalytic and binding residues → ranked single-point candidates → one combined multiple-point mutant.
+•	Output: a browsable table of candidates with predicted ΔΔG, and the final design visualised in the browser — which makes it the better of the two to explore live in a classroom.
+•	Companions worth one sentence each: FireProtDB (curated experimental ΔΔG data — i.e. the data these predictors are trained on, with all the biases that implies) and FireProtASR (ancestral sequence reconstruction, a third and often very effective route to stability).
+•	Also runs for hours. The server’s example job (haloalkane dehalogenase DhaA) is the fallback.
 
 https://loschmidt.chemi.muni.cz/fireprotweb/example
 
-## In silico saturation mutagenesis
+### Exercise (20 min + 5 min, jigsaw)
+
+TODO: 
+
+Half the pairs receive the pre-computed PROSS output, half the FireProt output, for the same protein. Each pair:
+1.	lists the proposed mutations;
+2.	opens the structure and shows them — core or surface?
+3.	checks them against the functional site: for Bs-CspB that is the aromatic nucleic-acid-binding face (verify the residue numbers against the entry during preparation);
+4.	asks whether its tool proposes anything at position 3 or 66.
+Then pairs from the two halves meet for 5 minutes and compare: overlap, uniques, and would you order the biggest design?
+Preparation risk, flagged honestly: a 67-residue protein is a hard target for both servers and may yield very few mutations. Run both at T − 2 weeks. If the Bs-CspB output is thin, use the FireProt example job (DhaA) and a comparable PROSS target instead, and accept that the jigsaw then loses its link to positions 3 and 66 — say so to the participants rather than glossing over it.
+
+
+## Computational deep mutational screen
 
                  --{{0}}
 Computational methods of predicting protein stability changes upon missense mutations are invaluable tools in high-throughput studies involving a large number of protein variants.
@@ -1190,7 +1325,7 @@ We are exploring the tool MutateX as an example for computational site saturatio
 
 ![MutateX: Deep mutational screen using FoldX ](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/figure1-mutatex.svg)
 
-### Exercise 7: Execute a deep mutational screen on the HPC using FoldX
+## Exercise 7: Execute a deep mutational screen on the HPC using FoldX
 
 For the exercise, we will use the HPC Tier-2 of the UGent. Documentation on how to connect via the [Web portal](https://docs.hpc.ugent.be/macOS/web_portal/).
 
@@ -1205,12 +1340,20 @@ For the exercise, we will use the HPC Tier-2 of the UGent. Documentation on how 
 - Wait for max 40 min
 - Create a heatmap of the results in the analysis folder.
 
+## Recap of the day's workflow on one slide
 
-## TODO - Recap of the day's workflow on one slide
+|      Step       |      The question                                                    |      What we used today                                        |      What you take home                                |
+|-----------------|----------------------------------------------------------------------|----------------------------------------------------------------|--------------------------------------------------------|
+|     Find        |     Which structure should I use?                                    |     UniProt, RCSB/PDBe, AlphaFold DB                           |     resolution, R-free, coverage, validation report    |
+|     Look        |     What does it look like, and which part matters?                  |     ChimeraX                                                   |     ~15 commands; the Log is your script               |
+|     Compare     |     How does it differ from its relatives and its other   states?    |     matchmaker, TM-align                                       |     RMSD vs TM-score                                   |
+|     Search      |     Who else has this fold — or this interface?                      |     Foldseek, Foldseek-Interface                               |     3Di, E-value, TM-score, coverage                   |
+|     Interact    |     What holds the complex together?                                 |     ChimeraX hbonds/contacts/interfaces, PLIP, ProteinsPlus    |     an interaction is an operational definition        |
+|     Mutate      |     What does one substitution do?                                   |     ChimeraX swapaa, FoldX                                     |     the sign of ΔΔG; stability ≠ function              |
+|     Scan        |     Which positions tolerate change at all?                          |     MutateX on the VSC HPC                                     |     heatmap → mapped back onto the structure           |
+|     Design      |     Which variants should I actually make?                           |     PROSS, FireProt                                            |     exclude functional residues; order a panel         |
 
-find → visualise → compare → interactions → mutate → scan → design
-
-### TODO - demo Human in the loop working with ChimeraX
+### Driving ChimeraX from an LLM agent (MCP)
 
 start from https://github.com/abotzki/chimeraX-mcp
 start the server
@@ -1222,11 +1365,21 @@ check also this: https://github.com/ChiaChunL/MolCompose
 https://nanome.ai/blog/tools-for-protein-structure-analysis
 use case: https://nanome.ai/downloads/case-study-ucsd.pdf
 
-### TODO - Outlook
+1.	“Open 3P0G and show me the ligand binding site with labelled residues.” The agent emits essentially the commands the participants typed themselves at 13:00. Point: it is generating the command language you learned today — the skill transfers, it is not replaced.
+2.	“Which residues are within 4 Å of the ligand?” The agent runs a zone selection, reads the Log back and answers in prose. Point: the agent can read results, not only issue commands. That is what makes it an agent.
+3.	One deliberately vague prompt: “show me the important interactions.” Watch it choose a tool and a cut-off for you, silently. Point: this is exactly the operational-definition problem from 13:00, now buried one layer deeper where you cannot see it.
+The honest framing, which is the real content of this slide: an agent removes typing, not judgement. It will produce a confident and wrong interaction list as readily as a correct one, and you will not be able to tell which unless you already know what hbonds means. That is the argument for having spent the day doing it by hand.
+•	Related projects worth a line: MolCompose (github.com/ChiaChunL/MolCompose); Nanome’s survey of structure-analysis tools and their UCSD case study.
+•	Record a 3-minute screen capture at T − 1 week and play that if anything misbehaves.
 
-- ML-based stability and variant-effect predictors
 
-- generative design (ProteinMPNN, RFdiffusion), co-folding of protein–ligand and protein–protein complexes (AlphaFold 3, Boltz, Chai)
+## Outlook
+
+1. ML stability and variant-effect predictors. Sequence- and structure-based models that predict ΔΔG or variant effects orders of magnitude faster than FoldX — ThermoMPNN, Stability Oracle, ESM-based zero-shot scores, AlphaMissense for clinical variants. Watch out: most are trained on the same small experimental ΔΔG collections (ProTherm, FireProtDB), which are heavily biased towards destabilising, buried, alanine substitutions — so they are best where you need them least. And check whether your protein was in the training set.
+2. Generative design. ProteinMPNN (sequence for a given backbone — and, in passing, an excellent stabiliser of existing backbones), RFdiffusion for new backbones and binders, ESM3. Watch out: in-silico success rates are far above wet-lab success rates. Filtering candidates and ordering a panel is still the method; generation has moved the bottleneck, not removed it.
+3. Co-folding of complexes. AlphaFold 3, Boltz, Chai predict protein–ligand and protein–protein complexes directly, with confidence metrics (pLDDT, PAE, ipTM); Boltz-2 also predicts binding affinity. Watch out: a confidence score is not an affinity. The pose can be right and the chemistry wrong. Everything from the 13:00 block still applies — check what is missing from the model, check the interactions, and remember that the model has no density to be wrong about.
+
+Closing line for the slide, and for the day: all three produce structures and numbers quickly. Deciding whether to believe them is the skill this course was about.
 
 ## On-Line References
 
