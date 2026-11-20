@@ -640,14 +640,15 @@ A structure has an excellent resolution (1.5 Å) and a clean validation report, 
 |------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------|
 |     Get a structure    |     open                                                                     |     open 1csp · open 3p0g · open P02649 fromDatabase alphafold            |
 |     Look               |     cartoon, show, hide, style, view                                         |     hide atoms · show :P0G atoms · style :P0G stick · view sel            |
-|     Choose             |     select (zones, chains, residues)                                         |     select :P0G · select sel :<5 & protein · select /A                    |
+|     Choose             |     select (zones, chains, residues)                                         |     select :P0G · select sel :<5 & protein · select /A"                    |
 |     Colour             |     color                                                                    |     color bychain · color byhetero · color bfactor palette   bluered      |
 |     Surfaces           |     surface, mlp, coulombic                                                  |     surface protein · mlp · coulombic                                     |
 |     Measure            |     distance, hbonds, contacts, clashes, interfaces, measure   buriedarea    |     hbonds :P0G restrict cross reveal true log true                       |
 |     Compare            |     matchmaker, morph                                                        |     matchmaker #2 to #1 · morph #1,2                                      |
-|     Change             |     swapaa, addh, delete                                                     |     swapaa :159 trp log true · addh · delete :HOH                         |
+|     Change             |     split, swapaa, addh, delete                                                     |     split #1  · swapaa :159 trp log true · addh · delete :HOH                         |
 |     Keep               |     save, the Log                                                            |     save site.png supersample 3 · save work.cxs · Log ▸ Save   as .cxc    |
 
+>
 
 ## Structure Alignment
 
@@ -666,22 +667,9 @@ Different algorithms use different combinations of sequence- and secondary of te
 - [MUSTANG](http://lcb.infotech.monash.edu.au/mustang/mustang_psfb-final.pdf)
 - [MMLigner](https://doi.org/10.1093/bioinformatics/btw757)
 
-### Exercise 4: Compare Structures
+### Structural comparison and RMSD 
 
-- Download the five provided PDB files and open them in ChimeraX.
-
-- Use *matchmaker* function to align the four last structures with the first one.
-
-- Check the reported root mean square deviations as well as the number of residues matched.
-
-$$ rmsd = \sqrt{\frac{1}{N}\sum_{i=1}^{N}R_{i}^{2}} $$
-
-- Color all structures by B factor and compare the distribution to the local variability of the structures.
-
-#### Structural comparison and RMSD 
-
-We compare structures by structurally aligning them on top of each other. That is, we
-align structurally equivalent atoms. For now, we will only use CA atoms as a representation of the backbones. 
+We compare structures by structurally aligning them on top of each other. That is, we align structurally equivalent atoms. For now, we will only use CA atoms as a representation of the backbones. 
 You always need to specify:
 
 -  source object(s): the structure(s) that needs to be rotated and translated to superpose on anoth
@@ -695,43 +683,225 @@ $$ rmsd = \sqrt{\frac{1}{N}\sum_{i=1}^{N}R_{i}^{2}} $$
 
 where R is the distance between two structurally equivalent atom pairs (CA in our case) and n is the total number of atom pairs.
 
-> <i class="fas fa-pencil-alt"></i> **Hands-on: Data download**
->
-> 1. Download the following adapted PDB files from [Zenodo](https://zenodo.org/record/3550492#.XdeNL1dKiUk) 
->
->    ```
->    1DKX_1.pdb 1DKY_1.pdb 1DKZ_1.pdb 3DPO_1.pdb 3DPP_1.pdb 
->    ```
+### Exercise 4: Compare Structures
 
-### Aligning multiple structures using ChimeraX
+- Download the two PDB files and open them in ChimeraX.
 
-> <i class="fas fa-pencil-alt"></i> **Hands-on: Loading PDF files and structurally align them**
+- Use *matchmaker* function to align all other chains to the chain A of the first protein.
+
+- Check the reported root mean square deviations as well as the number of residues matched.
+
+$$ rmsd = \sqrt{\frac{1}{N}\sum_{i=1}^{N}R_{i}^{2}} $$
+
+- Color all structures by B factor and compare the distribution to the local variability of the structures.
+
+#### Compare the chains of 4JNE and 4B9Q
+
+DnaK (UniProt P0A6Y8) is the *E. coli* Hsp70 chaperone. Both entries below show **ATP-bound, full-length DnaK** in the open, domain-docked state, but they come from different crystals:
+
+| | 4JNE | 4B9Q |
+|---|---|---|
+| Title | Allosteric opening of the polypeptide-binding site when an Hsp70 binds ATP | Open conformation of ATP-bound Hsp70 homolog DnaK |
+| Method | X-ray | X-ray |
+| Resolution | 1.96 Å | 2.4 Å |
+| Rwork / Rfree | 0.173 / 0.201 | 0.196 / 0.239 |
+| Protein chains | 2 (A, B) | 4 (A, B, C, D) |
+| Ligands | ATP, Mg²⁺ (plus sulfate, glycerol) | ATP, Mg²⁺ |
+
+You will superimpose all **6 chains** on chain A of 4JNE and ask how similar the chains are, both within one crystal and between the two crystals.
+
+The root mean square deviation over $N$ matched atom pairs is
+
+$$ rmsd = \sqrt{\frac{1}{N}\sum_{i=1}^{N}R_{i}^{2}} $$
+
+where $R_i$ is the distance between the $i$-th pair of atoms after superposition.
+
+#### Step 1: Open the structures
+
+> <i class="fas fa-pencil-alt"></i> **Hands-on: Fetch the structures**
 >
-> 1. Now load all of them in :
+> No download is needed. ChimeraX fetches the entries from the PDB. Type in the command line:
 >
->    ```
->    File > Open 
->    ```
+> ```
+> close session
+> open 4jne
+> open 4b9q
+> ```
 >
-> 2. Type the following command in the command interface:   
+> `4jne` becomes model `#1` and `4b9q` becomes model `#2`.
 >
->    ```
->    matchmaker #2-5 to #1 
->    ```
+> Check what was loaded:
 >
-> Notice that ChimeraX prints the RMSD of every structural alignment in the console.
+> ```
+> info models
+> info chains
+> ```
+
+> <i class="fas fa-question"></i> **Question**
 >
-> 3. Color the atoms by their B-factor:
+> How many chains does each model contain?
+
+- [( )] 4JNE: 1 chain, 4B9Q: 2 chains
+- [(X)] 4JNE: 2 chains (A, B), 4B9Q: 4 chains (A, B, C, D)
+- [( )] 4JNE: 4 chains, 4B9Q: 2 chains
+
+#### Step 2: Split the models into chains
+
+`matchmaker` moves a whole model. If chain A and chain B are in the same model, aligning B onto A would move both together and nothing would change. So first split each model into one submodel per chain.
+
+> <i class="fas fa-pencil-alt"></i> **Hands-on: Split the chains**
 >
->    ```
->    Molecule Display > Coloring > Bfactor 
->    ```
+> ```
+> split #1
+> split #2
+> info models
+> ```
 >
-> High BFactors are red, low BFactors are blue.
+> You should now have `#1.1` and `#1.2` (4JNE chains A and B) and `#2.1` to `#2.4` (4B9Q chains A to D). Check the numbering in the *Model Panel* or in the `info models` output before continuing.
+
+Optional: give each chain its own colour and show only the cartoon.
+
+```
+hide atoms
+cartoon
+color #1.1 steelblue target c
+color #1.2 lightskyblue target c
+color #2.1 orange target c
+color #2.2 gold target c
+color #2.3 tomato target c
+color #2.4 salmon target c
+view
+```
+
+#### Step 3: Superimpose all chains on chain A of 4JNE
+
+> <i class="fas fa-pencil-alt"></i> **Hands-on: Run matchmaker**
+>
+> Align every other chain to chain A of 4JNE (`#1.1`):
+>
+> ```
+> matchmaker #1.2,#2.1-4 to #1.1
+> ```
+>
+> ChimeraX aligns the sequences first, then fits the matched residues. For each chain it prints one line in the *Log* with:
+>
+> - the **RMSD** between the pruned atom pairs (outliers removed during the fit)
+> - the **number of matched pairs** in that fit
+> - the RMSD **across all pairs**, with the number of pairs
+>
+> Write the results into a table like this one:
+>
+> | Chain moved | RMSD, pruned pairs (Å) | Pairs (pruned) | RMSD, all pairs (Å) | Pairs (all) |
+> |---|---|---|---|---|
+> | 4JNE B (`#1.2`) | | | | |
+> | 4B9Q A (`#2.1`) | | | | |
+> | 4B9Q B (`#2.2`) | | | | |
+> | 4B9Q C (`#2.3`) | | | | |
+> | 4B9Q D (`#2.4`) | | | | |
+
+Useful variations:
+
+```
+# draw lines between the matched atom pairs (long lines = large local deviations)
+matchmaker #1.2,#2.1-4 to #1.1 showpairs true
+
+# remove the pair lines again
+~pbond
+
+# fit only the C-alpha atoms
+matchmaker #1.2,#2.1-4 to #1.1 matchAtoms CA
+```
+
+> **Alternative without splitting.** If you prefer to keep each entry as one model, tell matchmaker to move only the chains:
+>
+> ```
+> matchmaker #1/B,#2/A-D to #1/A move chains
+> ```
 
 > <i class="fas fa-question"></i> **Questions**
 >
-> Do you see a correlation between the BFactors and the variability in the structure? 
+> 1. Which pair of chains from *the same crystal* has the lowest RMSD? Is this expected?
+> 2. Are the RMSD values between the two crystals larger or smaller than within a crystal?
+> 3. Does the number of matched residues differ between chains? Look at the first and last residues of each construct and at the unmodelled residues.
+
+
+#### Step 4: Check domains separately
+
+DnaK has two domains: the nucleotide-binding domain (NBD, about residues 1 to 388) and the substrate-binding domain (SBD, about residues 389 to 607). A large global RMSD can mean either that both domains differ or that they only moved relative to each other. Fit the NBD alone and then compare:
+
+```
+matchmaker #1.2,#2.1-4 to #1.1 matchAtoms CA
+matchmaker #1.2:1-388,#2.1-4:1-388 to #1.1:1-388 matchAtoms CA
+```
+
+> **Note:** residue numbering can differ slightly between entries near the C-terminus. If you restrict to the SBD, check the numbering of both models first (for example with `info residues #1.1:600-610` and `info residues #2.1:600-610`).
+
+> <i class="fas fa-question"></i> **Question**
+>
+> Is the RMSD lower when you fit only the NBD? What does that tell you about the relative position of the SBD?
+
+#### Step 5: Colour by B-factor
+
+> <i class="fas fa-pencil-alt"></i> **Hands-on: Colour by B-factor**
+>
+> ```
+> show #1,2 cartoon
+> color bfactor #1 palette bluered
+> color bfactor #2 palette bluered
+> ```
+>
+> Blue is low B-factor (well ordered) and red is high B-factor (mobile or poorly defined). Colouring each model separately scales the palette to that model's own B-factor range. This matters because 4JNE (1.96 Å) and 4B9Q (2.4 Å) were refined differently, so absolute B-factor values should not be compared across entries.
+>
+> You can also use the Menu: `Actions > Color > By Attribute`, or the *Molecule Display* tools.
+
+A second view, where thick tubes mean high B-factor:
+
+```
+worm bfactor #1,2
+```
+
+Switch back to the normal cartoon with `cartoon style #1,2 width 1.0 thick 0.2` and `~worm #1,2`.
+
+Compare against local variability by turning on the match pairs again:
+
+```
+matchmaker #1.2,#2.1-4 to #1.1 showpairs true
+```
+
+> <i class="fas fa-question"></i> **Questions**
+>
+> 1. Where in the structure are the B-factors highest (NBD, SBD β-sandwich, lid helices, loops, termini)?
+> 2. Are the regions with high B-factors also the ones where the superimposed chains differ most?
+> 3. Do the four chains of 4B9Q differ more from each other than the two chains of 4JNE? Why could a crystal with more copies in the asymmetric unit show more variation?
+> 4. Which of the two structures would you use for atomic-level analysis of the ATP site, and why? (Consider resolution, Rfree and PDB-REDO or validation results.)
+
+
+#### Summary
+
+- `split` separates chains of one model so each can be moved on its own.
+- `matchmaker #a to #b` aligns by sequence and then by structure and reports RMSD and number of matched pairs.
+- Pruned-pair RMSD describes the well-fitting core. All-pair RMSD includes flexible parts.
+- B-factors and structural differences between copies both point to flexible regions, but neither alone proves flexibility. Resolution and crystal packing matter as well.
+
+#### Reference: all commands in one place
+
+```
+close session
+open 4jne
+open 4b9q
+split #1
+split #2
+info models
+
+hide atoms
+cartoon
+matchmaker #1.2,#2.1-4 to #1.1 showpairs true
+
+color bfactor #1 palette bluered
+color bfactor #2 palette bluered
+worm bfactor #1,2
+```
+
 
 <details><summary><i class="fa fa-question-circle"></i> Solution</summary>
 
@@ -739,17 +909,127 @@ where R is the distance between two structurally equivalent atom pairs (CA in ou
 
 </details>
 
-#### Morphing
+### Morphing
 
-TODO: Morphing of exercise 4
+#### Exercise 5: Morph chain A of 4JNE and 4B9Q
 
-https://rbvi.github.io/chimera-tutorials/presentations/modules/chimerax-comp-structures/index.html#/0/31
+A morph is an animation that interpolates the atom positions between two conformations. It does not show a real pathway, but it is a quick way to see **where** and **how much** two structures differ.
+
+Here you morph chain A of 4JNE (`#1.1`) into chain A of 4B9Q (`#2.1`), both ATP-bound DnaK. This exercise continues from [Exercise 4](exercise4-compare-4JNE-4B9Q.md), where the two entries were opened and split into one model per chain.
+
+#### Step 1: Prepare the two chains
+
+> <i class="fas fa-pencil-alt"></i> **Hands-on: Open, split and superimpose**
+>
+> Skip the first four lines if the models from Exercise 4 are still open.
+>
+> ```
+> close session
+> open 4jne
+> open 4b9q
+> split #1
+> split #2
+> matchmaker #2.1 to #1.1
+> ```
+>
+> Check the numbering with `info models`. You need chain A of 4JNE as `#1.1` and chain A of 4B9Q as `#2.1`.
+>
+> Superimposing first matters: the morph interpolates the atom coordinates, so unfitted chains would simply slide through space instead of showing the real conformational difference.
+
+#### Step 2: Create the morph
+
+> <i class="fas fa-pencil-alt"></i> **Hands-on: Morph**
+>
+> ```
+> morph #1.1,#2.1
+> light simple
+> ```
+>
+> - `morph #1.1,#2.1` creates a new model, `#3`, that holds the animation. It starts in the first structure (`#1.1`, 4JNE) and ends in the second (`#2.1`, 4B9Q). The default is 50 intermediate steps, which gives 51 coordinate sets.
+> - To morph in the opposite direction, swap the order: `morph #2.1,#1.1`.
+> - `light simple` switches to simple lighting. It is faster to render and avoids shadows flickering during the animation.
+>
+> To keep the view clear, hide the original structures so only the morph shows:
+>
+> ```
+> hide #1,#2 models
+> view
+> ```
+
+> **Note:** a morph needs the two chains to match residue by residue. 4JNE chain A and 4B9Q chain A cover slightly different residue ranges (4JNE starts at residue 2, 4B9Q at residue 1, and the unmodelled residues differ). If `morph` reports a mismatch, restrict it to a common range, for example `morph #1.1:2-600,#2.1:2-600`. Check the first and last modelled residues with `info residues #1.1:1-5` and `info residues #2.1:1-5`.
+
+#### Step 3: Play the morph
+
+> <i class="fas fa-pencil-alt"></i> **Hands-on: Play it back and forth**
+>
+> ```
+> coordset #3 1,51 bounce true loop 3
+> ```
+>
+> - `coordset #3 1,51` plays coordinate sets 1 to 51 of model `#3`.
+> - `bounce true` plays forwards and then backwards instead of jumping back to the start.
+> - `loop 3` repeats the animation three times.
+>
+> To step through it by hand, open a slider with `coordset slider #3`.
+
+Colour the morph by B-factor or by chain to make the moving parts easier to see:
+
+```
+color #3 bychain
+color bfactor #3 palette bluered
+```
+
+> <i class="fas fa-question"></i> **Questions**
+>
+> 1. Which parts of chain A move most: the nucleotide-binding domain, the substrate-binding domain, the lid, or the linker between them?
+> 2. Do the regions that move most coincide with those that have high B-factors?
+> 3. The morph is a straight-line interpolation. Why can it not be read as the real path of the conformational change?
+
+#### Step 4: Record a movie
+
+> <i class="fas fa-pencil-alt"></i> **Hands-on: Record the animation**
+>
+> Put the whole recording on one line so the commands run in order:
+>
+> ```
+> movie record ; coordset #3 1,51 bounce true loop 3 ; wait 310 ; movie encode morph3.mp4
+> ```
+>
+> - `movie record` starts capturing frames.
+> - The `coordset` command plays the animation. One bounce forwards and back is about 100 frames, so 3 loops are about 300 frames.
+> - `wait 310` pauses the command list until enough frames have been captured. Without it the movie would be encoded before the animation has played. If your movie is cut short, increase this number.
+> - `movie encode morph3.mp4` stops the recording and writes the video file. By default it is saved in your current working directory (ChimeraX's home folder or the folder you opened from). Use a full path to choose another location.
+
+Adjust the view before you record, because the camera is fixed once the recording starts:
+
+```
+view
+turn y 20
+```
+
+## Reference: all commands in one place
+
+```
+close session
+open 4jne
+open 4b9q
+split #1
+split #2
+matchmaker #2.1 to #1.1
+
+morph #1.1,#2.1
+light simple
+hide #1,#2 models
+view
+
+coordset #3 1,51 bounce true loop 3
+
+movie record ; coordset #3 1,51 bounce true loop 3 ; wait 310 ; movie encode morph3.mp4
+```
 
 #### Export the work as a script
 
-TODO: add example command
-
-https://bioinformaticsdaily.com/basics/structural-bioinformatics/structure-visualization-pymol-chimera
+Check out the [script]() which makes these steps reproducible.
 
 ## Protein–ligand and protein–protein interactions
 
