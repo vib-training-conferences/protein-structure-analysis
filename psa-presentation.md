@@ -30,12 +30,12 @@ link: https://raw.githubusercontent.com/vib-training-conferences/protein-structu
 
 ## Learning outcomes
 
-– Retrieve and critically select experimental and predicted protein structures from the PDB and AlphaFold DB using quality indicators (resolution, R-free, validation report)
-– Visualise protein structures and compare homologous proteins in ChimeraX to interpret structural similarities and differences, including the features that determine protein stability.
-– Characterise and critically evaluate the interactions in a protein–ligand and a protein–protein complex, using ChimeraX and web-based interaction profilers, and explain why different tools report different interactions.
-– Search for structurally similar proteins with Foldseek and evaluate the hits using structural similarity scores.
-– Design stabilised protein variants with web-based tools such as PROSS and FireProt and critically compare the proposed mutations.
-– Set up, execute and analyse in silico site-saturation mutagenesis experiments on the VSC HPC using MutateX (FoldX).
+* Retrieve and critically select experimental and predicted protein structures from the PDB and AlphaFold DB using quality indicators (resolution, R-free, validation report)
+* Visualise protein structures and compare homologous proteins in ChimeraX to interpret structural similarities and differences, including the features that determine protein stability.
+* Characterise and critically evaluate the interactions in a protein–ligand and a protein–protein complex, using ChimeraX and web-based interaction profilers, and explain why different tools report different interactions.
+* Search for structurally similar proteins with Foldseek and evaluate the hits using structural similarity scores.
+* Design stabilised protein variants with web-based tools such as PROSS and FireProt and critically compare the proposed mutations.
+* Set up, execute and analyse in silico site-saturation mutagenesis experiments on the VSC HPC using MutateX (FoldX).
 
 ## Pre-course content
 
@@ -326,12 +326,11 @@ To save the current view to a high quality publication ready image file, click o
 
 ![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/amino-acids.png)<!-- width="100%" -->
 
+## Background on the polypeptides 
+
 !?[Proteins are polypeptides of aminoacids](https://www.youtube.com/watch?v=iBV67yamqlA&list=PLuIpgNT2hMwRQKFy4okoNQKiJwM8li3Sz&index=20)
 
 ## Protein Data Bank
-
-                            {{0}}
-*******************
 
 [**Protein Data Bank**](http://www.wwpdb.org) approx. 263,000 experimentally determined structures
 
@@ -339,19 +338,12 @@ To save the current view to a high quality publication ready image file, click o
 
 - Mainly determined by X-ray crystallography, electron microscopy and recently lesser high-resolution NMR spectroscopy
 - Automation is increasing, but there are still significant limitations in the rate of solving new structures
-
-*******************
-
-                                {{0-1}}
-**********************************
-- contains structures of  proteins, nucleic acids  and complexes
+- contains structures of proteins, nucleic acids  and complexes
 - No purely theoretical or ab initio models  (since 2006)
 - Also stores supporting experimental data
 - Full deposition now  required by all peer-reviewed journals
 
-*******************
-
-## Exercise 1: Search the PDB
+## Exercise 1: Select structures from Uniprot and the PDB
 
 - Use the UniProt site to search for “dnak”.  
 - Use the PDB site to search for “dnak”.
@@ -360,20 +352,18 @@ To save the current view to a high quality publication ready image file, click o
 - Look at the summary pages of a number of  structures and note some interesting properties.
 - Select a number of structures and create a report page.
 
-### Search for a structure
+### Search for a structure in Uniprot
 
-            {{0}}
-*************************
 **Via [UniProt](http://www.uniprot.org/)**
 
-The way of searching for a specific protein structure depends on the data you already have. You might already have the PDB ID (a unique identifier), that's an easy one. But mostly you have the protein name or you just have a sequence. In the last cases I recommend to start from the UniProt website at [http://www.uniprot.org](http://www.uniprot.org), which is the best annotated protein database in the world. Our first model protein will be the molecular chaperone DnaK from *E. coli*.
+The way of searching for a specific protein structure depends on the data you already have. You might already have the PDB ID (a unique identifier), that's an easy one. But mostly you have the protein name or you just have a sequence. In the last cases I recommend to start from the UniProt website at [http://www.uniprot.org](https://www.uniprot.org), which is the best annotated protein database in the world. Our first model protein will be the molecular chaperone DnaK from *E. coli*.
 
 > <i class="fa fa-pencil-alt"></i> **Explore a PDB structure on the Uniprot web site**
 >
 > 1. Go to the UniProt website and search for the DnaK protein
 >
 >    * The UniProt search engine returns a list of DnaK protein sequences from a variety of organisms. 
->      An entry with accession code **P0A6Y8** and entry name **DNAK_ECOLI** should be near the top of this list.
+>      An entry with accession number **P0A6Y8** and entry name **DNAK_ECOLI** should be near the top of this list.
 > 2. Click on the *accession code* (column Entry) to view the protein page of this DnaK from the model organism *Escherichia coli*.
 > 3. Click on *Structure* in the left-side menu and then look at the *3D structure databases* table.
 
@@ -381,41 +371,36 @@ Guidelines which PDB structures to select
 
 Which structures (give the 4-character PDB ID) of the C-terminal domain of DnaK should preferentially be use for analysis and why?
 
-<details>
+<details><summary><i class="fa fa-question-circle"></i> Solution</summary>
 
-> <summary>Solution</summary>
->
-> Usually, the recommended selection criteria are using an X-ray structure with low resolution and low $R_{free}$ factor. Furthermore, the PDB database has pre-calculated a validation report for all of the structures.
->
-> As an example, have a look at https://www.ebi.ac.uk/pdbe/entry/pdb/4EZX under the section 'Experiments and Validation'. 
-> For many PDB structures, there is also a re-done structure available with a vast amount of information on the quality of the X-ray structure and suggested 'better' models e.g. (https://pdb-redo.eu/db/4ezx). 
-> In our case, we could opt for the structures 1DKX and 4EZX.
->
-> This is a difficult example since there are so many high resolution structures available. So, it is recommended to study the articles and compare the available structures to find your favorite structure for further analysis.
+> This is a difficult example since there are so many high resolution structures available. Usually, the recommended selection criteria are using an X-ray structure with low resolution and low $R_{free}$ factor. This could mean that we look e.g. at the structures 4F01 or 4HY9 or the 4EZx series. Additionally, it is recommended to look at the first published structures since these might serve as a references regarding numbering and interpretations. In our case, this is 1DKX.
 
 </details>
 
-****************
+### What other aspects could we look at for the protein DnaK?
 
-           {{1}}
-*********************
-**Via the Protein Data Bank by PDB ID**
+                   --{{1}}--
+Substrate-binding domain with peptide - 1 DKX | Near-full-length, ATP-bound open DnaK - 4JNE or 4B9Q | Near-full-length substrate-bound state studied by NMR - 2KHO | Complete predicted reference model - AlphaFold model AF-P0A6Y8-F1 | Near-full-length DnaK bound to the DnaJ J-domain - 5NRO | NBD in complex with the nucleotide exchange factor GrpE - 1DKG
 
-You can find structural information directly at the PDB database. The web site of the PDB consortium is located at http://www.wwpdb.org. This web site provides links to all members of the PDB (left side). It is a question of taste which resource you start off with. For X-ray structures, it is currently PDBe, RCSB PDB, PDBj. For NMR structres, you find the BMRB. In today's course, we focus on the PDB resources only.
+Open this link https://www.menti.com/aliyw4i76tzn and let's collect some answers.
 
-If we visit RCSB at [http://www.rcsb.org](http://rcsb.org) you can start your search for structures.
+                        {{1}}
+PDBe-KB (Protein Data Bank in Europe - Knowledge Base) is a community-driven resource managed by the PDBe team, collating functional annotations and predictions for structure data in the PDB archive. 
+A comparison of all structures can be found at [https://www.ebi.ac.uk/pdbe/pdbe-kb/proteins/P0A6Y8](https://www.ebi.ac.uk/pdbe/pdbe-kb/proteins/P0A6Y8).
+It is recommended to study the related articles and compare the available structures to find your favorite structure for the intended analysis. Obviously, a directed question to a GenAI chatbot could also give further directions.
 
-The PDB entry with ID **1DKX** contains the atomic coordinates of the molecular chaperone (DnaK) from *E. coli*.
+## Search for a structure in PDB
 
-> <i class="fa fa-pencil-alt"></i> **Explore a PDB structure on the Uniprot web site**
->
-> 1. Go to the PDB website and type 1DKX in the search box 
->
-> This will lead you to a page with similar information than on UniProt. 
+The primary data format for PDB data is the [PDBx/mmCIF format](https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format). There is a legacy [PDB format](http://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html) which is still very popular. 
 
-************
+A PDB (Protein Data Bank) file is a plain text file that contains the
+atom coordinates of a solved 3D structure of a protein or even DNA. Such
+coordinate files can be obtained at the Protein Data Bank at
+[http://www.rcsb.org/](http://www.rcsb.org/). Each PDB entry has a unique identifier (ID)
+consisting of 4 characters, the first one is always a number. 
+Note: It has been announced that the 4 character code will change in the [future](https://www.wwpdb.org/news/news?year=2017\#5910c8d8d3b1d333029d4ea8).
 
-                 {{2}}
+                 {{1}}
 ******************
 **Via the Protein Data Bank by sequence**
 
@@ -444,63 +429,61 @@ There is also an Advanced Search section, with a Blast/Fasta option in the Seque
 
 *****************
 
+
 ## Exercise 2: Getting to know PDB entries 
 
-The primary data format for PDB data is the [PDBx/mmCIF format](https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format). There is a legacy [PDB format](http://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html) which is still very popular. 
+You can find structural information directly at the PDB database. The web site of the PDB consortium is located [here](https://www.wwpdb.org). This web site provides links to all members of the PDB (left side). It is a question of taste which resource you start off with. For X-ray structures, it is currently PDBe, RCSB PDB, PDBj. For NMR structres, you find the BMRB. In today's course, we focus on the PDB resources only.
 
-A PDB (Protein Data Bank) file is a plain text file that contains the
-atom coordinates of a solved 3D structure of a protein or even DNA. Such
-coordinate files can be obtained at the Protein Data Bank at
-[http://www.rcsb.org/](http://www.rcsb.org/). Each PDB entry has a unique identifier (ID)
-consisting of 4 characters, the first one is always a number. 
-Note: It has been announced that the 4 character code will change in the [future](https://www.wwpdb.org/news/news?year=2017\#5910c8d8d3b1d333029d4ea8).
+If we visit PDBe at [https://www.ebi.ac.uk/pdbe](https://www.ebi.ac.uk/pdbe) you can start your search for structures.
 
-### Inspecting a PDB entry
+The PDB entry with ID **4JNE** contains the atomic coordinates of the full length molecular chaperone (DnaK) from *E. coli*.
 
-The PDB entry with ID **1DKX** contains the atomic coordinates of the
-molecular chaperone (DnaK) from *E coli*.
-
-> <i class="fas fa-pencil-alt"></i> **Hands-on: BLAST search for PDB structure**
+> <i class="fa fa-pencil-alt"></i> **Explore a PDB structure on the Uniprot web site**
 >
-> 1. Go to the PDB website at [http://www.rcsb.org/](http://www.rcsb.org/)
-> 2. Type 1DKX in the search and try to answer the questions in the following step.
+> 1. Go to the PDB website and type 4JNE in the search box 
+>
+> This will lead you to a page with similar information than on UniProt. 
+
 
 > <i class="fas fa-question"></i> **Questions**
 >
 > 1. How many molecules were solved in this PDB file? What kind of molecules are these (proteins, peptides, DNA, ...)?
-> 2. Does the structure represent the full protein? If not, how many residues are missing? Hint: Click on the UniProt KB link in the Sequence tab to see the full sequence.
+> 2. Does the structure represent the full protein? If not, how many residues are missing? 
 > 3. Was this structure solved by X-Ray or NMR?
 > 4. What is the atomic resolution and R-factor?
 
 <details><summary><i class="fa fa-question-circle"></i> Solution</summary>
 
->  1. Two, called polymers or chains: they are polypeptides
->  2. To answer this question you can go to the sequence tab at the top:
+>  1. The entry has 2 protein chains (A and B), both copies of the same chain: Chaperone protein DnaK (Hsp70) from E. coli K-12.
+>  2. To answer this question you can go to the Macromolecules tab at the top:
 >
->   * Summary: a large chunk of the N-terminus is missing from the structure, the C-terminus is virtually complete.
+>   * Summary: The Uniprot mapping coverage is 95%, around 30 residues of the C-terminus are missing from the structure.
 >
->  3. X-RAY diffraction, as shown by Experimental Details
->  4. Atomic resolution: 2.00 Ångstrom and R-factor of 0.206
+>  3. X-RAY diffraction, as shown in the `Model Quality` tab
+>  4. Atomic resolution: 1.96 Ångstrom and R-factor of 0.17
+>
+> There is also a report of the PDB entry under the `Download files` section. 
+> Furthermore, the PDB database has pre-calculated a validation report for all of the structures. 
+> As an example, inspect the section `Model Quality` further.
+> The [PDB-REDO](https://pdb-redo.eu) section contains a comparison of the deposited model with the recalculated model by the PDB-REDO team. In this case, there is also a re-done structure available with a vast amount of information on the quality of the X-ray structure and suggested 'better' models e.g. https://pdb-redo.eu/db/4jne. 
+>
+> Ref. https://doi.org/10.1002/pro.3353
 
 </details>
 
 ### Downloading the structure
 
-> <i class="fas fa-pencil-alt"></i> **Hands-on: BLAST search for PDB structure**
+> <i class="fas fa-pencil-alt"></i> **Hands-on: Download the PDB structure**
 >
 > 1. Go to the PDB website at [http://www.rcsb.org/](http://www.rcsb.org/)
-> 2. Type 1DKX in the search box. 
+> 2. Type 1JNE in the search box. 
 > 3. The file that holds the 3D coordinates can be downloaded by clicking on
 >    *Download files* in the top right corner and then choosing *PDBx/mmCIF Format*. For convenience, save this file on your desktop. The filename is the 4-character unique PDB ID.
 
-![Pdbdownloadfile1.png](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/1DKX.png)
-
 > <i class="fas fa-pencil-alt"></i> **Hands-on: Open downloaded PDB file in an editor**
 >
-> 1.   Open this file with a text editor, e.g. WordPad is an excellent tool for that.
+> 1.   Open this file with a text editor, e.g. Visual Studio Code is an excellent tool for that.
 > 2. Do you see the different sections in the PDB file? Analyse some ATOM lines and try to explain what kind of data is in each column.
-
-Additional exercises on searching PDB can be found on the [basic bioinformatics exercises page](http://wiki.bits.vib.be/index.php/Exercises_on_Protein_Structure).
 
 ## PDB Format
 
@@ -517,24 +500,24 @@ Macromolecular crystals are composed of many individual molecules packed into a 
 
 ## PDB File Surprises
 
-- Missing atoms, residues and loops  
 - Multiple molecules in the asymmetric unit
+- Missing atoms, residues and loops  
 - Incomplete oligomers due to coincident crystal and  oligomer symmetry
-- Cα-only models
 - alternate conformations
 - multiple models, especially for NMR ensembles
 - use of B factors to represent other properties  
 - other non-standard extensions (PDBQT, ...)
+- Cα-only models
 
 ## Additional databases and services
-
-- Nucleic Acid Database: DNA and RNA structures
-
-  [http://ndbserver.rutgers.edu/](http://ndbserver.rutgers.edu/)
 
 - PDB-REDO: automatically re-refined deposited structures, using the latest methods
 
   [https://pdb-redo.eu//](https://pdb-redo.eu/)
+
+- Nucleic Acid Database: DNA and RNA structures
+
+  [https://nakb.org/](https://nakb.org/)
 
 - EBI: many online tools for structure analysis
 
@@ -548,29 +531,40 @@ Macromolecular crystals are composed of many individual molecules packed into a 
 
   [https://bmrb.io/](https://bmrb.io/)
 
-- BioIsis: database of SAXS-derived structures
-
-  [http://www.bioisis.net](http://www.bioisis.net)
-
 - EMBL database of SAXS-derived structures
 
-  [http://www.sasbdb.org](http://www.sasbdb.org)
+  [https://www.sasbdb.org](https://www.sasbdb.org)
 
 - EM Databank for cryo-EM structures
 
-  [http://www.emdatabank.org](http://www.emdatabank.org.left)
+  [https://www.ebi.ac.uk/emdb/](https://www.ebi.ac.uk/emdb/)
+
+## Assessing Structure Quality: four questions to ask before you trust a structure
+
+![Pdbdownloadfile1.png](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/quality-questions.svg)
+
+                         --{{0}}--
+How was it made, and how well? X-ray: resolution and completeness. Cryo-EM: a global resolution plus a local resolution map — they are not the same number. NMR: an ensemble, with no resolution at all; ask how many restraints per residue. 2. Does the model fit the data? R and R-free. The gap matters as much as the values: an R-free − R difference much above ~0.05–0.07 suggests over-fitting. 3. Is the geometry sane? Ramachandran and rotamer outliers, clashscore, bond-length and angle RMSZ. MolProbity computes these; the wwPDB validation report ships them with every entry. 4. Is the part I care about resolved? This is the one people skip. Global quality says nothing about your loop, your side chain or your ligand. Look at per-residue B-factors, occupancies, missing residues, and the real-space fit of the ligand.
+Every PDB entry has one, reachable from the entry page at RCSB or PDBe. The summary is the percentile slider figure — the same one already used on the “Is the ligand really there?” slide for 3P0G, so reuse that image and point out that participants have met it before. Read it as: further to the left is worse than most of the archive, further to the right is better. The ligand section gives, per ligand instance: real-space correlation coefficient (RSCC), real-space R, and geometry outliers against the Chemical Component Dictionary. This is the check you run before you analyse any binding site — direct bridge to the 13:00 block. PDB-REDO (pdb-redo.eu) re-refines every X-ray entry with current methods and makes the before/after comparison explicit. Side chains move, waters come and go, and occasionally a ligand does not survive. Worth one sentence: “if your conclusion changes between the deposited and the re-refined model, it was never a structural conclusion.” Mention in passing that this is also how you judge an AlphaFold model, with different numbers: pLDDT per residue, PAE between domains — and that neither is an experimental observation.
+
+
+**Crystal Structures**
+- Diffraction data resolution and completeness (PDB)
+- Final $ R_{cryst} $ and $ R_{free} $ factors (PDB)
+- PDBe entry analysis tab [example 3p0g](https://www.ebi.ac.uk/pdbe/entry/pdb/3p0g/analysis)
+- [PDB Redo](https://pdb-redo.eu/)
+
+General geometric properties (bond lengths and angles, Ramachandran distribution, …): [MolProbity](https://molprobity.lbl.gov/)
+
+**NMR Structures**
+
+- Number of distance restraints and additional experimental data sources [BMRB](https://bmrb.io)
+
+**Other techniques**
+
+- Difficult to generalise: carefully read and consider the  published protocol
 
 ### Quiz: assessing structure quality
-
-A cryo-EM entry reports a global resolution of 3.0 Å. What does that tell you about your loop of interest?
-
-- [( )] It is resolved at 3.0 Å
-- [(X)] Nothing certain; you need the local resolution map
-- [( )] It is less well resolved than an X-ray structure
-- [( )] The R-free is probably low
-***
-**Solution:** Global and local resolution are not the same number. Check the local resolution map.
-***
 
 Which quality number is available for an X-ray structure but not for an NMR ensemble?
 
@@ -602,17 +596,7 @@ A structure has R = 0.19 and R-free = 0.30. What is the most likely problem?
 **Solution:** The R-free − R gap is 0.11, well above ~0.05–0.07, which suggests over-fitting.
 ***
 
-Which values would you consider acceptable, based on the R-free − R gap?
-
-- [(X)] R = 0.20, R-free = 0.24
-- [( )] R = 0.18, R-free = 0.30
-- [( )] R = 0.15, R-free = 0.28
-- [( )] R = 0.22, R-free = 0.35
-***
-**Solution:** Only the first pair has a gap (0.04) below ~0.05–0.07.
-***
-
-Which of these is *not* a geometry check reported by MolProbity or the wwPDB validation report?
+Which of these is *not* a geometry check reported by the wwPDB validation report?
 
 - [( )] Clashscore
 - [( )] Rotamer outliers
@@ -631,43 +615,6 @@ A structure has an excellent resolution (1.5 Å) and a clean validation report, 
 ***
 **Solution:** Global quality says nothing about your ligand. Always check the local part.
 ***
-
-## Assessing Structure Quality: four questions to ask before you trust a structure
-
-![Pdbdownloadfile1.png](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/quality-questions.svg)
-
-                         --{{0}}--
-How was it made, and how well? X-ray: resolution and completeness. Cryo-EM: a global resolution plus a local resolution map — they are not the same number. NMR: an ensemble, with no resolution at all; ask how many restraints per residue. 2. Does the model fit the data? R and R-free. The gap matters as much as the values: an R-free − R difference much above ~0.05–0.07 suggests over-fitting. 3. Is the geometry sane? Ramachandran and rotamer outliers, clashscore, bond-length and angle RMSZ. MolProbity computes these; the wwPDB validation report ships them with every entry. 4. Is the part I care about resolved? This is the one people skip. Global quality says nothing about your loop, your side chain or your ligand. Look at per-residue B-factors, occupancies, missing residues, and the real-space fit of the ligand.
-
-             {{1}}
-***************
-
-General geometric properties (bond lengths and angles, Ramachandran distribution, …):
-[MolProbity](https://molprobity.lbl.gov/)
-
-**Crystal Structures**
-
-- Diffraction data resolution and completeness (PDB)
-- Final $ R_{cryst} $ and $ R_{free} $ factors (PDB)
-- PDBe entry analysis tab [example 3p0g](https://www.ebi.ac.uk/pdbe/entry/pdb/3p0g/analysis)
-- [PDB Redo](https://pdb-redo.eu/)
-
-**NMR Structures**
-
-- Number of distance restraints and additional experimental data sources [BMRB](https://bmrb.io)
-
-**Other techniques**
-
-- Difficult to generalise: carefully read and consider the  published protocol
-
-***********
-
-### The wwPDB validation report, and PDB-REDO
-
-TODO: add illustration
-
-                 {{0}}
-Every PDB entry has one, reachable from the entry page at RCSB or PDBe. The summary is the percentile slider figure — the same one already used on the “Is the ligand really there?” slide for 3P0G, so reuse that image and point out that participants have met it before. Read it as: further to the left is worse than most of the archive, further to the right is better. The ligand section gives, per ligand instance: real-space correlation coefficient (RSCC), real-space R, and geometry outliers against the Chemical Component Dictionary. This is the check you run before you analyse any binding site — direct bridge to the 13:00 block. PDB-REDO (pdb-redo.eu) re-refines every X-ray entry with current methods and makes the before/after comparison explicit. Side chains move, waters come and go, and occasionally a ligand does not survive. Worth one sentence: “if your conclusion changes between the deposited and the re-refined model, it was never a structural conclusion.” Mention in passing that this is also how you judge an AlphaFold model, with different numbers: pLDDT per residue, PAE between domains — and that neither is an experimental observation.
 
 ## Molecular Graphics Software
 
