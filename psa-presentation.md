@@ -571,7 +571,7 @@ Macromolecular crystals are composed of many individual molecules packed into a 
 ***************
 
 General geometric properties (bond lengths and angles, Ramachandran distribution, …):
-[MolProbity](https://molprobity.biochem.duke.edu/)
+[MolProbity](https://molprobity.lbl.gov/)
 
 **Crystal Structures**
 
