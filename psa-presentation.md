@@ -333,7 +333,7 @@ To save the current view to a high quality publication ready image file, click o
                             {{0}}
 *******************
 
-[**Protein Data Bank**](http://www.wwpdb.org) approx. 208,000 experimentally determined structures
+[**Protein Data Bank**](http://www.wwpdb.org) approx. 263,000 experimentally determined structures
 
 ![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/pdb-logo.png)<!-- width="50%" -->
 
