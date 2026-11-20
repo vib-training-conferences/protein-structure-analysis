@@ -1029,7 +1029,7 @@ movie record ; coordset #3 1,51 bounce true loop 3 ; wait 310 ; movie encode mor
 
 #### Export the work as a script
 
-Check out the [script]() which makes these steps reproducible.
+Check out the [script](https://github.com/vib-training-conferences/protein-structure-analysis/blob/main/exercise4-5-4JNE-4B9Q.cxc) which makes these steps reproducible.
 
 ## Protein–ligand and protein–protein interactions
 
@@ -1141,7 +1141,7 @@ It can be very useful and informative to show the molecular surface of a protein
 
 In our case, 4 surfaces will be calculated which display status and color can be individually changed using the toggles in the Models window.
 
-### TODO: adapt to ChimeraX Exercise 8: Study Protein-Ligand Interactions
+### Exercise 8: Study Protein-Ligand Interactions
 
 The goal of this exercise is appreciate how protein interactions can be studied through visual inspection and other software tools. Protein interactions can be classified into different groups regarding the molecular properties and functions of the interacting partners. (These groups are intertwined in several cases.) Some examples include:
 
@@ -1216,6 +1216,12 @@ Note: ChimeraX does not need hydrogens to be present to calculate hydrogen bonds
 >
 > Note: in the Log panel on the right side, you identify that there is a non-standard residue present in the structure.
 
+> <i class="fas fa-pencil-alt"></i> **Select the ligand**
+>
+> ```
+> Select - Zone - < 4 Å from selected residues
+> ```
+
 > <i class="fas fa-pencil-alt"></i> **Calculate hydrogen bonds** 
 >
 > ```
@@ -1262,9 +1268,11 @@ We do not go into great detail on all the tools but only mention PoseView. With 
 
 In order to estimate the binding energy between the nanobody and the β2 adrenoceptor, we can use the FoldX tool AnalyseComplex. It is recommended to calculate these binding energies on energy-minimized structures. To illustrate the effect of the energy minimization, we compare the interaction energy of the current crystal structure and its minimized structure.
 
+TODO
+
 ##### Comparing the active and the inactive conformation of the β2 adrenoceptor 
 
-In case, there is still time, I would recommend to try to use some of your capabilities you learned today and create a superposition of the inactive and active conformation of the β2 adrenoceptor. We take one of the crystal structures which are available: 3SN6
+I would recommend to try to use some of your capabilities you learned today and create a structural alignment of the inactive and active conformation of the β2 adrenoceptor. We take one of the crystal structures which are available: 3SN6
 
 ```
 open 3SN6
@@ -1283,7 +1291,7 @@ After the manipulation, the overall picture should look roughly like this.
 ![Superposition](https://elearning.vib.be/wp-content/uploads/2020/08/PSA01_06_3SN6_withoutLysozyme.png "Overview of 3SN6 without lysozyme")
 
 In the following step, we structurally align only the receptors. The rest of the structures will move along.
-It is suggested to use the first chain A from 3P0G as target and structurally align the receptor from 3SN6.
+It is suggested to use the first chain A from 3P0G as target and structurally align the receptor (chain R) from 3SN6.
 
 Investigate the differences in TM helices and the binding of the nanobody compared to the subunit of the G protein.
 
@@ -1291,7 +1299,7 @@ Tip: Color the secondary structures to better identify the individual chains/uni
 
 Extra: Use the tool FoldX tool AnalyseComplex
 
->
+
 >
 > 1. Given that energy-minimization takes a while for this rather large complex,
 >     please download the Yasara scene [here](http://data.bits.vib.be/pub/trainingen/PSA/3P0G_1.sce)
