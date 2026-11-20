@@ -914,6 +914,7 @@ It can be very useful and informative to show the molecular surface of a protein
 
 In our case, 4 surfaces will be calculated which display status and color can be individually changed using the toggles in the Models window.
 
+<<<<<<< HEAD
 ## Protein–ligand and protein–protein interactions
 
 <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:center">
@@ -989,6 +990,8 @@ Lead question: what would convince you that this ligand is correctly modelled? A
                  --{{0}}--
 This bridges the ligand part and the nanobody part of the exercise. Tools: ChimeraX interfaces and measure buriedarea, PDBePISA, FoldX AnalyseComplex. Warn already here: a FoldX interaction energy is not a binding free energy.
 
+=======
+>>>>>>> c627d96 (update presentation)
 ### TODO: adapt to ChimeraX Exercise 8: Study Protein-Ligand Interactions
 
 The goal of this exercise is appreciate how protein interactions can be studied through visual inspection and other software tools. Protein interactions can be classified into different groups regarding the molecular properties and functions of the interacting partners. (These groups are intertwined in several cases.) Some examples include:
