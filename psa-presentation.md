@@ -560,12 +560,84 @@ Macromolecular crystals are composed of many individual molecules packed into a 
 
   [http://www.emdatabank.org](http://www.emdatabank.org.left)
 
+### Quiz: assessing structure quality
+
+A cryo-EM entry reports a global resolution of 3.0 Å. What does that tell you about your loop of interest?
+
+- [( )] It is resolved at 3.0 Å
+- [(X)] Nothing certain; you need the local resolution map
+- [( )] It is less well resolved than an X-ray structure
+- [( )] The R-free is probably low
+***
+**Solution:** Global and local resolution are not the same number. Check the local resolution map.
+***
+
+Which quality number is available for an X-ray structure but not for an NMR ensemble?
+
+- [( )] Clashscore
+- [( )] Ramachandran outliers
+- [(X)] Resolution
+- [( )] Rotamer outliers
+***
+**Solution:** NMR gives an ensemble and has no resolution. Geometry checks apply to all models.
+***
+
+For an NMR structure, which question is most useful for judging how well it is defined?
+
+- [( )] What is the R-free?
+- [(X)] How many restraints per residue were used?
+- [( )] What is the completeness?
+- [( )] What is the global resolution?
+***
+**Solution:** Restraints per residue is the NMR counterpart to resolution.
+***
+
+A structure has R = 0.19 and R-free = 0.30. What is the most likely problem?
+
+- [( )] Low data completeness
+- [(X)] Over-fitting of the model
+- [( )] Too many Ramachandran outliers
+- [( )] Missing hydrogens
+***
+**Solution:** The R-free − R gap is 0.11, well above ~0.05–0.07, which suggests over-fitting.
+***
+
+Which values would you consider acceptable, based on the R-free − R gap?
+
+- [(X)] R = 0.20, R-free = 0.24
+- [( )] R = 0.18, R-free = 0.30
+- [( )] R = 0.15, R-free = 0.28
+- [( )] R = 0.22, R-free = 0.35
+***
+**Solution:** Only the first pair has a gap (0.04) below ~0.05–0.07.
+***
+
+Which of these is *not* a geometry check reported by MolProbity or the wwPDB validation report?
+
+- [( )] Clashscore
+- [( )] Rotamer outliers
+- [( )] Bond-length and angle RMSZ
+- [(X)] Number of NOE restraints per residue
+***
+**Solution:** NOE restraints per residue describe the experimental data of an NMR structure, not the model geometry.
+***
+
+A structure has an excellent resolution (1.5 Å) and a clean validation report, but your ligand sits in a region with poor density. What should you do?
+
+- [( )] Trust it, since the global quality is excellent
+- [(X)] Check the ligand's real-space fit, B-factors and occupancy before interpreting its interactions
+- [( )] Only check the Ramachandran plot
+- [( )] Re-calculate the R-free
+***
+**Solution:** Global quality says nothing about your ligand. Always check the local part.
+***
+
 ## Assessing Structure Quality: four questions to ask before you trust a structure
 
-1.	How was it made, and how well? X-ray: resolution and completeness. Cryo-EM: a global resolution plus a local resolution map — they are not the same number. NMR: an ensemble, with no resolution at all; ask how many restraints per residue.
-2.	Does the model fit the data? R and R-free. The gap matters as much as the values: an R-free − R difference much above ~0.05–0.07 suggests over-fitting.
-3.	Is the geometry sane? Ramachandran and rotamer outliers, clashscore, bond-length and angle RMSZ. MolProbity computes these; the wwPDB validation report ships them with every entry.
-4.	Is the part I care about resolved? This is the one people skip. Global quality says nothing about your loop, your side chain or your ligand. Look at per-residue B-factors, occupancies, missing residues, and the real-space fit of the ligand.
+![Pdbdownloadfile1.png](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/quality-questions.svg)
+
+                         --{{0}}--
+How was it made, and how well? X-ray: resolution and completeness. Cryo-EM: a global resolution plus a local resolution map — they are not the same number. NMR: an ensemble, with no resolution at all; ask how many restraints per residue. 2. Does the model fit the data? R and R-free. The gap matters as much as the values: an R-free − R difference much above ~0.05–0.07 suggests over-fitting. 3. Is the geometry sane? Ramachandran and rotamer outliers, clashscore, bond-length and angle RMSZ. MolProbity computes these; the wwPDB validation report ships them with every entry. 4. Is the part I care about resolved? This is the one people skip. Global quality says nothing about your loop, your side chain or your ligand. Look at per-residue B-factors, occupancies, missing residues, and the real-space fit of the ligand.
 
              {{1}}
 ***************
