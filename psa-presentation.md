@@ -1268,7 +1268,7 @@ We do not go into great detail on all the tools but only mention PoseView. With 
 
 In order to estimate the binding energy between the nanobody and the β2 adrenoceptor, we can use the FoldX tool AnalyseComplex. It is recommended to calculate these binding energies on energy-minimized structures. To illustrate the effect of the energy minimization, we compare the interaction energy of the current crystal structure and its minimized structure.
 
-TODO
+TODO - https://pmc.ncbi.nlm.nih.gov/articles/PMC12230730/
 
 ##### Comparing the active and the inactive conformation of the β2 adrenoceptor 
 
@@ -1428,14 +1428,14 @@ Debrief (4 min). Reveal the published answer, then ask the honest question: “w
   The human hemoglobin protein (1HHO-A), is a domain classfied by SCOP as the following.
   Class: all helical proteins; fold: globin-like; superfamily: globin-like; and family: globins.
   
-!?[https://youtu.be/Wz6Ugn7BZjg](https://youtu.be/Wz6Ugn7BZjg)
+!?[https://youtu.be/mb898MT3eLc](https://youtu.be/mb898MT3eLc)
 
 * CATH (http://www.cathdb.info/)
   class (equivalent to SCOP class), architecture, topology (equivalent to SCOP fold), and homologous superfamily (equivalent to SCOP superfamily).
   1HHO-A is a domain classied by CATH as the following.
   Class: mainly helical; architecture: orthogonal bundle; topology: globin-like; and superfamily: globins.
 
-!?[https://youtu.be/mb898MT3eLc](https://youtu.be/mb898MT3eLc)
+!?[https://youtu.be/Wz6Ugn7BZjg](https://youtu.be/Wz6Ugn7BZjg)
 
 ## Similarity searches based on 3D structure
 
@@ -1464,17 +1464,76 @@ Further reading:
 
 |      Column        |      What it means                                                    |      How to use it                                                               |
 |--------------------|-----------------------------------------------------------------------|----------------------------------------------------------------------------------|
-|     E-value        |     Expected number of hits this good by chance in this   database    |     First filter; < 1e-3 is a sensible starting line                             |
+|     E-value        |     Expected number of hits this good by chance in this   database    |     First filter; < 1e-3 is a reasonable starting point                             |
 |     Probability    |     Foldseek’s own estimate that the pair is homologous               |     Good for ranking borderline hits                                             |
 |     TM-score       |     0–1, length-normalised; > 0.5 ≈ same fold, <   0.2 ≈ unrelated    |     The number to quote. Unlike RMSD it does not grow with   chain length        |
 |     LDDT           |     Local, superposition-free, 0–1                                    |     Judges whether the details match, not just the   outline                     |
 |     Coverage       |     Fraction of query and target aligned                              |     Always check. A high TM-score over 30 % of your   protein is a domain hit    |
 
-•	Databases: PDB100, AlphaFold DB (Swiss-Prot, model organism proteomes, UniProt50), ESM Atlas; plus taxonomic filters — which is what Exercise 5 uses to restrict to S. pombe.
-•	Always validate the top hit by superposing it in ChimeraX. 
+- Databases: PDB100, AlphaFold DB (Swiss-Prot, model organism proteomes, UniProt50), ESM Atlas; plus taxonomic filters — which is what Exercise 5 uses to restrict to S. pombe.
+- Always validate the top hit by superposing it in ChimeraX. 
 
                    --{{0}}--
 Validate by structural superposition. That is the structural equivalent of reading the alignment instead of trusting the score, and it links LO4 straight back to LO2.
+
+
+
+[^1](https://interface.foldseek.com/)
+
+### Exercise 5: Use FoldSeek to find similar structures from distinct organisms
+
+Imagine that we would like to find out whether there are similar structures of the human MEAK7 protein in the proteome of S. pombe.
+
+Usually, we would start with doing a BLAST using Uniprot and limit the search space to the proteome from S. pombe. 
+
+       {{1}}
+**********
+> <i class="fas fa-pencil-alt"></i> **Check BLAST results via Uniprot**
+>
+> 1. Open https://www.uniprot.org in your browser. 
+> 2. Find the accession number for the human MEAK7 protein.
+> 3. Select the BLAST section in the header of the Uniprot home page.
+> 4. Run a BLAST for the MEAK7 protein applying the taxonomy filter for S. pombe strain 972.
+
+> <i class="fas fa-question"></i> **Questions**
+>
+> 1. Are there any relevant hits in the BLAST output? 
+
+<details><summary> Solution</summary>
+
+> 1. Using Q6P9B6, we find 7 hits. All of them have (very) low sequence similarity on a very short stretch. Alternatively, we can use FoldSeek to find similar 3D structures.
+
+</details>
+
+*****************
+
+
+       {{2}}
+**********
+> <i class="fas fa-pencil-alt"></i> **Check FOLDSEEK with a 3D search**
+>
+> 1. Go to the Structure section of the identified Uniprot entry of MEAK7. 
+> 2. Click on the link to Foldseek using the PDB id 7
+> 3. Execute a search in FoldSeek using restriction on the 3D search space for the PDB (pdb100) and AlphaFoldDB (afdb-swissprot v6). Apply a taxonomic filter for S. pombe, too. Use the mode TM-align or LoLAlign.
+>
+> Note:
+> * 3Di/AA: fast prefilter using the 3Di alphabet and alignment using the 3Di alphabet+BLOSUM62 based Smith-Waterman-Gotoh (local alignment)
+> * TM-align: fast prefilter using the 3Di alphabet and alignment using TM-align (global-alignment)
+> * LoLAlign: fast prefilter using the 3Di alphabet and alignment using LoL-align (probabilistic multi-domain structure alignment)
+
+> <i class="fas fa-question"></i> **Questions**
+>
+> 1. Did you find anything interesting from this search?? 
+
+<details><summary> Solution</summary>
+
+> 1. In the PDB database (note: it is from 2024), no significant hits are found. In the AlphaFold Swissprot DB, at least 4 hits are found. 
+The two top-scoring hits are the same for both modes: AF-O94644-F1-model_v6 and AF-O14284-F1-model_v6. The first hit is a multidomain model (± 390 residues) and the second hit is one model with a compact fold (± 200 residues). By checking the Alignment view, the structural alignments can be visualised in the browser.  
+
+</details>
+
+*****************
+
 
 ### Foldseek-Interface: searching the interface, not the chain
 
@@ -1486,25 +1545,6 @@ Validate by structural superposition. That is the structural equivalent of readi
 •	Flag on the slide that this is a 2026 preprint, not yet a peer-reviewed paper — a small, cheap piece of modelling good practice in front of an audience that will go and use it.
 
 TODO: Format: a 3-minute trainer demo, not an exercise. Submit the β2AR–Nb80 interface and show what clusters with it. There is no time for a second search exercise, and the point is made by watching.
-
-[^1](https://interface.foldseek.com/)
-
-### Exercise 5: Use FoldSeek to find similar structures from distinct organisms
-
-Imagine that we would like to find out whether there are similar structures of the human MEAK7 protein in the proteome of S. pombe.
-
-Usually, we would start with doing a BLAST using Uniprot and limit the search space to the proteome from S. pombe. 
-
-How many hits do you find and is there any useful hit?
-
-Alternatively, we can use FoldSeek to find similar 3D structures.
-
-How would you find out what structural information is available about MEAK7?
-
-Execute a search in FoldSeek using restriction on the search space for the PDB and AlphaFoldDB.
-
-Did you find anything interesting from this search?
-
 
 ## Force Fields
 
