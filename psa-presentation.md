@@ -34,7 +34,7 @@ link: https://raw.githubusercontent.com/vib-training-conferences/protein-structu
 * Visualise protein structures and compare homologous proteins in ChimeraX to interpret structural similarities and differences, including the features that determine protein stability.
 * Characterise and critically evaluate the interactions in a protein–ligand and a protein–protein complex, using ChimeraX and web-based interaction profilers, and explain why different tools report different interactions.
 * Search for structurally similar proteins with Foldseek and evaluate the hits using structural similarity scores.
-* Design stabilised protein variants with web-based tools such as PROSS and FireProt and critically compare the proposed mutations.
+* Predict stabilising mutations with the ML-based predictor SA-MPNN and critically evaluate the proposed mutations.
 * Set up, execute and analyse in silico site-saturation mutagenesis experiments on the VSC HPC using MutateX (FoldX).
 
 ## Pre-course content
@@ -1326,7 +1326,7 @@ What makes a protein stable? Comparing a mesophilic and a thermophilic homolog
 •	Determinants of stability: hydrophobic core packing, hydrogen bonds, salt bridges and surface charge, disulfides, prolines and loop length, helix capping
 •	Adaptations of thermophilic proteins
 •	Case: cold shock proteins Bs-CspB (B. subtilis, 1CSP) vs Bc-Csp (B. caldolyticus, 1C9O); Perl et al. 2000, Nat Struct Biol – two surface positions (3 and 66) explain most of the stability difference
-•	Link forward: PROSS, FireProt and FoldX try to quantify exactly these effects
+•	Link forward: FoldX and SA-MPNN try to quantify exactly these effects
 
 ### Folding is a near-run thing
 
@@ -1359,7 +1359,7 @@ TODO: check repetition from protein-protein interaction
 •	Perl, Mueller, Heinemann & Schmid, Nature Structural Biology 2000, 7:380–383 (doi:10.1038/75151): two surface positions account for the entire difference of 15.8 kJ/mol at 70 °C — Glu3→Arg contributes 11.5 kJ/mol (predominantly electrostatic) and Glu66→Leu contributes 5.2 kJ/mol (hydrophobic).
 •	Put the punchline on the slide: not the core — the surface. And the larger of the two contributions is electrostatic, which is the term empirical force fields handle worst.
 
-TODO: Forward link: “FoldX, PROSS and FireProt all claim to compute this. At 16:10 we check whether FoldX gets E3R and E66L right.”
+TODO: Forward link: “FoldX and SA-MPNN both claim to compute this. At 16:10 we check whether FoldX gets E3R and E66L right.”
 
 ### Exercise (13 min, in pairs) — “Why is the thermophilic protein more stable?”
 
@@ -1535,18 +1535,17 @@ Foldseek compares chains. Many real questions are about an interface: “has any
 * Shelf life, formulation, tolerance to temperature and solvents in biocatalysis
 * Stability as an evolvability budget: most function-improving mutations are destabilising, so a stabilised scaffold tolerates more of them. Stabilising first is how you buy room to engineer.
 
-### Two ways to find stabilising mutations
+### Three ways to find stabilising mutations
 
                     --{{0}}--
-The good servers combine them: evolution proposes, energy filters (or the reverse), and the survivors are combined into a multi-point design. Look back at the cold shock proteins. We reason that it is a surface electrostatic effect — the one both approaches find hardest. We cross-check later on. Note: Always exclude functional residues — active site, binding site, interface. This is where the morning’s interaction analysis pays for itself
+Three families of methods. Evolution-based methods ask what the protein family does at a position. Energy-based methods ask what a substitution costs in this particular structure. Learned predictors are trained directly on thousands of measured ΔΔG values. SA-MPNN, which we use in the exercise, sits in the third group but borrows from the first: it reads the backbone like a structure-based model and adds evolutionary knowledge from a protein language model. Whatever the method, the output is a ranking of single mutations — choosing a few, combining them, and always excluding functional residues (active site, binding site, interface) is still your job. This is where the morning’s interaction analysis pays for itself. Look back at the cold shock proteins: we reasoned that the difference is a surface electrostatic effect — the one thing all approaches find hardest. We cross-check later on.
 
-|                 |      Evolution-based                                             |      Energy-based                                                         |
-|-----------------|------------------------------------------------------------------|---------------------------------------------------------------------------|
-|     Question    |     What does the family do at this position?                    |     What does this substitution cost in this structure?                   |
-|     Method      |     MSA → conservation, consensus, PSSM                          |     Force field (FoldX) or Rosetta ΔΔG; increasingly ML   predictors      |
-|     Strength    |     Cheap, robust, captures constraints no force field models    |     Context-aware, works without a deep family                            |
-|     Weakness    |     Blind to your specific context; needs a good alignment       |     ~1 kcal/mol error, and weakest exactly on surface   electrostatics    |
-
+|                 |      Evolution-based                                             |      Energy-based                                                         |      Learned (ML) predictors                                                         |
+|-----------------|------------------------------------------------------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+|     Question    |     What does the family do at this position?                    |     What does this substitution cost in this structure?                   |     What do measured ΔΔG data say about this substitution in this environment?       |
+|     Method      |     MSA → conservation, consensus, PSSM                          |     Force field (FoldX) or Rosetta ΔΔG                                    |     Inverse-folding model fine-tuned on ΔΔG (ThermoMPNN); SA-MPNN adds ESM2 language-model embeddings |
+|     Strength    |     Cheap, robust, captures constraints no force field models    |     Physical, context-aware, works without a deep family                  |     Seconds for a full scan of all 19 substitutions at every position                |
+|     Weakness    |     Blind to your specific context; needs a good alignment       |     ~1 kcal/mol error, and weakest exactly on surface electrostatics      |     Trained on small, biased data (destabilising, buried, alanine); is your protein in the training set? |
 
 ## Force Fields
 
@@ -1591,37 +1590,59 @@ Applications include the optimisation of structures, the calculation of the stab
 
 
 
-### PROSS (pross.weizmann.ac.il)
+### From ThermoMPNN to SA-MPNN
 
-•	Input: structure, chain, and the list of residues to keep fixed (the functional ones).
-•	Pipeline: MSA → PSSM filter, keeping only substitutions the family tolerates → Rosetta single-mutant ΔΔG filter → combinatorial Rosetta design.
-•	Output: typically a handful of designs with increasing numbers of mutations, each with its mutation list and a model.
-•	Goldenzweig et al., Molecular Cell 2016, 63:337 — the track record is higher expression and higher Tm across a wide range of targets, which is why it is worth teaching.
-•	Needs registration and runs for hours. Pre-compute before the course.
+            --{{0}}--
+ProteinMPNN is an inverse-folding model: given a backbone, it predicts which amino acids fit each position. ThermoMPNN takes its structural embeddings and fine-tunes them on the Megascale dataset of ~800,000 measured ΔΔG values, so that it predicts the stability change for every possible substitution. Its blind spot is evolution: it sees the local 3D environment but not what the family tolerates. SA-MPNN adds exactly that, by feeding sequence embeddings from the protein language model ESM2 into the ThermoMPNN architecture through a self-attention layer. The gains over ThermoMPNN are modest but consistent. The authors tested top-ranked variants of a thermophilic β-glucosidase in the lab: several were more stable, the best by +6 °C in Tm. Reference: Zhang et al., J Chem Inf Model 2026, [doi:10.1021/acs.jcim.6c01644](https://doi.org/10.1021/acs.jcim.6c01644).
 
-### FireProt 2.0 (loschmidt.chemi.muni.cz/fireprotweb)
+* **Input**: a structure (PDB ID or uploaded file) and a chain — or just a sequence, which is folded first with ESMFold
+* **Pipeline**: structure → (optional OpenMM relaxation) → ProteinMPNN structural embedding + ESM2 sequence embedding → self-attention fusion → ΔΔG for every substitution at every position
+* **Output**: a full position × 20 amino acid matrix (a computational deep mutational scan), the top-N ranked mutations, and a 3D view of the hotspots
+* **Speed**: seconds to minutes on a GPU, compared with hours for FoldX on a cluster or for the PROSS/FireProt servers
+* **Caveats**: it predicts single mutants only, and combining them assumes additivity; the training data are biased; no information on function — you must exclude functional residues yourself
 
-•	Input: structure or sequence, chain.
-•	Pipeline: an evolution-based branch (conservation, back-to-consensus) and an energy-based branch (FoldX, Rosetta) in parallel → filter out catalytic and binding residues → ranked single-point candidates → one combined multiple-point mutant.
-•	Output: a browsable table of candidates with predicted ΔΔG, and the final design visualised in the browser — which makes it the better of the two to explore live in a classroom.
-•	Companions worth one sentence each: FireProtDB (curated experimental ΔΔG data — i.e. the data these predictors are trained on, with all the biases that implies) and FireProtASR (ancestral sequence reconstruction, a third and often very effective route to stability).
-•	Also runs for hours. The server’s example job (haloalkane dehalogenase DhaA) is the fallback.
+### Reading the output: from a ranking to a design
 
-https://loschmidt.chemi.muni.cz/fireprotweb/example
+            --{{0}}--
+A ranked list is not yet a design. Look at where each top mutation sits, what it does, and whether it touches function. Then pick a few, not dozens: the more mutations you combine, the more likely they are not additive.
 
+1. **Check the sign convention** of the output before interpreting anything — tools differ on whether a negative ΔΔG means stabilising or destabilising
+2. **Map every candidate onto the structure**: core or surface? Hydrophobic-to-polar in the core is a red flag; charge changes on the surface are where electrostatics matter
+3. **Exclude functional residues**: active site, binding site, interface (for Bc-Csp: the aromatic nucleic-acid-binding face)
+4. **Be wary of Gly and Pro substitutions**, they change backbone flexibility in ways that are hard to predict
+5. **Look for patterns**, not single hits: several mutations in the same strand or loop point to a real effect
+6. **Take a handful forward** to the lab, rather than combining everything at once
 
+### Established server pipelines: PROSS and FireProt
 
-### Exercise (20 min + 5 min, jigsaw)
+            --{{0}}--
+Before ML predictors, the standard route was a web server that combined evolution and energy, and both remain useful to know. PROSS (Goldenzweig et al., Molecular Cell 2016) filters substitutions by a family-derived PSSM, checks each with a Rosetta ΔΔG calculation and combines the survivors in a multi-point design; the track record is higher expression and higher Tm across many targets. FireProt 2.0 runs an evolution-based and an energy-based branch in parallel, removes catalytic and binding residues, and proposes one combined multi-point mutant. Both servers are slow and have been unreliable recently, so we do not use them in the exercise. Companions: FireProtDB, the curated experimental ΔΔG database that predictors like these are trained on (with all its biases), and FireProtASR for ancestral sequence reconstruction, a third route to stability.
 
-TODO: 
+* [PROSS](https://pross.weizmann.ac.il): structure + chain + residues to keep fixed → MSA → PSSM filter → Rosetta ΔΔG filter → combinatorial design
+* [FireProt 2.0](https://loschmidt.chemi.muni.cz/fireprotweb): structure or sequence → evolution and energy branches → filter functional residues → ranked single mutants → one combined multi-point mutant
+* The idea worth keeping: **evolution proposes, energy filters, the survivors are combined**
 
-Half the pairs receive the pre-computed PROSS output, half the FireProt output, for the same protein. Each pair:
-1.	lists the proposed mutations;
-2.	opens the structure and shows them — core or surface?
-3.	checks them against the functional site: for Bs-CspB that is the aromatic nucleic-acid-binding face (verify the residue numbers against the entry during preparation);
-4.	asks whether its tool proposes anything at position 3 or 66.
-Then pairs from the two halves meet for 5 minutes and compare: overlap, uniques, and would you order the biggest design?
-Preparation risk, flagged honestly: a 67-residue protein is a hard target for both servers and may yield very few mutations. Run both at T − 2 weeks. If the Bs-CspB output is thin, use the FireProt example job (DhaA) and a comparable PROSS target instead, and accept that the jigsaw then loses its link to positions 3 and 66 — say so to the participants rather than glossing over it.
+### Exercise (20 min + 5 min): Predict stabilising mutations of Bc-Csp with SA-MPNN
+
+Notebook: [SA_MPNN.ipynb](https://github.com/abotzki/SA-MPNN/blob/main/SA_MPNN.ipynb) — opens in Google Colab, so use a GPU runtime (`Runtime` → `Change runtime type` → GPU).
+
+1. Run the setup cells at the top of the notebook (installation and downloads of the model and ESM2 weights take a few minutes).
+2. In the parameter cell, set `Input_Type = "PDB ID"`, `PDB_ID = "1c9o"`, `Target_Chain = "A"`, keep `Perform_Relaxation` ticked and choose `Mode = "Comprehensive DMS Scan"` with `Show_Top_N = 10`. Run the cell.
+3. Note the top 10 predicted stabilising mutations.
+4. Open 1C9O in ChimeraX (or use the 3D hotspot view in the notebook). For each mutation: core or surface? Close to the aromatic nucleic-acid-binding face?
+5. Switch to `Mode = "Single Mutation Query"` and test the two positions from the cold shock case: the thermophilic protein carries Arg3 and Leu66, where the mesophilic Bs-CspB has Glu3 and Glu66. Query R3E and L66E (the reverse, mesophile-like substitutions). Does the model call them destabilising? By how much, compared with the experiment (11.5 and 5.2 kJ/mol)?
+6. Does the model also propose anything at positions 3 and 66 in the full scan? If not, why might that be?
+
+> <i class="fas fa-question"></i> **Questions**
+>
+> 1. How many of your top 10 mutations are at the surface, and how many are in the core?
+> 2. Which of them would you exclude because of the nucleic-acid-binding face?
+> 3. Does the model get the direction of the R3E and L66E effects right? Does it get the relative size right? What would FoldX say (Exercise 7)?
+> 4. Which 3–5 mutations would you order, and why those?
+
+Pairs that finish early compare their lists with a neighbouring pair (with and without relaxation), and discuss how much the ranking changes.
+
+<!-- Preparation: run the notebook beforehand on 1C9O chain A; keep the output (top-10 table, R3E/L66E values) as a fallback in case Colab/GPU is unavailable; verify the residue numbering of the binding face and the sign convention of the output. -->
 
 
 ## Computational deep mutational screen
@@ -1663,7 +1684,7 @@ For the exercise, we will use the HPC Tier-2 of the UGent. Documentation on how 
 |     Interact    |     What holds the complex together?                                 |     ChimeraX hbonds/contacts/interfaces, PLIP, ProteinsPlus    |     an interaction is an operational definition        |
 |     Mutate      |     What does one substitution do?                                   |     ChimeraX swapaa, FoldX                                     |     the sign of ΔΔG; stability ≠ function              |
 |     Scan        |     Which positions tolerate change at all?                          |     MutateX on the VSC HPC                                     |     heatmap → mapped back onto the structure           |
-|     Design      |     Which variants should I actually make?                           |     PROSS, FireProt                                            |     exclude functional residues; order a panel         |
+|     Design      |     Which variants should I actually make?                           |     SA-MPNN (+ FoldX check)                                    |     exclude functional residues; order a panel         |
 
 #### Extra: Use the tool FoldX tool AnalyseComplex
 
@@ -1726,7 +1747,7 @@ The honest framing, which is the real content of this slide: an agent removes ty
 
 ## Outlook
 
-1. ML stability and variant-effect predictors. Sequence- and structure-based models that predict ΔΔG or variant effects orders of magnitude faster than FoldX — ThermoMPNN, Stability Oracle, ESM-based zero-shot scores, AlphaMissense for clinical variants. Watch out: most are trained on the same small experimental ΔΔG collections (ProTherm, FireProtDB), which are heavily biased towards destabilising, buried, alanine substitutions — so they are best where you need them least. And check whether your protein was in the training set.
+1. ML stability and variant-effect predictors. Sequence- and structure-based models that predict ΔΔG or variant effects orders of magnitude faster than FoldX — ThermoMPNN and its successor SA-MPNN (used in the exercise), Stability Oracle, ESM-based zero-shot scores, AlphaMissense for clinical variants. Watch out: most are trained on the same small experimental ΔΔG collections (ProTherm, FireProtDB), which are heavily biased towards destabilising, buried, alanine substitutions — so they are best where you need them least. And check whether your protein was in the training set.
 2. Generative design. ProteinMPNN (sequence for a given backbone — and, in passing, an excellent stabiliser of existing backbones), RFdiffusion for new backbones and binders, ESM3. Watch out: in-silico success rates are far above wet-lab success rates. Filtering candidates and ordering a panel is still the method; generation has moved the bottleneck, not removed it.
 3. Co-folding of complexes. AlphaFold 3, Boltz, Chai predict protein–ligand and protein–protein complexes directly, with confidence metrics (pLDDT, PAE, ipTM); Boltz-2 also predicts binding affinity. Watch out: a confidence score is not an affinity. The pose can be right and the chemistry wrong. Everything from the 13:00 block still applies — check what is missing from the model, check the interactions, and remember that the model has no density to be wrong about.
 
