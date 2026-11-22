@@ -1,0 +1,83 @@
+# Exercises 4 and 5: compare and morph the chains of DnaK 4JNE and 4B9Q
+#
+# Run from the folder where the results should be written:
+#   open exercise4-5-4JNE-4B9Q.cxc      (type in the ChimeraX command line)
+#   or start from a terminal:  ChimeraX exercise4-5-4JNE-4B9Q.cxc
+# A graphics window is needed (images, movie and log are saved from it).
+# Tested with ChimeraX 1.12; the movie and image steps need the GUI.
+#
+# Output files (in the current working directory):
+#   fig_chains.png, fig_bfactor.png, morph.mp4, results_matchmaker.html, session.cxs
+
+close session
+log clear
+
+# ---------------------------------------------------------------
+# Exercise 4: compare the chains
+# ---------------------------------------------------------------
+
+# 1. Fetch both entries from the PDB (4JNE = #1, 4B9Q = #2)
+open 4jne
+open 4b9q
+
+# 2. One model per chain: 4JNE -> #1.1 (A), #1.2 (B); 4B9Q -> #2.1-#2.4 (A-D)
+split #1
+split #2
+info models
+
+# 3. Superimpose all other chains on chain A of 4JNE (#1.1).
+#    The Log lists RMSD (pruned pairs) and RMSD (all pairs) for each chain.
+matchmaker #1.2#2.1-4 to #1.1
+
+# 4. Colour by chain and save an overview picture
+hide atoms
+cartoon
+color #1.1 steelblue target c
+color #1.2 lightskyblue target c
+color #2.1 orange target c
+color #2.2 gold target c
+color #2.3 tomato target c
+color #2.4 salmon target c
+view
+save fig_chains.png width 1600 supersample 3
+
+# 5. Fit the nucleotide-binding domain only (residues 1-388),
+#    then compare the RMSDs with the whole-chain fit above.
+matchmaker #1.2:1-388#2.1-4:1-388 to #1.1:1-388
+
+# 6. Colour each entry by B-factor (blue = low, red = high).
+#    Done per entry so each palette uses its own B-factor range.
+color bfactor #1 palette bluered
+color bfactor #2 palette bluered
+view
+save fig_bfactor.png width 1600 supersample 3
+
+# 7. Keep the matchmaker results (RMSDs and matched pairs) as a file
+log save results_matchmaker.html
+
+# ---------------------------------------------------------------
+# Exercise 5: morph chain A of 4JNE (#1.1) into chain A of 4B9Q (#2.1)
+# ---------------------------------------------------------------
+
+# The chains are already superimposed (step 3, and the domain fit in step 5
+# moved them again). Fit the whole chains once more so the morph starts clean.
+matchmaker #2.1 to #1.1
+
+# The morph is created as model #3 with 51 coordinate sets
+morph #1.1#2.1
+light simple
+
+# Show only the morph, coloured by chain
+hide #1,2 models
+color #3 bychain
+view
+
+# 8. Record the movie: forwards and back, three loops (about 300 frames).
+#    wait 310 keeps the script going until the frames are captured.
+movie record
+coordset #3 1,51 bounce true loop 3
+wait 310
+movie encode morph.mp4
+
+# 9. Save everything as a session so it can be reopened later
+save session.cxs

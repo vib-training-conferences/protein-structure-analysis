@@ -1,0 +1,385 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<title> ChimeraX Log </title>
+<script type="text/javascript">
+window.onload = function() {
+  cxlinks_base="https://www.rbvi.ucsf.edu/chimerax/docs/"
+  if(!window.navigator.userAgent.includes("ChimeraX")){
+    window.onclick = function(e){
+      if(e.target.tagName.toLowerCase()!="a")
+	return true;
+      var url=e.target.getAttribute("href").toLowerCase();
+      if(url.startsWith("help:")){
+	window.location.href = cxlinks_base + url.substring(5);
+	return false;
+      }
+      if(url.startsWith("cxcmd:")){
+	alert("This link only works in a ChimeraX browser and would execute a command.");
+	return false;
+      }
+      return true;
+    }
+    var ls=document.links;
+    for(var i=0;i<ls.length;i++){
+      var link=ls[i];
+      var url=link.getAttribute("href").toLowerCase();
+      if(url.startsWith("cxcmd:"))
+	link.style.color="darkred";
+    }
+  }
+};
+</script>
+<style>
+
+.cxcmd_as_doc {
+    display: inline;
+}
+.cxcmd_as_cmd {
+    display: none;
+}
+</style>
+</head>
+<body>
+<h1> ChimeraX Log </h1>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/open.html">open</a> 4jne</div><div class="cxcmd_as_cmd"><a href="cxcmd:open 4jne">open 4jne</a></div></div><i>4jne</i> title:<br><b>Allosteric opening of the polypeptide-binding site when an Hsp70 binds ATP</b> <a href="cxcmd:log metadata #1">[more&nbsp;info...]</a><br><br/><table border=1 cellpadding=4 cellspacing=0>
+  <thead>
+    <tr>
+      <th colspan="3">Chain information for 4jne #1</th>
+    </tr>
+    <tr>
+      <th>Chain</th>
+      <th>Description</th>
+      <th>UniProt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><a title="Select chain" href="cxcmd:select /A:1-604">A</a> <a title="Select chain" href="cxcmd:select /B:1-604">B</a></td>
+      <td><a title="Show sequence" href="cxcmd:sequence chain #1/A#1/B">Hsp70 CHAPERONE DnaK</a></td>
+      <td style="text-align:center"><a title="Show annotations" href="cxcmd:open P0A6Y8 from uniprot associate #1/A,B">DNAK_ECOLI</a> <a title="Select sequence" href="cxcmd:select #1/A,B:2-610">2-610</a></td>
+    </tr>
+  </tbody>
+</table><br/><table border=1 cellpadding=4 cellspacing=0>
+ <thead>
+  <tr>
+   <th>Non-standard residues in 4jne #1</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><a title="select residue" href="cxcmd:sel :ATP">ATP</a> &mdash; <a title="show residue info" href="https://www.rcsb.org/ligand/ATP">adenosine-5&#x27;-triphosphate</a></td>
+  </tr>
+  <tr>
+   <td><a title="select residue" href="cxcmd:sel :GOL">GOL</a> &mdash; <a title="show residue info" href="https://www.rcsb.org/ligand/GOL">glycerol</a> (glycerin; propane-1,2,3-triol)</td>
+  </tr>
+  <tr>
+   <td><a title="select residue" href="cxcmd:sel :MG">MG</a> &mdash; <a title="show residue info" href="https://www.rcsb.org/ligand/MG">magnesium ion</a></td>
+  </tr>
+  <tr>
+   <td><a title="select residue" href="cxcmd:sel :SO4">SO4</a> &mdash; <a title="show residue info" href="https://www.rcsb.org/ligand/SO4">sulfate ion</a></td>
+  </tr>
+ </tbody>
+</table><br/>5 atoms have alternate locations.  Control/examine alternate locations with <b><a href="cxcmd:help help:user/tools/altlocexplorer.html">Altloc Explorer</a></b> [<a href="cxcmd:ui tool show 'Altloc Explorer'">start&nbsp;tool...</a>] or the <b><a href="cxcmd:help altlocs">altlocs</a></b> command.<br/>9100 atoms have anisotropic B-factors.  Depict anisotropic information with <b><a href="cxcmd:help help:user/tools/thermalellipsoids.html">Thermal Ellipsoids</a></b> [<a href="cxcmd:ui tool show 'Thermal Ellipsoids'">start&nbsp;tool...</a>] or the <b><a href="cxcmd:help aniso">aniso</a></b> command.<br/><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/open.html">open</a> 4b9q</div><div class="cxcmd_as_cmd"><a href="cxcmd:open 4b9q">open 4b9q</a></div></div><i>4b9q</i> title:<br><b>Open conformation of ATP-bound Hsp70 homolog DnaK</b> <a href="cxcmd:log metadata #2">[more&nbsp;info...]</a><br><br/><table border=1 cellpadding=4 cellspacing=0>
+  <thead>
+    <tr>
+      <th colspan="3">Chain information for 4b9q #2</th>
+    </tr>
+    <tr>
+      <th>Chain</th>
+      <th>Description</th>
+      <th>UniProt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><a title="Select chain" href="cxcmd:select #2/A:2-602">A</a> <a title="Select chain" href="cxcmd:select #2/B:2-605">B</a> <a title="Select chain" href="cxcmd:select #2/C:2-603">C</a> <a title="Select chain" href="cxcmd:select #2/D:2-605">D</a></td>
+      <td><a title="Show sequence" href="cxcmd:sequence chain #2/A#2/B#2/C#2/D">CHAPERONE PROTEIN DNAK</a></td>
+      <td style="text-align:center"><a title="Show annotations" href="cxcmd:open P0A6Y8 from uniprot associate #2/A,B,C,D">DNAK_ECOLI</a> <a title="Select sequence" href="cxcmd:select #2/A,B,C,D:1-605">1-605</a></td>
+    </tr>
+  </tbody>
+</table><br/><table border=1 cellpadding=4 cellspacing=0>
+ <thead>
+  <tr>
+   <th>Non-standard residues in 4b9q #2</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><a title="select residue" href="cxcmd:sel :ATP">ATP</a> &mdash; <a title="show residue info" href="https://www.rcsb.org/ligand/ATP">adenosine-5&#x27;-triphosphate</a></td>
+  </tr>
+  <tr>
+   <td><a title="select residue" href="cxcmd:sel :MG">MG</a> &mdash; <a title="show residue info" href="https://www.rcsb.org/ligand/MG">magnesium ion</a></td>
+  </tr>
+ </tbody>
+</table><br/><table border=1 cellpadding=4 cellspacing=0>
+<tr><th colspan=3>4b9q mmCIF Assemblies
+<tr><td><a title="Generate assembly" href="cxcmd:sym #2 assembly 1 ; view">1</a><td>author_and_software_defined_assembly
+<tr><td><a title="Generate assembly" href="cxcmd:sym #2 assembly 2 ; view">2</a><td>author_and_software_defined_assembly
+<tr><td><a title="Generate assembly" href="cxcmd:sym #2 assembly 3 ; view">3</a><td>author_and_software_defined_assembly
+<tr><td><a title="Generate assembly" href="cxcmd:sym #2 assembly 4 ; view">4</a><td>author_and_software_defined_assembly
+</table><br/>18030 atoms have anisotropic B-factors.  Depict anisotropic information with <b><a href="cxcmd:help help:user/tools/thermalellipsoids.html">Thermal Ellipsoids</a></b> [<a href="cxcmd:ui tool show 'Thermal Ellipsoids'">start&nbsp;tool...</a>] or the <b><a href="cxcmd:help aniso">aniso</a></b> command.<br/><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/split.html">split</a> #1</div><div class="cxcmd_as_cmd"><a href="cxcmd:split #1">split #1</a></div></div>Split 4jne (#1) into 2 models<br>
+<table border=1 cellpadding=4 cellspacing=0>
+  <thead>
+    <tr>
+      <th colspan="2">Chain information for 4jne A #1.1</th>
+    </tr>
+    <tr>
+      <th>Chain</th>
+      <th>Description</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><a title="Select chain" href="cxcmd:select #1.1/A:1-604">A</a></td>
+      <td><a title="Show sequence" href="cxcmd:sequence chain #1.1/A">No description available</a></td>
+
+    </tr>
+  </tbody>
+</table><br/><table border=1 cellpadding=4 cellspacing=0>
+  <thead>
+    <tr>
+      <th colspan="2">Chain information for 4jne B #1.2</th>
+    </tr>
+    <tr>
+      <th>Chain</th>
+      <th>Description</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><a title="Select chain" href="cxcmd:select #1.2/B:1-604">B</a></td>
+      <td><a title="Show sequence" href="cxcmd:sequence chain #1.2/B">No description available</a></td>
+
+    </tr>
+  </tbody>
+</table><br/><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/split.html">split</a> #2</div><div class="cxcmd_as_cmd"><a href="cxcmd:split #2">split #2</a></div></div>Split 4b9q (#2) into 4 models<br>
+<table border=1 cellpadding=4 cellspacing=0>
+  <thead>
+    <tr>
+      <th colspan="2">Chain information for 4b9q A #2.1</th>
+    </tr>
+    <tr>
+      <th>Chain</th>
+      <th>Description</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><a title="Select chain" href="cxcmd:select #2.1/A:2-602">A</a></td>
+      <td><a title="Show sequence" href="cxcmd:sequence chain #2.1/A">No description available</a></td>
+
+    </tr>
+  </tbody>
+</table><br/><table border=1 cellpadding=4 cellspacing=0>
+  <thead>
+    <tr>
+      <th colspan="2">Chain information for 4b9q B #2.2</th>
+    </tr>
+    <tr>
+      <th>Chain</th>
+      <th>Description</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><a title="Select chain" href="cxcmd:select #2.2/B:2-605">B</a></td>
+      <td><a title="Show sequence" href="cxcmd:sequence chain #2.2/B">No description available</a></td>
+
+    </tr>
+  </tbody>
+</table><br/><table border=1 cellpadding=4 cellspacing=0>
+  <thead>
+    <tr>
+      <th colspan="2">Chain information for 4b9q C #2.3</th>
+    </tr>
+    <tr>
+      <th>Chain</th>
+      <th>Description</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><a title="Select chain" href="cxcmd:select #2.3/C:2-603">C</a></td>
+      <td><a title="Show sequence" href="cxcmd:sequence chain #2.3/C">No description available</a></td>
+
+    </tr>
+  </tbody>
+</table><br/><table border=1 cellpadding=4 cellspacing=0>
+  <thead>
+    <tr>
+      <th colspan="2">Chain information for 4b9q D #2.4</th>
+    </tr>
+    <tr>
+      <th>Chain</th>
+      <th>Description</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center"><a title="Select chain" href="cxcmd:select #2.4/D:2-605">D</a></td>
+      <td><a title="Show sequence" href="cxcmd:sequence chain #2.4/D">No description available</a></td>
+
+    </tr>
+  </tbody>
+</table><br/><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/info.html#models">info models</a></div><div class="cxcmd_as_cmd"><a href="cxcmd:info models">info models</a></div></div>model id #1 type Model name 4jne<br>
+model id #1.1 type AtomicStructure name &quot;4jne A&quot;<br>
+model id #1.1.1 type PseudobondGroup name &quot;metal coordination bonds&quot;<br>
+model id #1.2 type AtomicStructure name &quot;4jne B&quot;<br>
+model id #1.2.1 type PseudobondGroup name &quot;metal coordination bonds&quot;<br>
+model id #2 type Model name 4b9q<br>
+model id #2.1 type AtomicStructure name &quot;4b9q A&quot;<br>
+model id #2.1.1 type PseudobondGroup name &quot;metal coordination bonds&quot;<br>
+model id #2.2 type AtomicStructure name &quot;4b9q B&quot;<br>
+model id #2.2.1 type PseudobondGroup name &quot;metal coordination bonds&quot;<br>
+model id #2.2.2 type PseudobondGroup name &quot;missing structure&quot;<br>
+model id #2.3 type AtomicStructure name &quot;4b9q C&quot;<br>
+model id #2.3.1 type PseudobondGroup name &quot;metal coordination bonds&quot;<br>
+model id #2.3.2 type PseudobondGroup name &quot;missing structure&quot;<br>
+model id #2.4 type AtomicStructure name &quot;4b9q D&quot;<br>
+model id #2.4.1 type PseudobondGroup name &quot;metal coordination bonds&quot;<br>
+model id #2.4.2 type PseudobondGroup name &quot;missing structure&quot;<br>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/matchmaker.html">matchmaker</a> #1.2#2.1-4 to #1.1</div><div class="cxcmd_as_cmd"><a href="cxcmd:matchmaker #1.2#2.1-4 to #1.1">matchmaker #1.2#2.1-4 to #1.1</a></div></div>
+                    <table border=1 cellpadding=4 cellspacing=0>
+                        <tr>
+                            <th colspan="2">Parameters</th>
+                        </tr>
+                        <tr>
+                            <td>Chain pairing</td>
+                            <td>bb</td>
+                        </tr>
+                        <tr>
+                            <td>Alignment algorithm</td>
+                            <td>Needleman-Wunsch</td>
+                        </tr>
+                        <tr>
+                            <td>Similarity matrix</td>
+                            <td>BLOSUM-62</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>SS fraction</td>
+                            <td>0.3</td>
+                        </tr>
+                        <tr>
+                            <td>Gap open (HH/SS/other)</td>
+                            <td>18/18/6</td>
+                        </tr>
+                        <tr>
+                            <td>Gap extend</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>SS matrix</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <th></th> <th>H</th> <th>S</th> <th>O</th>
+                                    </tr>
+                                    <tr>
+                                        <th>H</th> <td align="right">6</td> <td align="right">-9</td> <td align="right">-6</td>
+                                    </tr>
+                                    <tr>
+                                        <th>S</th> <td></td> <td align="right">6</td> <td align="right">-6</td>
+                                    </tr>
+                                    <tr>
+                                        <th>O</th> <td></td> <td></td> <td align="right">4</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    
+                        <tr> <td>Iteration cutoff</td> <td>2</td></tr>
+                    </table>
+                <br/>Matchmaker 4jne A, chain A (#1.1) with 4jne B, chain B (#1.2), sequence alignment score = 2998.9<br>
+RMSD between 600 pruned atom pairs is 0.265 angstroms; (across all 600 pairs: 0.265)<br>
+<br>
+Matchmaker 4jne A, chain A (#1.1) with 4b9q A, chain A (#2.1), sequence alignment score = 2936.6<br>
+RMSD between 505 pruned atom pairs is 0.560 angstroms; (across all 597 pairs: 2.210)<br>
+<br>
+Matchmaker 4jne A, chain A (#1.1) with 4b9q B, chain B (#2.2), sequence alignment score = 2878<br>
+RMSD between 507 pruned atom pairs is 0.536 angstroms; (across all 592 pairs: 1.939)<br>
+<br>
+Matchmaker 4jne A, chain A (#1.1) with 4b9q C, chain C (#2.3), sequence alignment score = 2878.9<br>
+RMSD between 503 pruned atom pairs is 0.592 angstroms; (across all 591 pairs: 1.936)<br>
+<br>
+Matchmaker 4jne A, chain A (#1.1) with 4b9q D, chain D (#2.4), sequence alignment score = 2892.4<br>
+RMSD between 503 pruned atom pairs is 0.537 angstroms; (across all 590 pairs: 1.910)<br>
+<br>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/show.html#hide">hide</a> atoms</div><div class="cxcmd_as_cmd"><a href="cxcmd:hide atoms">hide atoms</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/cartoon.html">cartoon</a></div><div class="cxcmd_as_cmd"><a href="cxcmd:cartoon">cartoon</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/color.html">color</a> #1.1 steelblue target c</div><div class="cxcmd_as_cmd"><a href="cxcmd:color #1.1 steelblue target c">color #1.1 steelblue target c</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/color.html">color</a> #1.2 lightskyblue target c</div><div class="cxcmd_as_cmd"><a href="cxcmd:color #1.2 lightskyblue target c">color #1.2 lightskyblue target c</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/color.html">color</a> #2.1 orange target c</div><div class="cxcmd_as_cmd"><a href="cxcmd:color #2.1 orange target c">color #2.1 orange target c</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/color.html">color</a> #2.2 gold target c</div><div class="cxcmd_as_cmd"><a href="cxcmd:color #2.2 gold target c">color #2.2 gold target c</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/color.html">color</a> #2.3 tomato target c</div><div class="cxcmd_as_cmd"><a href="cxcmd:color #2.3 tomato target c">color #2.3 tomato target c</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/color.html">color</a> #2.4 salmon target c</div><div class="cxcmd_as_cmd"><a href="cxcmd:color #2.4 salmon target c">color #2.4 salmon target c</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/view.html">view</a></div><div class="cxcmd_as_cmd"><a href="cxcmd:view">view</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/save.html">save</a> fig_chains.png width 1600 supersample 3</div><div class="cxcmd_as_cmd"><a href="cxcmd:save fig_chains.png width 1600 supersample 3">save fig_chains.png width 1600 supersample 3</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/matchmaker.html">matchmaker</a> #1.2:1-388#2.1-4:1-388 to #1.1:1-388</div><div class="cxcmd_as_cmd"><a href="cxcmd:matchmaker #1.2:1-388#2.1-4:1-388 to #1.1:1-388">matchmaker #1.2:1-388#2.1-4:1-388 to #1.1:1-388</a></div></div>
+                    <table border=1 cellpadding=4 cellspacing=0>
+                        <tr>
+                            <th colspan="2">Parameters</th>
+                        </tr>
+                        <tr>
+                            <td>Chain pairing</td>
+                            <td>bb</td>
+                        </tr>
+                        <tr>
+                            <td>Alignment algorithm</td>
+                            <td>Needleman-Wunsch</td>
+                        </tr>
+                        <tr>
+                            <td>Similarity matrix</td>
+                            <td>BLOSUM-62</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>SS fraction</td>
+                            <td>0.3</td>
+                        </tr>
+                        <tr>
+                            <td>Gap open (HH/SS/other)</td>
+                            <td>18/18/6</td>
+                        </tr>
+                        <tr>
+                            <td>Gap extend</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>SS matrix</td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <th></th> <th>H</th> <th>S</th> <th>O</th>
+                                    </tr>
+                                    <tr>
+                                        <th>H</th> <td align="right">6</td> <td align="right">-9</td> <td align="right">-6</td>
+                                    </tr>
+                                    <tr>
+                                        <th>S</th> <td></td> <td align="right">6</td> <td align="right">-6</td>
+                                    </tr>
+                                    <tr>
+                                        <th>O</th> <td></td> <td></td> <td align="right">4</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    
+                        <tr> <td>Iteration cutoff</td> <td>2</td></tr>
+                    </table>
+                <br/>Matchmaker 4jne A, chain A (#1.1) with 4jne B, chain B (#1.2), sequence alignment score = 1933.4<br>
+RMSD between 388 pruned atom pairs is 0.244 angstroms; (across all 388 pairs: 0.244)<br>
+<br>
+Matchmaker 4jne A, chain A (#1.1) with 4b9q A, chain A (#2.1), sequence alignment score = 1926.7<br>
+RMSD between 371 pruned atom pairs is 0.488 angstroms; (across all 387 pairs: 0.768)<br>
+<br>
+Matchmaker 4jne A, chain A (#1.1) with 4b9q B, chain B (#2.2), sequence alignment score = 1920.9<br>
+RMSD between 374 pruned atom pairs is 0.463 angstroms; (across all 384 pairs: 0.643)<br>
+<br>
+Matchmaker 4jne A, chain A (#1.1) with 4b9q C, chain C (#2.3), sequence alignment score = 1870.3<br>
+RMSD between 362 pruned atom pairs is 0.507 angstroms; (across all 380 pairs: 0.759)<br>
+<br>
+Matchmaker 4jne A, chain A (#1.1) with 4b9q D, chain D (#2.4), sequence alignment score = 1905.6<br>
+RMSD between 371 pruned atom pairs is 0.466 angstroms; (across all 383 pairs: 0.847)<br>
+<br>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/color.html#byattribute">color bfactor</a> #1 palette bluered</div><div class="cxcmd_as_cmd"><a href="cxcmd:color bfactor #1 palette bluered">color bfactor #1 palette bluered</a></div></div>10672 atoms, 2616 residues, atom bfactor range 7.24 to 130<br>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/color.html#byattribute">color bfactor</a> #2 palette bluered</div><div class="cxcmd_as_cmd"><a href="cxcmd:color bfactor #2 palette bluered">color bfactor #2 palette bluered</a></div></div>18760 atoms, 2910 residues, atom bfactor range 20.7 to 272<br>
+<div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/view.html">view</a></div><div class="cxcmd_as_cmd"><a href="cxcmd:view">view</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/save.html">save</a> fig_bfactor.png width 1600 supersample 3</div><div class="cxcmd_as_cmd"><a href="cxcmd:save fig_bfactor.png width 1600 supersample 3">save fig_bfactor.png width 1600 supersample 3</a></div></div><div class="cxcmd"><div class="cxcmd_as_doc"><a href="help:user/commands/log.html#save">log save</a> results_matchmaker.html</div><div class="cxcmd_as_cmd"><a href="cxcmd:log save results_matchmaker.html">log save results_matchmaker.html</a></div></div></body>
+</html>
