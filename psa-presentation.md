@@ -1297,44 +1297,27 @@ Investigate the differences in TM helices and the binding of the nanobody compar
 
 Tip: Color the secondary structures to better identify the individual chains/units of G protein.
 
-Extra: Use the tool FoldX tool AnalyseComplex
+Extra: Model a Mutation using ChimeraX
 
+## Exercise 6: Model a Mutation using ChimeraX
 
->
-> 1. Given that energy-minimization takes a while for this rather large complex,
->     please download the Yasara scene [here](http://data.bits.vib.be/pub/trainingen/PSA/3P0G_1.sce)
->
->    Calculate the interaction energies between the chain A and B of the object 3P0G
->    and the RepairObj1, respectively.
->
->    ```
->    Analyze - FoldX - Interaction energy of molecules
->    ```
+- Load the PDB entry 2AC0.
+- Set an appropriate structure representation.
+- Locate residue Ala159 using the sequence view. 
+- Use the *swapaa* command to change it to a Trp residue.
+- Look at the effect of the substitution on the structure.
+- Mutate Arg273 to an alanine side chain. Discuss the effects of this substitution.
 
-> <i class="fas fa-question"></i> **Questions**
->
-> 1. What is the dG in the two cases?
-> 2. Any idea why the difference is rather hugh?
-
-<details><summary>Solution
-</summary>
-
-> 1. first case (X-ray structure): Interaction energy between molecule(s) A and B in object 1 = -9.86 (kcal/mol)
->    second case:
->    Interaction energy between molecule(s) A and B in object 2 = -20.19 (kcal/mol)
-> 2. Through the energy minimisation of the Repair Object function, the interactions of the amino acids are optimised.
-
-</details>
-
-
-This command also creates a list of residues forming the interface of the two proteins. Hit space to see the list of residues in the interface.
-
-Tip: This list can also be useful if you want to make visualisations of the interaction site.
+      {{1}}
+*******
 
 ```
-Plugin>interface residues between A and B
-Plugin>TA66 TA68 IA72 IA127 RA131 AA134 IA135 TA136 SA137 PA138 FA139 KA140 QA142 YA219 VA222 EA225 AA226 LA266 KA267 EA268 AA271 LA272 TA274 LA275 IA278 IA325 YA326 RA328 SA329 PA330 SB27 IB28 FB29 SB30 IB31 TB33 AB50 IB51 eB52 SB56 TB57 NB58 YB100 AB102 VB103 LB104 YB105 EB106 YB107
+swapaa #6.2:159 trp log true
 ```
+Additional exercise: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1304567/
+Further reading: https://dasher.wustl.edu/chem430/software/chimera/users-guide.pdf
+
+********
 
 ## protein stability 
 
@@ -1534,17 +1517,36 @@ The two top-scoring hits are the same for both modes: AF-O94644-F1-model_v6 and 
 
 *****************
 
-
 ### Foldseek-Interface: searching the interface, not the chain
 
-•	Foldseek compares chains. Many real questions are about an interface: “has anyone seen this binding mode before?” — which is exactly the 3P0G question, “is Nb80 mimicking the G protein?”
-•	Foldseek-Multimer compares whole complexes, by aligning each chain pair and then building a consensus alignment across partners.
-•	Foldseek-Interface encodes the interface itself as a searchable 3Di string, so interfaces can be aligned and clustered directly. The authors report it running up to ~230× faster than existing interface-comparison tools at comparable accuracy.
-•	Scale, as a number worth putting on the slide: all biological assemblies in the PDB → 3.1 million dimers → 77,167 interface clusters, used to study interface evolution and pathogen mimicry.
-•	Web servers: interface.foldseek.com (exploration) and search.foldseek.com/interface (search). Both responded on 15 November 2026.
-•	Flag on the slide that this is a 2026 preprint, not yet a peer-reviewed paper — a small, cheap piece of modelling good practice in front of an audience that will go and use it.
+Demo: [https://interface.foldseek.com/](https://interface.foldseek.com/)
 
-TODO: Format: a 3-minute trainer demo, not an exercise. Submit the β2AR–Nb80 interface and show what clusters with it. There is no time for a second search exercise, and the point is made by watching.
+Many real questions are about an interface: “has anyone seen this binding mode before?” — which is exactly the 3P0G question, “is Nb80 mimicking the G protein?”
+
+Bioarxiv: [2026 preprint](https://www.biorxiv.org/content/10.64898/2026.08.24.746585v2/)
+
+            --{{0}}--
+Foldseek compares chains. Many real questions are about an interface: “has anyone seen this binding mode before?” — which is exactly the 3P0G question, “is Nb80 mimicking the G protein?” Foldseek-Multimer compares whole complexes, by aligning each chain pair and then building a consensus alignment across partners. Foldseek-Interface encodes the interface itself as a searchable 3Di string, so interfaces can be aligned and clustered directly. The authors report it running up to ~230× faster than existing interface-comparison tools at comparable accuracy. Scale, as a number worth putting on the slide: all biological assemblies in the PDB → 3.1 million dimers → 77,167 interface clusters, used to study interface evolution and pathogen mimicry. Web servers: interface.foldseek.com (exploration) and search.foldseek.com/interface (search). Both responded on 15 November 2026.
+
+## Why stabilise a protein?
+
+            {{1}}
+* Expression yield and solubility — the most common practical reason by far
+* Shelf life, formulation, tolerance to temperature and solvents in biocatalysis
+* Stability as an evolvability budget: most function-improving mutations are destabilising, so a stabilised scaffold tolerates more of them. Stabilising first is how you buy room to engineer.
+
+### Two ways to find stabilising mutations
+
+                    --{{0}}--
+The good servers combine them: evolution proposes, energy filters (or the reverse), and the survivors are combined into a multi-point design. Look back at the cold shock proteins. We reason that it is a surface electrostatic effect — the one both approaches find hardest. We cross-check later on. Note: Always exclude functional residues — active site, binding site, interface. This is where the morning’s interaction analysis pays for itself
+
+|                 |      Evolution-based                                             |      Energy-based                                                         |
+|-----------------|------------------------------------------------------------------|---------------------------------------------------------------------------|
+|     Question    |     What does the family do at this position?                    |     What does this substitution cost in this structure?                   |
+|     Method      |     MSA → conservation, consensus, PSSM                          |     Force field (FoldX) or Rosetta ΔΔG; increasingly ML   predictors      |
+|     Strength    |     Cheap, robust, captures constraints no force field models    |     Context-aware, works without a deep family                            |
+|     Weakness    |     Blind to your specific context; needs a good alignment       |     ~1 kcal/mol error, and weakest exactly on surface   electrostatics    |
+
 
 ## Force Fields
 
@@ -1587,46 +1589,7 @@ Applications include the optimisation of structures, the calculation of the stab
 
 [FoldX](https://dx.doi.org/10.1093%2Fnar%2Fgki387)
 
-## Exercise 6: Model a Mutation using ChimeraX
 
-- Load the PDB entry 2AC0.
-- Set an appropriate structure representation.
-- Locate residue Ala159 using the sequence view. 
-- Use the *swapaa* command to change it to a Trp residue.
-- Look at the effect of the substitution on the structure.
-- Mutate Arg273 to an alanine side chain. Discuss the effects of this substitution.
-
-      {{1}}
-*******
-
-```
-swapaa #6.2:159 trp log true
-```
-Additional exercise: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1304567/
-Further reading: https://dasher.wustl.edu/chem430/software/chimera/users-guide.pdf
-
-********
-
-## Stabilisations of proteins
-
-### Why stabilise a protein?
-
-•	Expression yield and solubility — the most common practical reason by far
-•	Shelf life, formulation, tolerance to temperature and solvents in biocatalysis
-•	Stability as an evolvability budget: most function-improving mutations are destabilising, so a stabilised scaffold tolerates more of them. Stabilising first is how you buy room to engineer.
-
-### Two ways to find stabilising mutations
-
-|                 |      Evolution-based                                             |      Energy-based                                                         |
-|-----------------|------------------------------------------------------------------|---------------------------------------------------------------------------|
-|     Question    |     What does the family do at this position?                    |     What does this substitution cost in this structure?                   |
-|     Method      |     MSA → conservation, consensus, PSSM                          |     Force field (FoldX) or Rosetta ΔΔG; increasingly ML   predictors      |
-|     Strength    |     Cheap, robust, captures constraints no force field models    |     Context-aware, works without a deep family                            |
-|     Weakness    |     Blind to your specific context; needs a good alignment       |     ~1 kcal/mol error, and weakest exactly on surface   electrostatics    |
-
-•	The good servers combine them: evolution proposes, energy filters (or the reverse), and the survivors are combined into a multi-point design.
-•	Note the connection to 13:55 out loud: the cold shock protein result was a surface electrostatic effect — the one both approaches find hardest. This is not a rhetorical point; it is why the 16:10 cross-check is interesting.
-•	Always exclude functional residues — active site, binding site, interface. This is where the morning’s interaction analysis pays for itself
 
 ### PROSS (pross.weizmann.ac.il)
 
@@ -1645,6 +1608,8 @@ Further reading: https://dasher.wustl.edu/chem430/software/chimera/users-guide.p
 •	Also runs for hours. The server’s example job (haloalkane dehalogenase DhaA) is the fallback.
 
 https://loschmidt.chemi.muni.cz/fireprotweb/example
+
+
 
 ### Exercise (20 min + 5 min, jigsaw)
 
@@ -1699,6 +1664,45 @@ For the exercise, we will use the HPC Tier-2 of the UGent. Documentation on how 
 |     Mutate      |     What does one substitution do?                                   |     ChimeraX swapaa, FoldX                                     |     the sign of ΔΔG; stability ≠ function              |
 |     Scan        |     Which positions tolerate change at all?                          |     MutateX on the VSC HPC                                     |     heatmap → mapped back onto the structure           |
 |     Design      |     Which variants should I actually make?                           |     PROSS, FireProt                                            |     exclude functional residues; order a panel         |
+
+#### Extra: Use the tool FoldX tool AnalyseComplex
+
+>
+> 1. Given that energy-minimization takes a while for this rather large complex,
+>     please download the Yasara scene [here](http://data.bits.vib.be/pub/trainingen/PSA/3P0G_1.sce)
+>
+>    Calculate the interaction energies between the chain A and B of the object 3P0G
+>    and the RepairObj1, respectively.
+>
+>    ```
+>    Analyze - FoldX - Interaction energy of molecules
+>    ```
+
+> <i class="fas fa-question"></i> **Questions**
+>
+> 1. What is the dG in the two cases?
+> 2. Any idea why the difference is rather hugh?
+
+<details><summary>Solution
+</summary>
+
+> 1. first case (X-ray structure): Interaction energy between molecule(s) A and B in object 1 = -9.86 (kcal/mol)
+>    second case:
+>    Interaction energy between molecule(s) A and B in object 2 = -20.19 (kcal/mol)
+> 2. Through the energy minimisation of the Repair Object function, the interactions of the amino acids are optimised.
+
+</details>
+
+
+This command also creates a list of residues forming the interface of the two proteins. Hit space to see the list of residues in the interface.
+
+Tip: This list can also be useful if you want to make visualisations of the interaction site.
+
+```
+Plugin>interface residues between A and B
+Plugin>TA66 TA68 IA72 IA127 RA131 AA134 IA135 TA136 SA137 PA138 FA139 KA140 QA142 YA219 VA222 EA225 AA226 LA266 KA267 EA268 AA271 LA272 TA274 LA275 IA278 IA325 YA326 RA328 SA329 PA330 SB27 IB28 FB29 SB30 IB31 TB33 AB50 IB51 eB52 SB56 TB57 NB58 YB100 AB102 VB103 LB104 YB105 EB106 YB107
+```
+
 
 ### Driving ChimeraX from an LLM agent (MCP)
 
