@@ -390,11 +390,16 @@ It is recommended to study the related articles and compare the available struct
 
 ## Search for a structure in PDB
 
-The primary data format for PDB data is the [PDBx/mmCIF format](https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format). There is a legacy [PDB format](http://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html) which is still very popular. 
+| ![PDBe](https://www.ensembl.info/wp-content/uploads/2019/04/pdbe-300x300.png)     |   ![RCSB](https://cdn.rcsb.org/rcsb-pdb/v2/home/images/menuImgs/rgb-logo-white.png)  | 
 
-A PDB (Protein Data Bank) file is a plain text file that contains the
-atom coordinates of a solved 3D structure of a protein or even DNA. Such
-coordinate files can be obtained at the Protein Data Bank at [https://www.ebi.ac.uk/pdbe](https://www.ebi.ac.uk/pdbe) or
+A PDB (Protein Data Bank) file:
+
+* plain text file that contains the atom coordinates of a solved 3D structure of a protein or even DNA.
+* PDB data is the [PDBx/mmCIF format](https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/beginner%E2%80%99s-guide-to-pdb-structures-and-the-pdbx-mmcif-format)
+* Legacy [PDB format](http://www.wwpdb.org/documentation/file-format-content/format33/v3.3.html) still very popular. 
+
+                         --{{0}}--
+Such coordinate files can be obtained at the Protein Data Bank at [https://www.ebi.ac.uk/pdbe](https://www.ebi.ac.uk/pdbe) or
 [http://www.rcsb.org/](http://www.rcsb.org/). Each PDB entry has a unique identifier (ID)
 consisting of 4 characters, the first one is always a number. 
 Note: It has been announced that the 4 character code will change in the [future](https://www.wwpdb.org/news/news?year=2017\#5910c8d8d3b1d333029d4ea8).
