@@ -344,7 +344,7 @@ To save the current view to a high quality publication ready image file, click o
 
 ## Exercise 1: Select structures from Uniprot and the PDB
 
-- Use the UniProt site to search for “dnak”.  
+- Use the [UniProt](https://uniprot.org) site to search for “dnak”.  
 - Use the PDB site to search for “dnak”.
 - Compare the UniProt and PDB result lists.
 - Use the sequence search function to see if there are structures with sequences similar to that of the  DnaK C-terminal domain.
@@ -394,7 +394,7 @@ The primary data format for PDB data is the [PDBx/mmCIF format](https://pdb101.r
 
 A PDB (Protein Data Bank) file is a plain text file that contains the
 atom coordinates of a solved 3D structure of a protein or even DNA. Such
-coordinate files can be obtained at the Protein Data Bank at
+coordinate files can be obtained at the Protein Data Bank at [https://www.ebi.ac.uk/pdbe](https://www.ebi.ac.uk/pdbe) or
 [http://www.rcsb.org/](http://www.rcsb.org/). Each PDB entry has a unique identifier (ID)
 consisting of 4 characters, the first one is always a number. 
 Note: It has been announced that the 4 character code will change in the [future](https://www.wwpdb.org/news/news?year=2017\#5910c8d8d3b1d333029d4ea8).
