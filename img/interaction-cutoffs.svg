@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" font-family="'Open Sans', Arial, sans-serif">
+  <title>Default distance cut-offs differ between interaction programs</title>
+  <style>
+    .g{font-size:34px;font-weight:700;fill:#1a1a1a}
+    .v{font-size:28px;font-weight:700;fill:#1a1a1a;dominant-baseline:central}
+    .k{font-size:26px;fill:#444;text-anchor:middle}
+    .lg{font-size:28px;fill:#1a1a1a;dominant-baseline:central}
+    .L{fill:#e69f00}.X{fill:#0072b2}.P{fill:#009e73}
+  </style>
+  <rect width="1600" height="760" fill="#fff"/>
+  <!-- legend -->
+  <rect class="L" x="360" y="30" width="34" height="34" rx="4"/><text class="lg" x="404" y="47">LigPlot+ (HBPLUS)</text>
+  <rect class="X" x="700" y="30" width="34" height="34" rx="4"/><text class="lg" x="744" y="47">ChimeraX</text>
+  <rect class="P" x="930" y="30" width="34" height="34" rx="4"/><text class="lg" x="974" y="47">PLIP</text>
+  <!-- gridlines: x(d)=360+(d-2.5)*331.43 -->
+  <g stroke="#e5e5e5" stroke-width="2">
+    <line x1="526" y1="100" x2="526" y2="630"/><line x1="691" y1="100" x2="691" y2="630"/>
+    <line x1="857" y1="100" x2="857" y2="630"/><line x1="1023" y1="100" x2="1023" y2="630"/>
+    <line x1="1189" y1="100" x2="1189" y2="630"/><line x1="1354" y1="100" x2="1354" y2="630"/>
+  </g>
+  <!-- marker at 3.7 A -->
+  <line x1="758" y1="92" x2="758" y2="630" stroke="#d62728" stroke-width="4" stroke-dasharray="12 8"/>
+  <text x="770" y="95" style="font-size:26px;font-weight:700;fill:#d62728">a contact at 3.7 Å</text>
+  <!-- groups -->
+  <text class="g" x="20" y="175">H-bond</text><text x="20" y="212" style="font-size:24px;fill:#555">donor···acceptor</text>
+  <rect class="L" x="360" y="118" width="282" height="34"/><text class="v" x="652" y="135">3.35</text>
+  <rect class="X" x="360" y="162" width="464" height="34"/><text class="v" x="834" y="179">≈ 3.9*</text>
+  <rect class="P" x="360" y="206" width="530" height="34"/><text class="v" x="900" y="223">4.1</text>
+
+  <text class="g" x="20" y="347">Hydrophobic</text><text x="20" y="384" style="font-size:24px;fill:#555">C···C contact</text>
+  <rect class="L" x="360" y="290" width="497" height="34"/><text class="v" x="867" y="307">3.9</text>
+  <rect class="X" x="360" y="334" width="464" height="34"/><text class="v" x="834" y="351">≈ 3.8*</text>
+  <rect class="P" x="360" y="378" width="497" height="34"/><text class="v" x="867" y="395">4.0</text>
+
+  <text class="g" x="20" y="519">Salt bridge</text><text x="20" y="556" style="font-size:24px;fill:#555">charged groups</text>
+  <rect class="L" x="360" y="462" width="282" height="34"/><text class="v" x="652" y="479">3.35 (as H-bond)</text>
+  <rect class="X" x="360" y="506" width="464" height="34"/><text class="v" x="834" y="523">≈ 3.9* (as H-bond)</text>
+  <rect class="P" x="360" y="550" width="994" height="34"/><text class="v" x="1364" y="567">5.5</text>
+
+  <!-- axis -->
+  <line x1="360" y1="630" x2="1520" y2="630" stroke="#333" stroke-width="3"/>
+  <g class="k"><text x="360" y="670">2.5</text><text x="526" y="670">3.0</text><text x="691" y="670">3.5</text><text x="857" y="670">4.0</text>
+  <text x="1023" y="670">4.5</text><text x="1189" y="670">5.0</text><text x="1354" y="670">5.5</text><text x="1520" y="670">6.0</text></g>
+  <text x="940" y="715" style="font-size:28px;fill:#1a1a1a;text-anchor:middle">maximum distance accepted (Å, default settings)</text>
+  <text x="20" y="748" style="font-size:20px;fill:#777">* ChimeraX: atom-type-specific criteria + 0.4 Å / 20° tolerance (hbonds), vdW overlap ≥ −0.4 Å (contacts) · Figure: VIB Training, CC BY 4.0</text>
+</svg>

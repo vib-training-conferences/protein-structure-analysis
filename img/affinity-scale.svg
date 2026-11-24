@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 440" font-family="'Open Sans', Arial, sans-serif">
+  <title>Dissociation constant and binding free energy scale</title>
+  <defs><linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="#cfe3f5"/><stop offset="1" stop-color="#0b4f8a"/></linearGradient></defs>
+  <style>
+    .k{font-size:34px;font-weight:700;fill:#1a1a1a;text-anchor:middle}
+    .g{font-size:30px;fill:#1a1a1a;text-anchor:middle}
+    .e{font-size:26px;fill:#444;text-anchor:middle}
+  </style>
+  <rect width="1600" height="440" fill="#fff"/>
+  <text x="20" y="190" style="font-size:28px;fill:#555">K<tspan baseline-shift="sub" font-size="20">d</tspan></text>
+  <text x="20" y="300" style="font-size:28px;fill:#555">ΔG°</text>
+  <rect x="150" y="205" width="1300" height="40" rx="20" fill="url(#gr)"/>
+  <g stroke="#1a1a1a" stroke-width="3"><line x1="170" y1="200" x2="170" y2="250"/><line x1="597" y1="200" x2="597" y2="250"/><line x1="1023" y1="200" x2="1023" y2="250"/><line x1="1430" y1="200" x2="1430" y2="250"/></g>
+  <text class="k" x="170" y="185">1 mM</text><text class="k" x="597" y="185">1 µM</text><text class="k" x="1023" y="185">1 nM</text><text class="k" x="1430" y="185">1 pM</text>
+  <text class="g" x="170" y="295">−4.1</text><text class="g" x="597" y="295">−8.2</text><text class="g" x="1023" y="295">−12.3</text><text class="g" x="1430" y="295">−16.4 kcal/mol</text>
+  <!-- examples -->
+  <g class="e">
+    <text x="300" y="80">fragments</text><line x1="190" y1="100" x2="420" y2="100" stroke="#888" stroke-width="5"/>
+    <text x="700" y="80">screening hits</text><line x1="560" y1="100" x2="850" y2="100" stroke="#888" stroke-width="5"/>
+    <text x="1150" y="60">drugs · nanobodies</text><line x1="900" y1="80" x2="1400" y2="80" stroke="#888" stroke-width="5"/>
+    <text x="1180" y="135" style="fill:#009e73;font-weight:700">BI-167107 on β2AR ≈ 0.1 nM</text>
+  </g>
+  <text x="800" y="370" style="font-size:30px;fill:#1a1a1a;text-anchor:middle">ΔG° = RT ln K<tspan baseline-shift="sub" font-size="22">d</tspan>  →  10× tighter binding ≈ 1.4 kcal/mol (25 °C)</text>
+  <text x="800" y="425" style="font-size:20px;fill:#888;text-anchor:middle">Figure: VIB Training, CC BY 4.0</text>
+</svg>

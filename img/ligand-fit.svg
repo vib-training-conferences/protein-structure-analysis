@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 620" font-family="'Open Sans', Arial, sans-serif">
+  <title>Ligand fit to electron density: supported versus partly unsupported</title>
+  <defs>
+    <pattern id="mesh" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+      <path d="M0,0 H14 M0,0 V14" stroke="#3a6fd8" stroke-width="2.5" fill="none"/>
+    </pattern>
+    <path id="all" d="M43.3,25 L0,50 L-43.3,25 L-43.3,-25 L0,-50 L43.3,-25 Z M43.3,-25 L95,-50 L145,-25 L195,-50 L245,-25 M-43.3,25 L-95,50"/>
+    <path id="ring" d="M43.3,25 L0,50 L-43.3,25 L-43.3,-25 L0,-50 L43.3,-25 Z M-43.3,25 L-95,50"/>
+  </defs>
+  <style>
+    .t{font-size:38px;font-weight:700;text-anchor:middle}
+    .d{font-size:31px;fill:#1a1a1a;text-anchor:middle}
+    .s{font-size:25px;fill:#555;text-anchor:middle}
+    .stick{fill:none;stroke:#e69f00;stroke-width:12;stroke-linejoin:round;stroke-linecap:round}
+    .dens{fill:none;stroke:url(#mesh);stroke-width:78;stroke-linejoin:round;stroke-linecap:round}
+  </style>
+  <rect width="1600" height="620" fill="#fff"/>
+  <line x1="800" y1="20" x2="800" y2="580" stroke="#ddd" stroke-width="2"/>
+  <text class="t" x="400" y="70" fill="#009e73">Supported by the data</text>
+  <g transform="translate(300,300)"><use href="#all" class="dens"/><use href="#all" class="stick"/></g>
+  <text class="d" x="400" y="470">RSCC ≈ 0.95</text>
+  <text class="s" x="400" y="515">density covers the whole ligand</text>
+
+  <text class="t" x="1200" y="70" fill="#d62728">Partly unsupported</text>
+  <g transform="translate(1100,300)"><use href="#ring" class="dens"/><use href="#all" class="stick"/></g>
+  <text class="d" x="1200" y="470">RSCC ≈ 0.65</text>
+  <text class="s" x="1200" y="515">tail modelled into empty space</text>
+  <text x="800" y="600" style="font-size:20px;fill:#888;text-anchor:middle">Schematic: blue mesh = 2mFo–DFc density, orange = modelled ligand · Rule of thumb: RSCC &gt; 0.9 good, &lt; 0.8 doubtful · Figure: VIB Training, CC BY 4.0</text>
+</svg>

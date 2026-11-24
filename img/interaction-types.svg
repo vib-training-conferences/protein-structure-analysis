@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 910" font-family="'Open Sans', Arial, sans-serif">
+  <title>Non-covalent interaction types with typical geometry and distances</title>
+  <style>
+    .t{font-size:36px;font-weight:700;fill:#1a1a1a;text-anchor:middle}
+    .d{font-size:31px;fill:#1a1a1a;text-anchor:middle}
+    .s{font-size:25px;fill:#555;text-anchor:middle}
+    .a{font-size:24px;font-weight:700;fill:#fff;text-anchor:middle;dominant-baseline:central}
+    .ah{font-size:20px;font-weight:700;fill:#333;text-anchor:middle;dominant-baseline:central}
+    .b{stroke:#444;stroke-width:6;stroke-linecap:round}
+    .nc{stroke:#444;stroke-width:5;stroke-dasharray:4 11;stroke-linecap:round;fill:none}
+    .C{fill:#7f7f7f}.N{fill:#2f5fd0}.O{fill:#d62728}.H{fill:#fff;stroke:#555;stroke-width:3}
+    .X{fill:#2ca02c}.S{fill:#d4a800}.M{fill:#7b4fa8}
+    .ring{fill:#c9b8e8;stroke:#5b3f8f;stroke-width:4}
+    .sep{stroke:#ddd;stroke-width:2}
+  </style>
+  <rect width="1600" height="910" fill="#fff"/>
+  <line class="sep" x1="400" y1="20" x2="400" y2="840"/><line class="sep" x1="800" y1="20" x2="800" y2="840"/>
+  <line class="sep" x1="1200" y1="20" x2="1200" y2="840"/><line class="sep" x1="20" y1="430" x2="1580" y2="430"/>
+
+  <!-- 1 hydrogen bond -->
+  <text class="t" x="200" y="60">Hydrogen bond</text>
+  <line class="b" x1="70" y1="190" x2="145" y2="190"/><line class="nc" x1="165" y1="190" x2="225" y2="190"/>
+  <line class="b" x1="255" y1="182" x2="330" y2="182"/><line class="b" x1="255" y1="198" x2="330" y2="198"/>
+  <circle class="N" cx="70" cy="190" r="30"/><text class="a" x="70" y="190">N</text>
+  <circle class="H" cx="145" cy="190" r="19"/><text class="ah" x="145" y="190">H</text>
+  <circle class="O" cx="255" cy="190" r="30"/><text class="a" x="255" y="190">O</text>
+  <circle class="C" cx="335" cy="190" r="27"/><text class="a" x="335" y="190">C</text>
+  <text class="s" x="70" y="250">donor</text><text class="s" x="255" y="250">acceptor</text>
+  <text class="d" x="200" y="320">D···A 2.6–3.5 Å</text>
+  <text class="s" x="200" y="362">angle D–H···A ≳ 120°</text>
+
+  <!-- 2 salt bridge -->
+  <text class="t" x="600" y="60">Salt bridge</text>
+  <line class="nc" x1="505" y1="175" x2="635" y2="145"/><line class="nc" x1="505" y1="205" x2="635" y2="235"/>
+  <line class="b" x1="665" y1="145" x2="730" y2="190"/><line class="b" x1="665" y1="235" x2="730" y2="190"/>
+  <circle class="N" cx="480" cy="190" r="34"/><text class="a" x="480" y="190">N⁺</text>
+  <circle class="O" cx="660" cy="145" r="28"/><text class="a" x="660" y="145">O⁻</text>
+  <circle class="O" cx="660" cy="235" r="28"/><text class="a" x="660" y="235">O</text>
+  <circle class="C" cx="735" cy="190" r="25"/><text class="a" x="735" y="190">C</text>
+  <text class="s" x="480" y="255">Lys/Arg</text><text class="s" x="700" y="290">Asp/Glu</text>
+  <text class="d" x="600" y="335">N···O ≲ 4 Å</text>
+  <text class="s" x="600" y="375">H-bond + charge–charge</text>
+
+  <!-- 3 hydrophobic -->
+  <text class="t" x="1000" y="60">Hydrophobic / vdW</text>
+  <g fill="#7f7f7f" fill-opacity="0.18">
+    <circle cx="935" cy="190" r="48"/><circle cx="1065" cy="190" r="48"/>
+  </g>
+  <line class="b" x1="880" y1="140" x2="935" y2="190"/><line class="b" x1="880" y1="250" x2="935" y2="190"/>
+  <line class="b" x1="1120" y1="140" x2="1065" y2="190"/><line class="b" x1="1120" y1="250" x2="1065" y2="190"/>
+  <circle class="C" cx="880" cy="140" r="22"/><circle class="C" cx="880" cy="250" r="22"/>
+  <circle class="C" cx="1120" cy="140" r="22"/><circle class="C" cx="1120" cy="250" r="22"/>
+  <circle class="C" cx="935" cy="190" r="27"/><text class="a" x="935" y="190">C</text>
+  <circle class="C" cx="1065" cy="190" r="27"/><text class="a" x="1065" y="190">C</text>
+  <text class="d" x="1000" y="320">C···C 3.5–4.5 Å</text>
+  <text class="s" x="1000" y="362">weak, many, additive</text>
+
+  <!-- 4 pi-pi -->
+  <text class="t" x="1400" y="60">π–π stacking</text>
+  <ellipse class="ring" cx="1290" cy="150" rx="62" ry="17"/>
+  <ellipse class="ring" cx="1330" cy="220" rx="62" ry="17"/>
+  <ellipse class="ring" cx="1490" cy="225" rx="58" ry="16"/>
+  <ellipse class="ring" cx="1490" cy="140" rx="16" ry="50"/>
+  <text class="s" x="1310" y="280">parallel-displaced</text><text class="s" x="1490" y="280">T-shaped</text>
+  <text class="d" x="1400" y="320">planes 3.4–3.8 Å</text>
+  <text class="s" x="1400" y="362">centroids ≈ 4–5.5 Å</text>
+
+  <!-- 5 pi-cation -->
+  <text class="t" x="200" y="490">π–cation</text>
+  <line class="nc" x1="200" y1="605" x2="200" y2="680"/>
+  <ellipse class="ring" cx="200" cy="690" rx="95" ry="25"/>
+  <circle class="N" cx="200" cy="575" r="34"/><text class="a" x="200" y="575">N⁺</text>
+  <text class="s" x="320" y="580" style="text-anchor:start">Lys/Arg</text>
+  <text class="s" x="320" y="700" style="text-anchor:start">Phe/Tyr/Trp</text>
+  <text class="d" x="200" y="770">cation···ring 3.5–6 Å</text>
+  <text class="s" x="200" y="810">cation above the ring face</text>
+
+  <!-- 6 halogen bond -->
+  <text class="t" x="600" y="490">Halogen bond</text>
+  <line class="b" x1="470" y1="630" x2="560" y2="630"/><line class="nc" x1="610" y1="630" x2="660" y2="630"/>
+  <circle class="C" cx="470" cy="630" r="27"/><text class="a" x="470" y="630">C</text>
+  <circle class="X" cx="560" cy="630" r="38"/><text class="a" x="555" y="630">Br</text>
+  <circle cx="595" cy="630" r="11" fill="#7fb2ff" stroke="#2f5fd0" stroke-width="2"/>
+  <circle class="O" cx="690" cy="630" r="30"/><text class="a" x="690" y="630">O</text>
+  <text class="s" x="595" y="580">σ-hole</text>
+  <text class="d" x="600" y="770">X···O 2.8–3.5 Å</text>
+  <text class="s" x="600" y="810">C–X···O nearly linear (≈ 165°)</text>
+
+  <!-- 7 water bridge -->
+  <text class="t" x="1000" y="490">Water bridge</text>
+  <line class="b" x1="845" y1="650" x2="900" y2="650"/><line class="nc" x1="918" y1="645" x2="972" y2="628"/>
+  <line class="b" x1="1000" y1="620" x2="1042" y2="648"/><line class="b" x1="1000" y1="620" x2="990" y2="575"/>
+  <line class="nc" x1="1058" y1="655" x2="1100" y2="665"/>
+  <circle class="N" cx="845" cy="650" r="27"/><text class="a" x="845" y="650">N</text>
+  <circle class="H" cx="900" cy="650" r="17"/><text class="ah" x="900" y="650">H</text>
+  <circle class="O" cx="1000" cy="620" r="30"/><text class="a" x="1000" y="620">O</text>
+  <circle class="H" cx="1042" cy="648" r="15"/><circle class="H" cx="990" cy="575" r="15"/>
+  <circle class="O" cx="1127" cy="670" r="27"/><text class="a" x="1127" y="670">O</text>
+  <text class="s" x="845" y="710">protein</text><text class="s" x="1000" y="550">water</text><text class="s" x="1127" y="730">ligand</text>
+  <text class="d" x="1000" y="770">each leg 2.6–3.2 Å</text>
+  <text class="s" x="1000" y="810">only if the water is modelled</text>
+
+  <!-- 8 metal coordination -->
+  <text class="t" x="1400" y="490">Metal coordination</text>
+  <g class="b" style="stroke-width:5"><line x1="1400" y1="635" x2="1315" y2="570"/><line x1="1400" y1="635" x2="1485" y2="570"/>
+  <line x1="1400" y1="635" x2="1320" y2="705"/><line x1="1400" y1="635" x2="1480" y2="705"/></g>
+  <circle class="N" cx="1315" cy="570" r="25"/><text class="a" x="1315" y="570">N</text>
+  <circle class="N" cx="1485" cy="570" r="25"/><text class="a" x="1485" y="570">N</text>
+  <circle class="S" cx="1320" cy="705" r="27"/><text class="a" x="1320" y="705">S</text>
+  <circle class="O" cx="1480" cy="705" r="25"/><text class="a" x="1480" y="705">O</text>
+  <circle class="M" cx="1400" cy="635" r="36"/><text class="a" x="1400" y="635" style="font-size:22px">Zn²⁺</text>
+  <text class="d" x="1400" y="770">M–N/O/S 1.9–2.6 Å</text>
+  <text class="s" x="1400" y="810">fixed geometry, e.g. tetrahedral</text>
+
+  <text x="800" y="885" style="font-size:24px;fill:#555;text-anchor:middle">Typical ranges, not hard thresholds – nature has no cut-offs · Figure: VIB Training, CC BY 4.0</text>
+</svg>
