@@ -381,7 +381,7 @@ Which structures (give the 4-character PDB ID) of the C-terminal domain of DnaK 
                    --{{1}}--
 Substrate-binding domain with peptide - 1 DKX | Near-full-length, ATP-bound open DnaK - 4JNE or 4B9Q | Near-full-length substrate-bound state studied by NMR - 2KHO | Complete predicted reference model - AlphaFold model AF-P0A6Y8-F1 | Near-full-length DnaK bound to the DnaJ J-domain - 5NRO | NBD in complex with the nucleotide exchange factor GrpE - 1DKG
 
-Open this link https://www.menti.com/aliyw4i76tzn and let's collect some answers.
+Go to mentimeter.com and enter the code: 6545 1575 or use this link https://www.menti.com/aliyw4i76tzn and let's collect some answers.
 
                         {{1}}
 PDBe-KB (Protein Data Bank in Europe - Knowledge Base) is a community-driven resource managed by the PDBe team, collating functional annotations and predictions for structure data in the PDB archive. 
