@@ -40,20 +40,7 @@ link: https://raw.githubusercontent.com/vib-training-conferences/protein-structu
 
 ### Relevant databases
 
-                           {{0-1}}
-*********************
-
-[**Uniprot**](https://www.uniprot.org/) approx. 570,000 curated sequences (SwissProt)
-
-![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/uniprot-logo.png)<!-- width="50%" -->
-
-- mainly determined by large-scale DNA sequencing of individual genes or whole genomes
-
-- increasingly automated annotation
-
-*******************
-
-                                  {{1-2}}
+                                  {{1}}
 *********************
 [http://www.wwpdb.org](http://www.wwpdb.org)
 
@@ -329,8 +316,8 @@ To save the current view to a high quality publication ready image file, click o
 
 !?[Proteins are polypeptides of aminoacids](https://www.youtube.com/watch?v=iBV67yamqlA&list=PLuIpgNT2hMwRQKFy4okoNQKiJwM8li3Sz&index=20)
 
-## Protein Data Bank
-
+# Relevant databases - PDB
+           
 [**Protein Data Bank**](http://www.wwpdb.org) approx. 263,000 experimentally determined structures
 
 ![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/pdb-logo.png)<!-- width="50%" -->
@@ -341,6 +328,16 @@ To save the current view to a high quality publication ready image file, click o
 - No purely theoretical or ab initio models  (since 2006)
 - Also stores supporting experimental data
 - Full deposition now  required by all peer-reviewed journals
+
+# Relevant databases - Uniprot
+
+[**Uniprot**](https://www.uniprot.org/) approx. 576,000 curated sequences (SwissProt)
+
+![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/uniprot-logo.png)<!-- width="50%" -->
+
+- mainly determined by large-scale DNA sequencing of individual genes or whole genomes
+
+- increasingly automated annotation
 
 ## Exercise 1: Select structures from Uniprot and the PDB
 
@@ -403,35 +400,6 @@ Such coordinate files can be obtained at the Protein Data Bank at [https://www.e
 [http://www.rcsb.org/](http://www.rcsb.org/). Each PDB entry has a unique identifier (ID)
 consisting of 4 characters, the first one is always a number. 
 Note: It has been announced that the 4 character code will change in the [future](https://www.wwpdb.org/news/news?year=2017\#5910c8d8d3b1d333029d4ea8).
-
-                 {{1}}
-******************
-**Via the Protein Data Bank by sequence**
-
-In lots of cases we only have a sequence of which we would like to find out if there is structural information. The PDB can be searched using a sequence as input. Here is the sequence of the C-terminal substrate binding domain of DnaK:
-
-```
-DVKDVLLLDVTPLSLGIETMGGVMTTLIAKNTTIPTKHSQVFSTAEDNQSAVTIHVLQGERKRAADNKSLGQFNLDGINPAPRGMPQIEVTFDIDADGILHVSAKDKNSGKEQKITIKASSGLNEDEIQKMVRDAEANAEADRKFEELVQTRNQGDHLLHSTRKQVEEAGDKLPADDKTAIESALTALETALKGEDKAAIEAKMQELAQVSQKLMEIAQQQHAQQQTAGADASANNAKDDDVVDAEFEEVKDKK
-```
-
-The PDB allows sequence searches through the same search box we used before.
-
-![Search box RCSB](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/PSA01_01_pdbsearchbox_RCSB.png "PDB Search Box")
-
-There is also an Advanced Search section, with a Blast/Fasta option in the Sequence Features section.
-
-![Blastpdb.png](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/AdvancedSearchBox.png "BLAST")
-
-> Hands-on: BLAST search for PDB structure
->
-> 1. Go to the Advanced Search section
-> 2. Please select 'Sequence BLAST/PSI-BLAST' in the Query type drop down.
->    This method allows you to change some parameters for the search.
-> 3. Copy and paste the sequence in the ''Sequence'' field
-> 4. Press ''Submit query''.
-> 5. You should see the same structures popping up as you saw in the UniProt page of DnaK.
-
-*****************
 
 
 ## Exercise 2: Getting to know PDB entries 
@@ -1771,6 +1739,34 @@ Closing line for the slide, and for the day: all three produce structures and nu
 - [Lectures by Burkhard Rost on protein structure prediction](https://www.youtube.com/channel/UCU6j8BG4RbEtTgyIZJ6Vpow)
 
 ## Annex 
+
+### Exercise 1: Search for a structure
+
+**Via the Protein Data Bank by sequence**
+
+In lots of cases we only have a sequence of which we would like to find out if there is structural information. The PDB can be searched using a sequence as input. Here is the sequence of the C-terminal substrate binding domain of DnaK:
+
+```
+DVKDVLLLDVTPLSLGIETMGGVMTTLIAKNTTIPTKHSQVFSTAEDNQSAVTIHVLQGERKRAADNKSLGQFNLDGINPAPRGMPQIEVTFDIDADGILHVSAKDKNSGKEQKITIKASSGLNEDEIQKMVRDAEANAEADRKFEELVQTRNQGDHLLHSTRKQVEEAGDKLPADDKTAIESALTALETALKGEDKAAIEAKMQELAQVSQKLMEIAQQQHAQQQTAGADASANNAKDDDVVDAEFEEVKDKK
+```
+
+The PDB allows sequence searches through the same search box we used before.
+
+![Search box RCSB](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/PSA01_01_pdbsearchbox_RCSB.png "PDB Search Box")
+
+There is also an Advanced Search section, with a Blast/Fasta option in the Sequence Features section.
+
+![Blastpdb.png](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/AdvancedSearchBox.png "BLAST")
+
+> Hands-on: BLAST search for PDB structure
+>
+> 1. Go to the Advanced Search section
+> 2. Please select 'Sequence BLAST/PSI-BLAST' in the Query type drop down.
+>    This method allows you to change some parameters for the search.
+> 3. Copy and paste the sequence in the ''Sequence'' field
+> 4. Press ''Submit query''.
+> 5. You should see the same structures popping up as you saw in the UniProt page of DnaK.
+
 
 ### Determining the pose of a small molecule
 
