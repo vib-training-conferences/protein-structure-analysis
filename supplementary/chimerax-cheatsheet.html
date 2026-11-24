@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChimeraX cheat sheet</title>
+<style>
+  @page { size: A4; margin: 10mm; }
+  * { box-sizing: border-box; }
+  body { font: 9.5pt/1.3 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1a1a1a; margin: 0 auto; max-width: 190mm; padding: 10mm 0; }
+  h1 { font-size: 16pt; margin: 0; }
+  .sub { color: #555; font-size: 8.5pt; margin: 2px 0 8px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; }
+  section { border: 1px solid #ccd; border-radius: 4px; padding: 4px 7px 5px; break-inside: avoid; }
+  h2 { font-size: 9.5pt; margin: 0 0 3px; color: #1f4e8c; text-transform: uppercase; letter-spacing: .03em; }
+  table { border-collapse: collapse; width: 100%; }
+  td { padding: 1px 0; vertical-align: top; }
+  td:first-child { width: 58%; padding-right: 6px; }
+  code { font: 8.3pt/1.25 ui-monospace, Menlo, Consolas, monospace; background: #eef2f8; padding: 0 3px; border-radius: 2px; }
+  .full { grid-column: 1 / -1; }
+  .note { font-size: 8.5pt; }
+  .tips { margin: 0; padding-left: 14px; }
+  @media print { body { padding: 0; } }
+</style>
+</head>
+<body>
+<h1>ChimeraX in 15 commands</h1>
+<p class="sub">Protein Structure Analysis · ChimeraX 1.12 · type commands in the command line at the bottom of the window · <b>#1</b> = model, <b>/A</b> = chain, <b>:113</b> = residue, <b>@CA</b> = atom</p>
+
+<div class="grid">
+
+<section><h2>Get a structure</h2><table>
+<tr><td><code>open 3p0g</code></td><td>from the PDB</td></tr>
+<tr><td><code>open P02649 fromDatabase alphafold</code></td><td>AlphaFold DB (UniProt ID)</td></tr>
+<tr><td><code>open file.pdb</code></td><td>local file</td></tr>
+<tr><td><code>close</code> · <code>close #2</code></td><td>close all / one model</td></tr>
+</table></section>
+
+<section><h2>Look</h2><table>
+<tr><td><code>cartoon</code> · <code>hide atoms</code></td><td>ribbon only</td></tr>
+<tr><td><code>show :P0G atoms</code></td><td>show a ligand / residues</td></tr>
+<tr><td><code>style :P0G stick</code></td><td>stick, ball, sphere</td></tr>
+<tr><td><code>view sel</code> · <code>view</code></td><td>zoom to selection / all</td></tr>
+<tr><td><code>label :113</code></td><td>residue labels</td></tr>
+</table></section>
+
+<section><h2>Choose (select)</h2><table>
+<tr><td><code>select /A</code></td><td>chain A</td></tr>
+<tr><td><code>select :P0G</code></td><td>residue / ligand name</td></tr>
+<tr><td><code>select :3,66</code> · <code>:100-120</code></td><td>residue numbers</td></tr>
+<tr><td><code>select sel :&lt;5 &amp; protein</code></td><td>protein within 5 Å of selection</td></tr>
+<tr><td><code>select clear</code></td><td>deselect</td></tr>
+</table></section>
+
+<section><h2>Colour</h2><table>
+<tr><td><code>color bychain</code></td><td>one colour per chain</td></tr>
+<tr><td><code>color byhetero</code></td><td>heteroatoms by element</td></tr>
+<tr><td><code>color bfactor palette bluered</code></td><td>flexibility (B-factor)</td></tr>
+<tr><td><code>color red sel</code></td><td>named colour on selection</td></tr>
+</table></section>
+
+<section><h2>Surfaces</h2><table>
+<tr><td><code>surface protein</code></td><td>molecular surface</td></tr>
+<tr><td><code>mlp</code></td><td>lipophilicity colouring</td></tr>
+<tr><td><code>coulombic</code></td><td>electrostatics (run <code>addh</code> first)</td></tr>
+<tr><td><code>hide surfaces</code></td><td>remove surfaces</td></tr>
+</table></section>
+
+<section><h2>Measure interactions</h2><table>
+<tr><td><code>distance :113@OD1 :P0G@N</code></td><td>distance between atoms</td></tr>
+<tr><td><code>hbonds :P0G restrict cross reveal true log true</code></td><td>H-bonds to the ligand</td></tr>
+<tr><td><code>contacts :P0G restrict cross reveal true log true</code></td><td>all contacts</td></tr>
+<tr><td><code>clashes :P0G restrict cross log true</code></td><td>clashes</td></tr>
+<tr><td><code>interfaces #1</code></td><td>chain–chain interfaces</td></tr>
+<tr><td><code>measure buriedarea /A /B</code></td><td>buried surface area</td></tr>
+</table></section>
+
+<section><h2>Compare</h2><table>
+<tr><td><code>matchmaker #2 to #1</code></td><td>superpose, reports RMSD + pairs</td></tr>
+<tr><td><code>morph #1,2</code></td><td>animate between two states</td></tr>
+<tr><td><code>rmsd #2 to #1</code></td><td>RMSD without moving</td></tr>
+</table></section>
+
+<section><h2>Change</h2><table>
+<tr><td><code>split #1</code></td><td>one model per chain</td></tr>
+<tr><td><code>swapaa :159 trp log true</code></td><td>mutate a residue (best rotamer)</td></tr>
+<tr><td><code>addh</code></td><td>add hydrogens</td></tr>
+<tr><td><code>delete :HOH</code> · <code>delete @NA</code></td><td>remove waters / ions</td></tr>
+</table></section>
+
+<section class="full"><h2>Keep</h2><table>
+<tr><td style="width:46%"><code>save site.png supersample 3</code></td><td>high-quality image</td></tr>
+<tr><td><code>save work.cxs</code> · <code>open work.cxs</code></td><td>session: everything, incl. view</td></tr>
+<tr><td><code>log save my-steps.html</code> · Log ▸ Save as .cxc</td><td>the <b>Log is your script</b>: replay with <code>open my-steps.cxc</code></td></tr>
+</table></section>
+
+<section class="full note"><h2>Remember</h2>
+<ul class="tips">
+<li><b>Every menu click is echoed in the Log as a command.</b> Click once, then copy the command and reuse it.</li>
+<li>Hydrogen bonds depend on the tool and its cut-offs. Report them <i>with</i> the definition. Run <code>hbonds</code> before and after <code>addh</code> and compare.</li>
+<li>Use <code>help hbonds</code> (any command name) for the manual page; <code>usage hbonds</code> for the short syntax.</li>
+<li>Undo a display mess: <code>hide atoms; cartoon; view</code> · reset colours: <code>color bychain</code> · start again: <code>close; open 3p0g</code>.</li>
+</ul></section>
+
+</div>
+</body>
+</html>
