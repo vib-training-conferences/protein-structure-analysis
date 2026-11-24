@@ -18,7 +18,6 @@ link: https://raw.githubusercontent.com/vib-training-conferences/protein-structu
 -->
 
 
-
 # Protein Structure Analysis
 
 - Sequences, structures and databases
@@ -1268,7 +1267,7 @@ We do not go into great detail on all the tools but only mention PoseView. With 
 
 In order to estimate the binding energy between the nanobody and the β2 adrenoceptor, we can use the FoldX tool AnalyseComplex. It is recommended to calculate these binding energies on energy-minimized structures. To illustrate the effect of the energy minimization, we compare the interaction energy of the current crystal structure and its minimized structure.
 
-TODO - https://pmc.ncbi.nlm.nih.gov/articles/PMC12230730/
+[^1](https://pmc.ncbi.nlm.nih.gov/articles/PMC12230730/)
 
 ##### Comparing the active and the inactive conformation of the β2 adrenoceptor 
 
@@ -1330,7 +1329,7 @@ What makes a protein stable? Comparing a mesophilic and a thermophilic homolog
 
 ### Folding is a near-run thing
 
-TODO: add illustration from Anastassia
+![folding](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/main/img/folding-illustration-science.png)
 
 •	ΔG of folding for a small single-domain protein: ~5–15 kcal/mol. That is the difference between two very large numbers — the entropy of the unfolded chain against the sum of every interaction in the folded state.
 •	5–15 kcal/mol is the energy of a handful of hydrogen bonds. A single substitution can plausibly consume all of it.
@@ -1338,14 +1337,15 @@ TODO: add illustration from Anastassia
 
 ### What holds a protein together
 
-TODO: check repetition from protein-protein interaction
-
 •	Hydrophobic core packing — the dominant term; cavity-creating substitutions (Leu→Ala) cost 1–5 kcal/mol
 •	Hydrogen bonds and satisfied secondary structure; helix capping
 •	Salt bridges and the overall surface charge distribution — including long-range electrostatics
 •	Disulfide bridges — largely entropic: they restrict the unfolded state
 •	Loop length, prolines and glycines — backbone entropy
-•	Thermophilic adaptations: more charged residues and ion-pair networks at the surface, shorter loops, tighter packing. TODO: Say explicitly that these are tendencies across genomes, not rules for any one protein — which is exactly what the next slide demonstrates
+•	Thermophilic adaptations: more charged residues and ion-pair networks at the surface, shorter loops, tighter packing. 
+
+               --{{0}}--
+Say explicitly that these are tendencies across genomes, not rules for any one protein — which is exactly what the next slide demonstrates
 
 ### Case: two cold shock proteins, 67 residues
 
@@ -1357,9 +1357,9 @@ TODO: check repetition from protein-protein interaction
 
 •	Same OB fold, same five-stranded β-barrel, 12 sequence differences out of 67 residues.
 •	Perl, Mueller, Heinemann & Schmid, Nature Structural Biology 2000, 7:380–383 (doi:10.1038/75151): two surface positions account for the entire difference of 15.8 kJ/mol at 70 °C — Glu3→Arg contributes 11.5 kJ/mol (predominantly electrostatic) and Glu66→Leu contributes 5.2 kJ/mol (hydrophobic).
-•	Put the punchline on the slide: not the core — the surface. And the larger of the two contributions is electrostatic, which is the term empirical force fields handle worst.
 
-TODO: Forward link: “FoldX and SA-MPNN both claim to compute this. At 16:10 we check whether FoldX gets E3R and E66L right.”
+                    --{{0}}--
+It is important to note that here it is not the core residue which make the big difference but residues at the surface. And the larger of the two contributions is electrostatic, which is the term empirical force fields handle worst. FoldX and SA-MPNN both claim to compute this. Later on, we check whether FoldX and SA-MPNN get R3E and L66E right.
 
 ### Exercise (13 min, in pairs) — “Why is the thermophilic protein more stable?”
 
@@ -1584,7 +1584,7 @@ The force field describes the different interactions in a protein structure or c
 
 Applications include the optimisation of structures, the calculation of the stability of complexes, and predicting  the effect of amino-acid or base-pair mutations on these  properties.
 
-![FoldX Force Field](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/foldx-formula.PNG)
+![FoldX Force Field](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/main/img/foldx-formula.PNG)
 
 [FoldX](https://dx.doi.org/10.1093%2Fnar%2Fgki387)
 
