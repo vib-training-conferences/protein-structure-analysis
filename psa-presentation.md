@@ -307,16 +307,19 @@ Choose a filename such as `MyInsulin.cxs`. To load the work again in ChimeraX go
 
 To save the current view to a high quality publication ready image file, click on the Snapshot icon which will save a PNG file at the default location. 
 
-
-## Let's start with the amino acids and peptide structure
+### Let's start with the amino acids and peptide structure
 
 ![](https://raw.githubusercontent.com/vibbits/training-material/master/topics/protein-structure-analysis/images/amino-acids.png)<!-- width="100%" -->
 
-## Background on the polypeptides 
+### Background on the polypeptides 
 
 !?[Proteins are polypeptides of aminoacids](https://www.youtube.com/watch?v=iBV67yamqlA&list=PLuIpgNT2hMwRQKFy4okoNQKiJwM8li3Sz&index=20)
 
-# Relevant databases - PDB
+## Let's start with a quiz
+
+Go to mentimeter.com and enter the code: 6545 1575 or use this link https://www.menti.com/aliyw4i76tzn and let's collect some answers.
+
+## Relevant databases - PDB
            
 [**Protein Data Bank**](http://www.wwpdb.org) approx. 263,000 experimentally determined structures
 
@@ -329,7 +332,7 @@ To save the current view to a high quality publication ready image file, click o
 - Also stores supporting experimental data
 - Full deposition now  required by all peer-reviewed journals
 
-# Relevant databases - Uniprot
+## Relevant databases - Uniprot
 
 [**Uniprot**](https://www.uniprot.org/) approx. 576,000 curated sequences (SwissProt)
 
@@ -375,15 +378,29 @@ Which structures (give the 4-character PDB ID) of the C-terminal domain of DnaK 
 
 ### What other aspects could we look at for the protein DnaK?
 
-                   --{{1}}--
-Substrate-binding domain with peptide - 1 DKX | Near-full-length, ATP-bound open DnaK - 4JNE or 4B9Q | Near-full-length substrate-bound state studied by NMR - 2KHO | Complete predicted reference model - AlphaFold model AF-P0A6Y8-F1 | Near-full-length DnaK bound to the DnaJ J-domain - 5NRO | NBD in complex with the nucleotide exchange factor GrpE - 1DKG
-
+         {{0-1}}
 Go to mentimeter.com and enter the code: 6545 1575 or use this link https://www.menti.com/aliyw4i76tzn and let's collect some answers.
 
-                        {{1}}
-PDBe-KB (Protein Data Bank in Europe - Knowledge Base) is a community-driven resource managed by the PDBe team, collating functional annotations and predictions for structure data in the PDB archive. 
+                   {{1-2}}
+* Substrate-binding domain with peptide - 1 DKX
+* NBD in complex with the nucleotide exchange factor GrpE - 1DKG 
+* Near-full-length, ATP-bound open DnaK - 4JNE or 4B9Q 
+* Near-full-length substrate-bound state studied by NMR - 2KHO
+* Near-full-length DnaK bound to the DnaJ J-domain - 5NRO
+* Complete predicted reference model - AlphaFold model AF-P0A6Y8-F1
+
+
+               {{2}}
+*************
+
 A comparison of all structures can be found at [https://www.ebi.ac.uk/pdbe/pdbe-kb/proteins/P0A6Y8](https://www.ebi.ac.uk/pdbe/pdbe-kb/proteins/P0A6Y8).
-It is recommended to study the related articles and compare the available structures to find your favorite structure for the intended analysis. Obviously, a directed question to a GenAI chatbot could also give further directions.
+
+PDBe-KB (Protein Data Bank in Europe - Knowledge Base) is a community-driven resource managed by the PDBe team.
+
+**********
+
+            --{{2}}--
+The PDBe-KB collates functional annotations and predictions for structure data in the PDB archive. It is recommended to study the related articles and compare the available structures to find your favorite structure for the intended analysis. Obviously, a directed question to a GenAI chatbot could also give further directions.
 
 ## Search for a structure in PDB
 
@@ -511,14 +528,21 @@ Macromolecular crystals are composed of many individual molecules packed into a 
 
   [https://www.ebi.ac.uk/emdb/](https://www.ebi.ac.uk/emdb/)
 
+- knowledge base for single-domain antibodies 
+    
+    https://www.nanosaurus.org/
+
 ## Assessing Structure Quality: four questions to ask before you trust a structure
 
+               {{0-1}}
 ![Pdbdownloadfile1.png](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/quality-questions.svg)
 
                          --{{0}}--
 How was it made, and how well? X-ray: resolution and completeness. Cryo-EM: a global resolution plus a local resolution map — they are not the same number. NMR: an ensemble, with no resolution at all; ask how many restraints per residue. 2. Does the model fit the data? R and R-free. The gap matters as much as the values: an R-free − R difference much above ~0.05–0.07 suggests over-fitting. 3. Is the geometry sane? Ramachandran and rotamer outliers, clashscore, bond-length and angle RMSZ. MolProbity computes these; the wwPDB validation report ships them with every entry. 4. Is the part I care about resolved? This is the one people skip. Global quality says nothing about your loop, your side chain or your ligand. Look at per-residue B-factors, occupancies, missing residues, and the real-space fit of the ligand.
 Every PDB entry has one, reachable from the entry page at RCSB or PDBe. The summary is the percentile slider figure — the same one already used on the “Is the ligand really there?” slide for 3P0G, so reuse that image and point out that participants have met it before. Read it as: further to the left is worse than most of the archive, further to the right is better. The ligand section gives, per ligand instance: real-space correlation coefficient (RSCC), real-space R, and geometry outliers against the Chemical Component Dictionary. This is the check you run before you analyse any binding site — direct bridge to the 13:00 block. PDB-REDO (pdb-redo.eu) re-refines every X-ray entry with current methods and makes the before/after comparison explicit. Side chains move, waters come and go, and occasionally a ligand does not survive. Worth one sentence: “if your conclusion changes between the deposited and the re-refined model, it was never a structural conclusion.” Mention in passing that this is also how you judge an AlphaFold model, with different numbers: pLDDT per residue, PAE between domains — and that neither is an experimental observation.
 
+        {{1}}
+***********
 
 **Crystal Structures**
 - Diffraction data resolution and completeness (PDB)
@@ -535,6 +559,8 @@ General geometric properties (bond lengths and angles, Ramachandran distribution
 **Other techniques**
 
 - Difficult to generalise: carefully read and consider the  published protocol
+
+******
 
 ### Quiz: assessing structure quality
 
@@ -620,7 +646,7 @@ A structure has an excellent resolution (1.5 Å) and a clean validation report, 
 |     Change             |     split, swapaa, addh, delete                                                     |     split #1  · swapaa :159 trp log true · addh · delete :HOH                         |
 |     Keep               |     save, the Log                                                            |     save site.png supersample 3 · save work.cxs · Log ▸ Save   as .cxc    |
 
->
+> Download [Cheat sheet](https://github.com/vib-training-conferences/protein-structure-analysis/blob/main/supplementary/chimerax-cheatsheet.html) 
 
 ## Structure Alignment
 
@@ -680,7 +706,7 @@ DnaK (UniProt P0A6Y8) is the *E. coli* Hsp70 chaperone. Both entries below show 
 | Protein chains | 2 (A, B) | 4 (A, B, C, D) |
 | Ligands | ATP, Mg²⁺ (plus sulfate, glycerol) | ATP, Mg²⁺ |
 
-You will superimpose all **6 chains** on chain A of 4JNE and ask how similar the chains are, both within one crystal and between the two crystals.
+You will structurally align all **6 chains** of both structures on chain A of 4JNE and ask how similar the chains are, both within one crystal and between the two crystals.
 
 The root mean square deviation over $N$ matched atom pairs is
 
@@ -745,14 +771,17 @@ color #2.4 salmon target c
 view
 ```
 
-#### Step 3: Superimpose all chains on chain A of 4JNE
+#### Step 3: Align all chains on chain A of 4JNE structurally
 
 > <i class="fas fa-pencil-alt"></i> **Hands-on: Run matchmaker**
 >
 > Align every other chain to chain A of 4JNE (`#1.1`):
 >
 > ```
-> matchmaker #1.2,#2.1-4 to #1.1
+> matchmaker #1.2 to #1.1
+> matchmaker #2.1-4 to #1.1
+> or
+> matchmaker #1.2#2.1-4 to #1.1
 > ```
 >
 > ChimeraX aligns the sequences first, then fits the matched residues. For each chain it prints one line in the *Log* with:
@@ -774,21 +803,9 @@ view
 Useful variations:
 
 ```
-# draw lines between the matched atom pairs (long lines = large local deviations)
-matchmaker #1.2,#2.1-4 to #1.1 showpairs true
-
-# remove the pair lines again
-~pbond
-
 # fit only the C-alpha atoms
-matchmaker #1.2,#2.1-4 to #1.1 matchAtoms CA
+matchmaker #1.2@CA to #1.1@CA
 ```
-
-> **Alternative without splitting.** If you prefer to keep each entry as one model, tell matchmaker to move only the chains:
->
-> ```
-> matchmaker #1/B,#2/A-D to #1/A move chains
-> ```
 
 > <i class="fas fa-question"></i> **Questions**
 >
@@ -802,8 +819,7 @@ matchmaker #1.2,#2.1-4 to #1.1 matchAtoms CA
 DnaK has two domains: the nucleotide-binding domain (NBD, about residues 1 to 388) and the substrate-binding domain (SBD, about residues 389 to 607). A large global RMSD can mean either that both domains differ or that they only moved relative to each other. Fit the NBD alone and then compare:
 
 ```
-matchmaker #1.2,#2.1-4 to #1.1 matchAtoms CA
-matchmaker #1.2:1-388,#2.1-4:1-388 to #1.1:1-388 matchAtoms CA
+matchmaker #1.2:1-388@CA#2.1-4:1-388@CA to #1.1:1-388@CA
 ```
 
 > **Note:** residue numbering can differ slightly between entries near the C-terminus. If you restrict to the SBD, check the numbering of both models first (for example with `info residues #1.1:600-610` and `info residues #2.1:600-610`).
@@ -834,19 +850,36 @@ worm bfactor #1,2
 
 Switch back to the normal cartoon with `cartoon style #1,2 width 1.0 thick 0.2` and `~worm #1,2`.
 
-Compare against local variability by turning on the match pairs again:
-
-```
-matchmaker #1.2,#2.1-4 to #1.1 showpairs true
-```
-
 > <i class="fas fa-question"></i> **Questions**
 >
-> 1. Where in the structure are the B-factors highest (NBD, SBD β-sandwich, lid helices, loops, termini)?
-> 2. Are the regions with high B-factors also the ones where the superimposed chains differ most?
-> 3. Do the four chains of 4B9Q differ more from each other than the two chains of 4JNE? Why could a crystal with more copies in the asymmetric unit show more variation?
+> 1. Do the four chains of 4B9Q differ more from each other than the two chains of 4JNE? Why could a crystal with more copies in the asymmetric unit show more variation?
+> 2. Where in the structure are the B-factors highest (NBD, SBD β-sandwich, lid helices, loops, termini)?
+> 3. Are the regions with high B-factors also the ones where the superimposed chains differ most?
 > 4. Which of the two structures would you use for atomic-level analysis of the ATP site, and why? (Consider resolution, Rfree and PDB-REDO or validation results.)
 
+<details><summary><i class="fa fa-question-circle"></i> Solution</summary>
+
+1. Yes, about two times more. The two 4JNE chains differ by 0.27 Å, and the six pairs of 4B9Q chains differ by 0.42–0.88 Å. A crystal with more copies can show more variation for several reasons:
+
+Each copy has a different set of crystal contacts, so flexible parts such as the lid and the SBD/NBD orientation get trapped in slightly different positions.
+Four copies sample the possible conformations better than two.
+4B9Q has lower resolution (2.4 Å vs 1.96 Å) and higher B-factors, so some of the difference is coordinate noise rather than biology.
+
+2. Absolute B-factors aren’t comparable between entries (mean about 28 Å² in 4JNE and about 63–71 Å² in 4B9Q), so I compared each region with its own chain mean:
+
+C-terminal end of the lid (residues 590–605): the most mobile part in all six chains, at 1.3–2.4 times the chain mean.
+Lid helices: above average in 4JNE and in two of the four 4B9Q chains.
+SBD β-sandwich: above average in all four 4B9Q chains, but below average in 4JNE.
+NBD and N-terminus: the best ordered.
+Single highest residues: NBD surface loops at about 209–213 and 288–292.
+
+3. Mostly, but not exactly. The correlation is moderate (r ≈ 0.55 across 585 residues). Mean deviation is 0.55 Å in the NBD, 0.8 Å in the β-sandwich, 2.3 Å in the lid helices and 3.2 Å at the C-terminus. The NBD loops at 209–213 and 288–292 have the highest B-factors but superpose well. High B means poorly ordered in this crystal, not a different conformation. The lid also differs because the two crystals place the SBD differently. Fitting the NBD alone gives 0.6–0.8 Å, while the SBD alone gives 2.7–3.0 Å.
+
+4. I’d use 4JNE. Its resolution is better (1.96 Å vs 2.4 Å), as are Rwork/Rfree (0.173/0.201 vs 0.196/0.239), the Wilson B (24 vs 44 Å²) and the fit to the data (0.955 vs 0.939). Its two copies also confirm each other.
+
+4B9Q looks better on geometry (clashscore 4.6 vs 9.1, rotamer outliers 1.6% vs 2.6%) and has fewer poorly fitting residues (RSRZ outliers 4.9% vs 6.5%). Geometry can be improved by restraints without improving the fit, so I weighted the data quality more.
+
+</details>
 
 #### Summary
 
@@ -867,19 +900,12 @@ info models
 
 hide atoms
 cartoon
-matchmaker #1.2,#2.1-4 to #1.1 showpairs true
+matchmaker #1.2#2.1-4 to #1.1
 
 color bfactor #1 palette bluered
 color bfactor #2 palette bluered
 worm bfactor #1,2
 ```
-
-
-<details><summary><i class="fa fa-question-circle"></i> Solution</summary>
-
-> ![Structural alignment](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/update-november-2026/img/aligned-structures.png) 
-
-</details>
 
 ### Morphing
 
@@ -1291,31 +1317,36 @@ Further reading: https://dasher.wustl.edu/chem430/software/chimera/users-guide.p
 
 ********
 
-## protein stability 
+## Protein stability 
 
-What makes a protein stable? Comparing a mesophilic and a thermophilic homolog
-•	Folding free energy is small (~5–15 kcal/mol): a single mutation can matter
-•	Determinants of stability: hydrophobic core packing, hydrogen bonds, salt bridges and surface charge, disulfides, prolines and loop length, helix capping
-•	Adaptations of thermophilic proteins
-•	Case: cold shock proteins Bs-CspB (B. subtilis, 1CSP) vs Bc-Csp (B. caldolyticus, 1C9O); Perl et al. 2000, Nat Struct Biol – two surface positions (3 and 66) explain most of the stability difference
-•	Link forward: FoldX and SA-MPNN try to quantify exactly these effects
+What makes a protein stable? 
+
+Comparing a mesophilic and a thermophilic homolog
+
+* Folding free energy is small (~5–15 kcal/mol): a single mutation can matter
+* Determinants of stability: hydrophobic core packing, hydrogen bonds, salt bridges and surface charge, disulfides, prolines and loop length, helix capping
+* Adaptations of thermophilic proteins
+* Case: cold shock proteins Bs-CspB (B. subtilis, 1CSP) vs Bc-Csp (B. caldolyticus, 1C9O)
+ 
+       --{{0}}--
+Perl et al. 2000, Nat Struct Biol – two surface positions (3 and 66) explain most of the stability difference
 
 ### Folding is a near-run thing
 
 ![folding](https://raw.githubusercontent.com/vib-training-conferences/protein-structure-analysis/refs/heads/main/img/folding-illustration-science.png)
 
-•	ΔG of folding for a small single-domain protein: ~5–15 kcal/mol. That is the difference between two very large numbers — the entropy of the unfolded chain against the sum of every interaction in the folded state.
-•	5–15 kcal/mol is the energy of a handful of hydrogen bonds. A single substitution can plausibly consume all of it.
-•	Consequence for everything after lunch: stability predictions are differences of differences. Errors around 1 kcal/mol are normal, and the sign of a ΔΔG is far more trustworthy than its value.
+* ΔG of folding for a small single-domain protein: ~5–15 kcal/mol. That is the difference between two very large numbers — the entropy of the unfolded chain against the sum of every interaction in the folded state.
+* 5–15 kcal/mol is the energy of a handful of hydrogen bonds. A single substitution can plausibly consume all of it.
+* Consequence for everything after lunch: stability predictions are differences of differences. Errors around 1 kcal/mol are normal, and the sign of a ΔΔG is far more trustworthy than its value.
 
 ### What holds a protein together
 
-•	Hydrophobic core packing — the dominant term; cavity-creating substitutions (Leu→Ala) cost 1–5 kcal/mol
-•	Hydrogen bonds and satisfied secondary structure; helix capping
-•	Salt bridges and the overall surface charge distribution — including long-range electrostatics
-•	Disulfide bridges — largely entropic: they restrict the unfolded state
-•	Loop length, prolines and glycines — backbone entropy
-•	Thermophilic adaptations: more charged residues and ion-pair networks at the surface, shorter loops, tighter packing. 
+* Hydrophobic core packing — the dominant term; cavity-creating substitutions (Leu→Ala) cost 1–5 kcal/mol
+* Hydrogen bonds and satisfied secondary structure; helix capping
+* Salt bridges and the overall surface charge distribution — including long-range electrostatics
+* Disulfide bridges — largely entropic: they restrict the unfolded state
+* Loop length, prolines and glycines — backbone entropy
+* Thermophilic adaptations: more charged residues and ion-pair networks at the surface, shorter loops, tighter packing. 
 
                --{{0}}--
 Say explicitly that these are tendencies across genomes, not rules for any one protein — which is exactly what the next slide demonstrates
@@ -1328,8 +1359,8 @@ Say explicitly that these are tendencies across genomes, not rules for any one p
 |     Reference    |     Schindelin et al., Nature 1993, 364:164    |     Mueller et al., J Mol Biol 2000, 297:975    |
 |     Growth       |     mesophile                                  |     thermophile                                 |
 
-•	Same OB fold, same five-stranded β-barrel, 12 sequence differences out of 67 residues.
-•	Perl, Mueller, Heinemann & Schmid, Nature Structural Biology 2000, 7:380–383 (doi:10.1038/75151): two surface positions account for the entire difference of 15.8 kJ/mol at 70 °C — Glu3→Arg contributes 11.5 kJ/mol (predominantly electrostatic) and Glu66→Leu contributes 5.2 kJ/mol (hydrophobic).
+* Same OB fold, same five-stranded β-barrel, 12 sequence differences out of 67 residues.
+* Perl, Mueller, Heinemann & Schmid, Nature Structural Biology 2000, 7:380–383 (doi:10.1038/75151): two surface positions account for the entire difference of 15.8 kJ/mol at 70 °C — Glu3→Arg contributes 11.5 kJ/mol (predominantly electrostatic) and Glu66→Leu contributes 5.2 kJ/mol (hydrophobic).
 
                     --{{0}}--
 It is important to note that here it is not the core residue which make the big difference but residues at the surface. And the larger of the two contributions is electrostatic, which is the term empirical force fields handle worst. FoldX and SA-MPNN both claim to compute this. Later on, we check whether FoldX and SA-MPNN get R3E and L66E right.
@@ -1338,32 +1369,41 @@ It is important to note that here it is not the core residue which make the big 
 
 > <i class="fas fa-question"></i> **Questions**
 >
-> 1. 
-> 2. 
+> 1. Where are the 12 differing positions? Are the residues buried or exposed?
+> 2. Compare the two electrostatic surfaces around position 3.
 
 <details><summary>Solution
 </summary>
 
 Part A (6 min)
+```
 open 1csp 1c9o
 matchmaker #2 to #1
+```
 Note the RMSD and the number of aligned pairs. Open the Sequence Viewer, find the 12 differing positions, and for each decide: buried or exposed? (select :3,66 then surface, or measure sasa.)
+
 Part B (7 min)
+```
 delete :NA
+delete :HOH
+show :3,66 atoms
+style :3,66 stick
+label :3,66
+swapaa #1/A:3 glu
+swapaa #1/A:66 glu
 addh
 surface #1
 surface #2
 coulombic #1
 coulombic #2
-hbonds #1 saltOnly true log true
-hbonds #2 saltOnly true log true
-show :3,66 atoms
-style :3,66 stick
-label :3,66
+```
+
 Compare the two electrostatic surfaces around position 3.
+
 Two practical notes. coulombic assigns charges and will want hydrogens, so run addh first. And 1C9O contains a bound Na⁺ — deleting it is a two-second callback to the “crystallisation additives are not ligands” slide from the 13:00 block, so make that callback out loud rather than silently.
 
-Debrief (4 min). Reveal the published answer, then ask the honest question: “would you have predicted that from looking at these two structures?” 
+Debrief (4 min). 
+Reveal the published answer, then ask the honest question: “would you have predicted that from looking at these two structures?” 
 
 </details>
 
@@ -1404,11 +1444,11 @@ Methods:
 - [DALI](http://ekhidna.biocenter.helsinki.fi/dali_server/)
 - [VAST+](https://www.ncbi.nlm.nih.gov/Structure/vastplus/vastplus.cgi)
 
-The 3Di alphabet
+## The 3Di alphabet
 
-•	Describe each residue not by its identity but by which residue is nearest to it in 3D and how the two are oriented. That gives a 20-letter structural alphabet, 3Di.
-•	A structure therefore becomes a string, and structure search becomes sequence search — run on the MMseqs2 engine.
-•	Result: four to five orders of magnitude faster than DALI or TM-align at comparable sensitivity, which is what makes searching the whole AlphaFold database possible at all.
+* Describe each residue not by its identity but by which residue is nearest to it in 3D and how the two are oriented. That gives a 20-letter structural alphabet, 3Di.
+* A structure therefore becomes a string, and structure search becomes sequence search — run on the MMseqs2 engine.
+* Result: four to five orders of magnitude faster than DALI or TM-align at comparable sensitivity, which is what makes searching the whole AlphaFold database possible at all.
 
 Further reading:
 
@@ -1483,8 +1523,7 @@ Usually, we would start with doing a BLAST using Uniprot and limit the search sp
 
 <details><summary> Solution</summary>
 
-> 1. In the PDB database (note: it is from 2024), no significant hits are found. In the AlphaFold Swissprot DB, at least 4 hits are found. 
-The two top-scoring hits are the same for both modes: AF-O94644-F1-model_v6 and AF-O14284-F1-model_v6. The first hit is a multidomain model (± 390 residues) and the second hit is one model with a compact fold (± 200 residues). By checking the Alignment view, the structural alignments can be visualised in the browser.  
+> 1. In the PDB database (note: it is from 2024), no significant hits are found. In the AlphaFold Swissprot DB, at least 4 hits are found. The two top-scoring hits are the same for both modes: AF-O94644-F1-model_v6 and AF-O14284-F1-model_v6. The first hit is a multidomain model (± 390 residues) and the second hit is one model with a compact fold (± 200 residues). By checking the Alignment view, the structural alignments can be visualised in the browser.  
 
 </details>
 
@@ -1614,7 +1653,8 @@ Notebook: [SA_MPNN.ipynb](https://github.com/abotzki/SA-MPNN/blob/main/SA_MPNN.i
 > 4. Which 3–5 mutations would you order, and why those?
 
 Pairs that finish early compare their lists with a neighbouring pair (with and without relaxation), and discuss how much the ranking changes.
-
+ 
+        --{{0}}--
 <!-- Preparation: run the notebook beforehand on 1C9O chain A; keep the output (top-10 table, R3E/L66E values) as a fallback in case Colab/GPU is unavailable; verify the residue numbering of the binding face and the sign convention of the output. -->
 
 
